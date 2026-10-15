@@ -22,11 +22,12 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python scripts/update.py
       - run: python scripts/backtest.py
+      - run: python scripts/rebound_test.py
       - name: Commit latest data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/latest.json data/score_history.json data/backtest.json
+          git add data/latest.json data/score_history.json data/backtest.json data/rebound_comparison.json
           git diff --cached --quiet || (git commit -m "Refresh daily market snapshot" && git push)
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
