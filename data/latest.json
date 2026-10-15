@@ -1,11 +1,12 @@
 {
-  "generated_at_utc": "2026-10-15T09:52:04.788882+00:00",
+  "generated_at_utc": "2026-10-15T10:01:46.314271+00:00",
   "source": "Yahoo Finance via yfinance (unofficial; may be delayed)",
   "assets": {
     "SPY": {
       "close": 769.5999755859375,
+      "rsi14": 50.03331747859958,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.0956936118255879,
+      "realized_vol_20d": 0.09569361182558782,
       "core_exposure_pct": 100.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -113,6 +114,8 @@
       ],
       "entry_signal": false,
       "credit_filter_pass": false,
+      "credit_status": "FAIL",
+      "credit_alt_status": "FAIL",
       "oversold": true,
       "date": "2026-10-15",
       "history": [
@@ -480,8 +483,9 @@
     },
     "QQQ": {
       "close": 728.9500122070312,
+      "rsi14": 44.70991217823299,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.1629434003122649,
+      "realized_vol_20d": 0.1629434003122647,
       "core_exposure_pct": 100.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -589,6 +593,8 @@
       ],
       "entry_signal": false,
       "credit_filter_pass": false,
+      "credit_status": "FAIL",
+      "credit_alt_status": "FAIL",
       "oversold": true,
       "date": "2026-10-15",
       "history": [
@@ -958,12 +964,12 @@
   "metrics": [
     {
       "name": "VIX",
-      "value": 17.510000228881836,
+      "value": 17.459999084472656,
       "date": "2026-10-15"
     },
     {
       "name": "VIX 5d change %",
-      "value": 13.627517211315165,
+      "value": 13.30304514834122,
       "date": "2026-10-15"
     },
     {
@@ -973,7 +979,7 @@
     },
     {
       "name": "RSP/SPY vs 20d EMA %",
-      "value": 0.12717791693868108,
+      "value": 0.12717791693890312,
       "date": "2026-10-15"
     },
     {
@@ -983,7 +989,12 @@
     },
     {
       "name": "SOXX/QQQ vs 20d EMA %",
-      "value": -4.3781170624887285,
+      "value": -4.378117061916365,
+      "date": "2026-10-15"
+    },
+    {
+      "name": "HYG/SHY (alternative credit proxy)",
+      "value": 0.9462855647566142,
       "date": "2026-10-15"
     },
     {
@@ -993,12 +1004,12 @@
     },
     {
       "name": "HYG/LQD vs 20d EMA %",
-      "value": -0.5569420738510744,
+      "value": -0.5569421093802096,
       "date": "2026-10-15"
     },
     {
       "name": "VIX/VIX3M",
-      "value": 0.9318786256371194,
+      "value": 0.9292175749733134,
       "date": "2026-10-15"
     }
   ],
