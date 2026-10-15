@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import yfinance as yf
 
-TICKERS=["SPY","QQQ","RSP","SOXX","XLK","XLP","HYG","LQD","^VIX","^VIX3M","IEF"]
+TICKERS=["SPY","QQQ","RSP","SOXX","XLK","XLP","HYG","LQD","^VIX","^VIX3M","IEF","SHY"]
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 def main():
     raw=yf.download(TICKERS,period="1y",interval="1d",auto_adjust=True,progress=False,threads=False)
@@ -29,6 +29,11 @@ def main():
         rs=gain.rolling(2).mean()/loss.rolling(2).mean().replace(0,np.nan)
         rsi=100-100/(1+rs)
         rsi=rsi.where(loss.rolling(2).mean()!=0,100)
+        # Wilder's conventional 14-session RSI, separately from legacy RSI(2).
+        avg_gain=gain.ewm(alpha=1/14,adjust=False,min_periods=14).mean()
+        avg_loss=loss.ewm(alpha=1/14,adjust=False,min_periods=14).mean()
+        rsi14=100-100/(1+avg_gain/avg_loss.replace(0,np.nan))
+        rsi14=rsi14.where(avg_loss!=0,100)
         vol=x.pct_change(fill_method=None).rolling(20).std()*np.sqrt(252)
         exposure=(target/vol).clip(lower=0,upper=1)
         factors={
@@ -90,7 +95,17 @@ def main():
             recovery_breakdown.append({"name":name,"weight":weight,"score":earned,"coverage":available})
         recovery_score=sum(b["score"] for b in recovery_breakdown)
         recovery_coverage=sum(b["coverage"] for b in recovery_breakdown)
-        credit_ok=known["Credit weakness"] and not factors["Credit weakness"]
+        # Three-state filter: missing observations must not be marked as FAIL.
+        credit_ema=last(ema(credit,20))
+        credit_value=last(credit)
+        credit_status=("UNAVAILABLE" if credit_value is None or credit_ema is None
+                       else "PASS" if credit_value>=credit_ema else "FAIL")
+        credit_ok=credit_status=="PASS"
+        credit_alt=ratio("HYG","SHY")
+        credit_alt_ema=last(ema(credit_alt,20))
+        credit_alt_value=last(credit_alt)
+        credit_alt_status=("UNAVAILABLE" if credit_alt_ema is None or credit_alt_value is None
+                           else "PASS" if credit_alt_value>=credit_alt_ema else "FAIL")
         oversold=last(rsi) is not None and last(rsi)<35
         # Fresh transition must be calculated using yesterday's full five-factor score.
         daily_flags=pd.DataFrame({
@@ -105,12 +120,12 @@ def main():
         signal=bool(transition.iloc[-1] and oversold and credit_ok and all(known.values()))
         last_date=x.dropna().index[-1]
         rows[ticker]={
-          "close":last(x),"rsi2":last(rsi),"realized_vol_20d":last(vol),
+          "close":last(x),"rsi14":last(rsi14),"rsi2":last(rsi),"realized_vol_20d":last(vol),
           "core_exposure_pct":round(100*last(exposure),1) if last(exposure)!=None else None,
           "original_score":original,"original_coverage":sum(known.values()),
           "original_factors":{k:{"flag":v,"available":known[k]} for k,v in factors.items()},
           "risk_score":score,"risk_coverage":coverage,"risk_breakdown":breakdown,"recovery_score":recovery_score,"recovery_coverage":recovery_coverage,"recovery_breakdown":recovery_breakdown,"entry_signal":signal,
-          "credit_filter_pass":credit_ok,"oversold":oversold,
+          "credit_filter_pass":credit_ok,"credit_status":credit_status,"credit_alt_status":credit_alt_status,"oversold":oversold,
           "date":last_date.strftime("%Y-%m-%d"),
           "history":[{"date":i.strftime("%Y-%m-%d"),"close":round(float(v),2)} for i,v in x.dropna().tail(90).items()]
         }
@@ -119,12 +134,35 @@ def main():
       metric("VIX",vix),metric("VIX 5d change %",pct(vix,5)),
       metric("RSP/SPY (breadth proxy)",breadth),metric("RSP/SPY vs 20d EMA %",(breadth/ema(breadth,20)-1)*100),
       metric("SOXX/QQQ",semi),metric("SOXX/QQQ vs 20d EMA %",(semi/ema(semi,20)-1)*100),
-      metric("HYG/LQD",credit),metric("HYG/LQD vs 20d EMA %",(credit/ema(credit,20)-1)*100),
+      metric("HYG/SHY (alternative credit proxy)",ratio("HYG","SHY")),metric("HYG/LQD",credit),metric("HYG/LQD vs 20d EMA %",(credit/ema(credit,20)-1)*100),
       metric("VIX/VIX3M",vix/v3)
     ]
     output={"generated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"source":"Yahoo Finance via yfinance (unofficial; may be delayed)","assets":rows,"metrics":metrics,"limitations":["RSP/SPY is a breadth proxy, not S&P 500 constituent participation.","Expanded fragility and recovery scores are heuristic and have not been backtested; neither is a standalone entry trigger.","Tactical signals use closing data; any execution is next session.","No options dealer gamma or IV skew is included."]}
     if not rows:raise RuntimeError("No usable SPY/QQQ rows")
     dest=ROOT/"data"/"latest.json";dest.parent.mkdir(exist_ok=True)
     dest.write_text(json.dumps(output,indent=2,allow_nan=False))
+    # Archive scores by observation date, replacing rather than duplicating same-day rows.
+    # Preserve past observations exactly as first recorded to avoid silent revisions.
+    archive_path=ROOT/"data"/"score_history.json"
+    archive={"schema_version":1,"records":[]}
+    if archive_path.exists():
+        try:
+            previous=json.loads(archive_path.read_text())
+            if isinstance(previous.get("records"),list): archive=previous
+        except (ValueError,TypeError): pass
+    existing={(r.get("date"),r.get("ticker")) for r in archive["records"]}
+    for ticker,a in rows.items():
+        key=(a["date"],ticker)
+        if key not in existing:
+            archive["records"].append({
+                "date":a["date"],"ticker":ticker,"close":a["close"],
+                "fragility":a["risk_score"],"fragility_coverage":a["risk_coverage"],
+                "recovery":a["recovery_score"],"recovery_coverage":a["recovery_coverage"],
+                "rsi14":a["rsi14"],"rsi2":a["rsi2"],
+                "credit_status":a["credit_status"],"original_score":a["original_score"],
+                "entry_signal":a["entry_signal"],"model_version":"v2-2026-10-15"
+            })
+    archive["records"].sort(key=lambda r:(r["date"],r["ticker"]))
+    archive_path.write_text(json.dumps(archive,indent=2,allow_nan=False))
     print("Updated",dest,output["generated_at_utc"])
 if __name__=="__main__":main()
