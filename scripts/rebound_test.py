@@ -39,7 +39,7 @@ def benchmark(df):
     # Buy at first test open and hold through final open; mark open-to-open returns.
     o=df["open"].dropna()
     if len(o)<60:return None
-    ret=o.pct_change(fill_method=None).iloc[1:].to_numpy()
+    ret=o.pct_change(fill_method=None).iloc[1:].to_numpy(copy=True)
     ret[0]-=0.0005
     return stats(ret,[float(o.iloc[-1]/o.iloc[0]-1-0.0005)])
 def main():
