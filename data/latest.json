@@ -1,11 +1,11 @@
 {
-  "generated_at_utc": "2026-10-15T09:44:43.528783+00:00",
+  "generated_at_utc": "2026-10-15T09:52:04.788882+00:00",
   "source": "Yahoo Finance via yfinance (unofficial; may be delayed)",
   "assets": {
     "SPY": {
       "close": 769.5999755859375,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.09569361182558783,
+      "realized_vol_20d": 0.0956936118255879,
       "core_exposure_pct": 100.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -31,8 +31,86 @@
           "available": true
         }
       },
-      "risk_score": 50,
+      "risk_score": 45,
       "risk_coverage": 100,
+      "risk_breakdown": [
+        {
+          "name": "Breadth proxy",
+          "weight": 25,
+          "score": 0,
+          "coverage": 25
+        },
+        {
+          "name": "Price and volume",
+          "weight": 20,
+          "score": 15,
+          "coverage": 20
+        },
+        {
+          "name": "Sector leadership",
+          "weight": 15,
+          "score": 15,
+          "coverage": 15
+        },
+        {
+          "name": "VIX dynamics",
+          "weight": 15,
+          "score": 0,
+          "coverage": 15
+        },
+        {
+          "name": "Credit",
+          "weight": 15,
+          "score": 15,
+          "coverage": 15
+        },
+        {
+          "name": "Rates",
+          "weight": 10,
+          "score": 0,
+          "coverage": 10
+        }
+      ],
+      "recovery_score": 30,
+      "recovery_coverage": 100,
+      "recovery_breakdown": [
+        {
+          "name": "Breadth improvement",
+          "weight": 25,
+          "score": 25,
+          "coverage": 25
+        },
+        {
+          "name": "Semis / tech stabilization",
+          "weight": 20,
+          "score": 0,
+          "coverage": 20
+        },
+        {
+          "name": "Credit recovery",
+          "weight": 20,
+          "score": 0,
+          "coverage": 20
+        },
+        {
+          "name": "Price / volume reversal",
+          "weight": 15,
+          "score": 0,
+          "coverage": 15
+        },
+        {
+          "name": "Volatility easing",
+          "weight": 10,
+          "score": 5,
+          "coverage": 10
+        },
+        {
+          "name": "Trend follow-through",
+          "weight": 10,
+          "score": 0,
+          "coverage": 10
+        }
+      ],
       "entry_signal": false,
       "credit_filter_pass": false,
       "oversold": true,
@@ -403,7 +481,7 @@
     "QQQ": {
       "close": 728.9500122070312,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.1629434003122648,
+      "realized_vol_20d": 0.1629434003122649,
       "core_exposure_pct": 100.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -429,8 +507,86 @@
           "available": true
         }
       },
-      "risk_score": 50,
+      "risk_score": 45,
       "risk_coverage": 100,
+      "risk_breakdown": [
+        {
+          "name": "Breadth proxy",
+          "weight": 25,
+          "score": 0,
+          "coverage": 25
+        },
+        {
+          "name": "Price and volume",
+          "weight": 20,
+          "score": 15,
+          "coverage": 20
+        },
+        {
+          "name": "Sector leadership",
+          "weight": 15,
+          "score": 15,
+          "coverage": 15
+        },
+        {
+          "name": "VIX dynamics",
+          "weight": 15,
+          "score": 0,
+          "coverage": 15
+        },
+        {
+          "name": "Credit",
+          "weight": 15,
+          "score": 15,
+          "coverage": 15
+        },
+        {
+          "name": "Rates",
+          "weight": 10,
+          "score": 0,
+          "coverage": 10
+        }
+      ],
+      "recovery_score": 30,
+      "recovery_coverage": 100,
+      "recovery_breakdown": [
+        {
+          "name": "Breadth improvement",
+          "weight": 25,
+          "score": 25,
+          "coverage": 25
+        },
+        {
+          "name": "Semis / tech stabilization",
+          "weight": 20,
+          "score": 0,
+          "coverage": 20
+        },
+        {
+          "name": "Credit recovery",
+          "weight": 20,
+          "score": 0,
+          "coverage": 20
+        },
+        {
+          "name": "Price / volume reversal",
+          "weight": 15,
+          "score": 0,
+          "coverage": 15
+        },
+        {
+          "name": "Volatility easing",
+          "weight": 10,
+          "score": 5,
+          "coverage": 10
+        },
+        {
+          "name": "Trend follow-through",
+          "weight": 10,
+          "score": 0,
+          "coverage": 10
+        }
+      ],
       "entry_signal": false,
       "credit_filter_pass": false,
       "oversold": true,
@@ -802,12 +958,12 @@
   "metrics": [
     {
       "name": "VIX",
-      "value": 17.450000762939453,
+      "value": 17.510000228881836,
       "date": "2026-10-15"
     },
     {
       "name": "VIX 5d change %",
-      "value": 13.238163113090051,
+      "value": 13.627517211315165,
       "date": "2026-10-15"
     },
     {
@@ -817,7 +973,7 @@
     },
     {
       "name": "RSP/SPY vs 20d EMA %",
-      "value": 0.12717791694363267,
+      "value": 0.12717791693868108,
       "date": "2026-10-15"
     },
     {
@@ -827,7 +983,7 @@
     },
     {
       "name": "SOXX/QQQ vs 20d EMA %",
-      "value": -4.378117062015152,
+      "value": -4.3781170624887285,
       "date": "2026-10-15"
     },
     {
@@ -837,18 +993,18 @@
     },
     {
       "name": "HYG/LQD vs 20d EMA %",
-      "value": -0.5569421098619687,
+      "value": -0.5569420738510744,
       "date": "2026-10-15"
     },
     {
       "name": "VIX/VIX3M",
-      "value": 0.9286854663492558,
+      "value": 0.9318786256371194,
       "date": "2026-10-15"
     }
   ],
   "limitations": [
     "RSP/SPY is a breadth proxy, not S&P 500 constituent participation.",
-    "Expanded score weights are heuristic and have not been backtested.",
+    "Expanded fragility and recovery scores are heuristic and have not been backtested; neither is a standalone entry trigger.",
     "Tactical signals use closing data; any execution is next session.",
     "No options dealer gamma or IV skew is included."
   ]
