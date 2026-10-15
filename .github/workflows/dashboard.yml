@@ -28,7 +28,27 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/latest.json data/score_history.json data/backtest.json data/rebound_comparison.json
-          git diff --cached --quiet || (git commit -m "Refresh daily market snapshot" && git push)
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh daily market snapshot"
+            # Incorporate concurrent changes without overwriting the remote branch.
+            # Retry in case another writer updates main between fetch and push.
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              if ! git rebase origin/main; then
+                git rebase --abort
+                echo "Data conflict during rebase; refusing to force push."
+                exit 1
+              fi
+              if git push origin HEAD:main; then
+                break
+              fi
+              if [ "$attempt" = 5 ]; then
+                echo "Push rejected after five attempts."
+                exit 1
+              fi
+              sleep 2
+            done
+          fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
