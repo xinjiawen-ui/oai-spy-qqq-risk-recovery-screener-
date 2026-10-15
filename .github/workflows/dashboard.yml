@@ -20,6 +20,10 @@ jobs:
           python-version: '3.11'
           cache: pip
       - run: pip install -r requirements.txt
+      - name: Validate dashboard JavaScript and HTML
+        run: |
+          python scripts/validate_dashboard.py
+          node --check /tmp/dashboard-inline.js
       - run: python -m unittest discover -s tests
       - run: python scripts/update.py
       - run: python scripts/backtest.py
