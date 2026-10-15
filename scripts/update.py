@@ -40,20 +40,56 @@ def main():
         }
         known={"Trend":True,"VIX ≥25":last(vix)!=None,"VIX backwardation":last(vix/v3)!=None,"Credit weakness":last(credit)!=None,"Tech defensive rotation":last(tech)!=None}
         original=sum(int(v) for k,v in factors.items() if known[k])
-        # Heuristic dashboard score, not a backtested entry model.
-        checks=[
-          (20,factors["Trend"],known["Trend"]),
-          (10,factors["Credit weakness"],known["Credit weakness"]),
-          (10,factors["Tech defensive rotation"],known["Tech defensive rotation"]),
-          (15,last(breadth/ema(breadth,20)) is not None and last(breadth/ema(breadth,20))<1,last(breadth/ema(breadth,20))!=None),
-          (10,last(semi/ema(semi,20)) is not None and last(semi/ema(semi,20))<1,last(semi/ema(semi,20))!=None),
-          (10,last(pct(vix,5)) is not None and last(pct(vix,5))>=15,last(pct(vix,5))!=None),
-          (10,factors["VIX backwardation"],known["VIX backwardation"]),
-          (10,last(vix/ema(vix,20)) is not None and last(vix/ema(vix,20))>1.15,last(vix/ema(vix,20))!=None),
-          (5,last(pct(s("IEF"),5)) is not None and last(pct(s("IEF"),5))<=-1,last(pct(s("IEF"),5))!=None)
+        # Expanded fragility model: factor coverage is explicit; weights sum to 100.
+        # True constituent breadth, option gamma and IV skew are not available here.
+        def observation(value, predicate):
+            return (value is not None and np.isfinite(value), bool(value is not None and np.isfinite(value) and predicate(value)))
+        breadth_level=last((breadth/ema(breadth,20)-1)*100)
+        breadth_trend=last(pct(breadth,5))
+        semi_level=last((semi/ema(semi,20)-1)*100)
+        tech_level=last((tech/ema(tech,20)-1)*100)
+        credit_level=last((credit/ema(credit,20)-1)*100)
+        credit_change=last(pct(credit,5))
+        vix_change=last(pct(vix,5))
+        vix_rel=last(vix/ema(vix,20))
+        term=last(vix/v3)
+        x20=last(x/ema(x,20)-1)
+        x50=last(x/ema(x,50)-1)
+        vol5=last(volume[ticker]/volume[ticker].rolling(20).mean()) if ticker in volume else None
+        rate_move=last(pct(s("IEF"),5))
+        # The six categories are scored separately to expose their contributions.
+        components=[
+          ("Breadth proxy",25,[(15,observation(breadth_level,lambda v:v<0)),(10,observation(breadth_trend,lambda v:v<0))]),
+          ("Price and volume",20,[(10,observation(x20,lambda v:v<0)),(5,observation(x50,lambda v:v<0)),(5,observation(vol5,lambda v:v>1.25 and x20 is not None and x20<0))]),
+          ("Sector leadership",15,[(10,observation(semi_level,lambda v:v<0)),(5,observation(tech_level,lambda v:v<0))]),
+          ("VIX dynamics",15,[(5,observation(vix_change,lambda v:v>=15)),(5,observation(vix_rel,lambda v:v>1.15)),(5,observation(term,lambda v:v>=1))]),
+          ("Credit",15,[(10,observation(credit_level,lambda v:v<0)),(5,observation(credit_change,lambda v:v<0))]),
+          ("Rates",10,[(10,observation(rate_move,lambda v:v<=-1))])
         ]
-        score=sum(w for w,flag,ok in checks if ok and flag)
-        coverage=sum(w for w,flag,ok in checks if ok)
+        breakdown=[]
+        for name,weight,parts in components:
+            earned=sum(w for w,(ok,flag) in parts if ok and flag)
+            available=sum(w for w,(ok,flag) in parts if ok)
+            breakdown.append({"name":name,"weight":weight,"score":earned,"coverage":available})
+        score=sum(b["score"] for b in breakdown)
+        coverage=sum(b["coverage"] for b in breakdown)
+        # Recovery score measures positive changes, not simply the inverse of fragility.
+        # 25 breadth + 20 leadership + 20 credit + 15 price/volume + 10 vol + 10 trend follow-through.
+        recovery_parts=[
+          ("Breadth improvement",25,[(15,observation(breadth_trend,lambda v:v>0)),(10,observation(breadth_level,lambda v:v>0))]),
+          ("Semis / tech stabilization",20,[(15,observation(semi_level,lambda v:v>0)),(5,observation(tech_level,lambda v:v>0))]),
+          ("Credit recovery",20,[(12,observation(credit_change,lambda v:v>0)),(8,observation(credit_level,lambda v:v>0))]),
+          ("Price / volume reversal",15,[(10,observation(last(pct(x,5)),lambda v:v>0)),(5,observation(vol5,lambda v:v>=1 and last(pct(x,1)) is not None and last(pct(x,1))>0))]),
+          ("Volatility easing",10,[(5,observation(vix_change,lambda v:v<0)),(5,observation(term,lambda v:v<1))]),
+          ("Trend follow-through",10,[(10,observation(x20,lambda v:v>0))])
+        ]
+        recovery_breakdown=[]
+        for name,weight,parts in recovery_parts:
+            earned=sum(w for w,(ok,flag) in parts if ok and flag)
+            available=sum(w for w,(ok,flag) in parts if ok)
+            recovery_breakdown.append({"name":name,"weight":weight,"score":earned,"coverage":available})
+        recovery_score=sum(b["score"] for b in recovery_breakdown)
+        recovery_coverage=sum(b["coverage"] for b in recovery_breakdown)
         credit_ok=known["Credit weakness"] and not factors["Credit weakness"]
         oversold=last(rsi) is not None and last(rsi)<35
         # Fresh transition must be calculated using yesterday's full five-factor score.
@@ -73,7 +109,7 @@ def main():
           "core_exposure_pct":round(100*last(exposure),1) if last(exposure)!=None else None,
           "original_score":original,"original_coverage":sum(known.values()),
           "original_factors":{k:{"flag":v,"available":known[k]} for k,v in factors.items()},
-          "risk_score":score,"risk_coverage":coverage,"entry_signal":signal,
+          "risk_score":score,"risk_coverage":coverage,"risk_breakdown":breakdown,"recovery_score":recovery_score,"recovery_coverage":recovery_coverage,"recovery_breakdown":recovery_breakdown,"entry_signal":signal,
           "credit_filter_pass":credit_ok,"oversold":oversold,
           "date":last_date.strftime("%Y-%m-%d"),
           "history":[{"date":i.strftime("%Y-%m-%d"),"close":round(float(v),2)} for i,v in x.dropna().tail(90).items()]
@@ -86,7 +122,7 @@ def main():
       metric("HYG/LQD",credit),metric("HYG/LQD vs 20d EMA %",(credit/ema(credit,20)-1)*100),
       metric("VIX/VIX3M",vix/v3)
     ]
-    output={"generated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"source":"Yahoo Finance via yfinance (unofficial; may be delayed)","assets":rows,"metrics":metrics,"limitations":["RSP/SPY is a breadth proxy, not S&P 500 constituent participation.","Expanded score weights are heuristic and have not been backtested.","Tactical signals use closing data; any execution is next session.","No options dealer gamma or IV skew is included."]}
+    output={"generated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"source":"Yahoo Finance via yfinance (unofficial; may be delayed)","assets":rows,"metrics":metrics,"limitations":["RSP/SPY is a breadth proxy, not S&P 500 constituent participation.","Expanded fragility and recovery scores are heuristic and have not been backtested; neither is a standalone entry trigger.","Tactical signals use closing data; any execution is next session.","No options dealer gamma or IV skew is included."]}
     if not rows:raise RuntimeError("No usable SPY/QQQ rows")
     dest=ROOT/"data"/"latest.json";dest.parent.mkdir(exist_ok=True)
     dest.write_text(json.dumps(output,indent=2,allow_nan=False))
