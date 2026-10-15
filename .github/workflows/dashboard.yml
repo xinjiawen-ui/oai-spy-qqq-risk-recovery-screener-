@@ -20,6 +20,7 @@ jobs:
           python-version: '3.11'
           cache: pip
       - run: pip install -r requirements.txt
+      - run: python -m unittest discover -s tests
       - run: python scripts/update.py
       - run: python scripts/backtest.py
       - run: python scripts/rebound_test.py
