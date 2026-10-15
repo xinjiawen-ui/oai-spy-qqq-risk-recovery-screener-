@@ -1,12 +1,12 @@
 {
-  "generated_at_utc": "2026-10-15T11:01:08.597548+00:00",
+  "generated_at_utc": "2026-10-15T12:28:32.258775+00:00",
   "source": "Yahoo Finance via yfinance (unofficial; may be delayed)",
   "assets": {
     "SPY": {
       "close": 769.5999755859375,
-      "rsi14": 50.0333174785884,
+      "rsi14": 50.033317478609376,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.09569361182558782,
+      "realized_vol_20d": 0.09569361182558783,
       "core_exposure_pct": 100.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -483,9 +483,9 @@
     },
     "QQQ": {
       "close": 728.9500122070312,
-      "rsi14": 44.70991217822962,
+      "rsi14": 44.70991217823261,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.1629434003122647,
+      "realized_vol_20d": 0.16294340031226456,
       "core_exposure_pct": 100.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -964,12 +964,12 @@
   "metrics": [
     {
       "name": "VIX",
-      "value": 17.600000381469727,
+      "value": 17.56999969482422,
       "date": "2026-10-15"
     },
     {
       "name": "VIX 5d change %",
-      "value": 14.211554547324656,
+      "value": 14.01687130954028,
       "date": "2026-10-15"
     },
     {
@@ -979,7 +979,7 @@
     },
     {
       "name": "RSP/SPY vs 20d EMA %",
-      "value": 0.12717791693954705,
+      "value": 0.12717791693919178,
       "date": "2026-10-15"
     },
     {
@@ -989,7 +989,7 @@
     },
     {
       "name": "SOXX/QQQ vs 20d EMA %",
-      "value": -4.378117062015363,
+      "value": -4.378117061916365,
       "date": "2026-10-15"
     },
     {
@@ -1004,12 +1004,12 @@
     },
     {
       "name": "HYG/LQD vs 20d EMA %",
-      "value": -0.5569420726129315,
+      "value": -0.5569420764826472,
       "date": "2026-10-15"
     },
     {
       "name": "VIX/VIX3M",
-      "value": 0.9366684153232666,
+      "value": 0.935071784924983,
       "date": "2026-10-15"
     }
   ],
