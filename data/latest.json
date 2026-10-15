@@ -1,12 +1,88 @@
 {
-  "generated_at_utc": "2026-10-15T14:44:28.706365+00:00",
+  "generated_at_utc": "2026-10-15T15:04:57.799761+00:00",
   "source": "Yahoo Finance via yfinance (unofficial; may be delayed)",
   "assets": {
     "SPY": {
-      "close": 769.0800170898438,
-      "rsi14": 49.492813776849104,
-      "rsi2": 0.0,
-      "realized_vol_20d": 0.09577964651149284,
+      "warning_score": 35,
+      "warning_coverage": 100,
+      "warning_state": "MONITOR",
+      "warning_breakdown": [
+        {
+          "name": "Participation weakening",
+          "weight": 20,
+          "score": 20,
+          "coverage": 20
+        },
+        {
+          "name": "Volatility acceleration",
+          "weight": 15,
+          "score": 0,
+          "coverage": 15
+        },
+        {
+          "name": "Vol-of-vol elevated",
+          "weight": 10,
+          "score": 0,
+          "coverage": 10
+        },
+        {
+          "name": "VIX curve flattening",
+          "weight": 10,
+          "score": 0,
+          "coverage": 10
+        },
+        {
+          "name": "Distribution volume",
+          "weight": 15,
+          "score": 0,
+          "coverage": 15
+        },
+        {
+          "name": "Persistent selling",
+          "weight": 10,
+          "score": 0,
+          "coverage": 10
+        },
+        {
+          "name": "Credit deterioration",
+          "weight": 15,
+          "score": 15,
+          "coverage": 15
+        },
+        {
+          "name": "Drawdown developing",
+          "weight": 5,
+          "score": 0,
+          "coverage": 5
+        }
+      ],
+      "recovery_state": "NO RECOVERY CONFIRMATION",
+      "recovery_confirmations": 1,
+      "recovery_confirmation_coverage": 6,
+      "recovery_confirmation_flags": {
+        "Breadth improving": true,
+        "Credit improving": false,
+        "Semiconductors stabilizing": false,
+        "Five-day price momentum positive": false,
+        "VIX cooling": false,
+        "Risk-on participation": false
+      },
+      "stress_diagnostics": {
+        "volatility_acceleration": 1.0128668104873884,
+        "vvix_vs_ema20": 1.0798685866264817,
+        "down_volume_share": 0.5103795653661154,
+        "negative_days_10": 5.0,
+        "drawdown_63d_pct": -1.1474928613179003,
+        "participation": {
+          "Small caps vs SPY": -1.9671150631207834,
+          "Discretionary vs staples": -3.3471445100134667,
+          "Tech vs utilities": -4.482158281901826
+        }
+      },
+      "close": 770.1500244140625,
+      "rsi14": 50.60398220734948,
+      "rsi2": 6.138880941676533,
+      "realized_vol_20d": 0.09566797465759248,
       "core_exposure_pct": 100.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -477,15 +553,91 @@
         },
         {
           "date": "2026-10-15",
-          "close": 769.08
+          "close": 770.15
         }
       ]
     },
     "QQQ": {
-      "close": 722.530029296875,
-      "rsi14": 41.14206220327935,
+      "warning_score": 55,
+      "warning_coverage": 100,
+      "warning_state": "REDUCE EXPOSURE WATCH",
+      "warning_breakdown": [
+        {
+          "name": "Participation weakening",
+          "weight": 20,
+          "score": 20,
+          "coverage": 20
+        },
+        {
+          "name": "Volatility acceleration",
+          "weight": 15,
+          "score": 0,
+          "coverage": 15
+        },
+        {
+          "name": "Vol-of-vol elevated",
+          "weight": 10,
+          "score": 0,
+          "coverage": 10
+        },
+        {
+          "name": "VIX curve flattening",
+          "weight": 10,
+          "score": 0,
+          "coverage": 10
+        },
+        {
+          "name": "Distribution volume",
+          "weight": 15,
+          "score": 15,
+          "coverage": 15
+        },
+        {
+          "name": "Persistent selling",
+          "weight": 10,
+          "score": 0,
+          "coverage": 10
+        },
+        {
+          "name": "Credit deterioration",
+          "weight": 15,
+          "score": 15,
+          "coverage": 15
+        },
+        {
+          "name": "Drawdown developing",
+          "weight": 5,
+          "score": 5,
+          "coverage": 5
+        }
+      ],
+      "recovery_state": "NO RECOVERY CONFIRMATION",
+      "recovery_confirmations": 1,
+      "recovery_confirmation_coverage": 6,
+      "recovery_confirmation_flags": {
+        "Breadth improving": true,
+        "Credit improving": false,
+        "Semiconductors stabilizing": false,
+        "Five-day price momentum positive": false,
+        "VIX cooling": false,
+        "Risk-on participation": false
+      },
+      "stress_diagnostics": {
+        "volatility_acceleration": 0.8529916435415819,
+        "vvix_vs_ema20": 1.0798685866264817,
+        "down_volume_share": 0.6527381480565844,
+        "negative_days_10": 6.0,
+        "drawdown_63d_pct": -4.644178910161756,
+        "participation": {
+          "Small caps vs SPY": -1.9671150631207834,
+          "Discretionary vs staples": -3.3471445100134667,
+          "Tech vs utilities": -4.482158281901826
+        }
+      },
+      "close": 724.3800048828125,
+      "rsi14": 42.11039401336574,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.16657182961929412,
+      "realized_vol_20d": 0.16492777533904432,
       "core_exposure_pct": 100.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -956,66 +1108,88 @@
         },
         {
           "date": "2026-10-15",
-          "close": 722.53
+          "close": 724.38
         }
       ]
     }
   },
   "metrics": [
     {
+      "name": "VVIX",
+      "value": 95.80000305175781,
+      "date": "2026-10-15"
+    },
+    {
+      "name": "VVIX / EMA20",
+      "value": 1.0798685866264817,
+      "date": "2026-10-15"
+    },
+    {
+      "name": "IWM/SPY vs EMA20 %",
+      "value": -1.9671150631207834,
+      "date": "2026-10-15"
+    },
+    {
+      "name": "XLY/XLP vs EMA20 %",
+      "value": -3.3471445100134667,
+      "date": "2026-10-15"
+    },
+    {
       "name": "VIX",
-      "value": 17.420000076293945,
+      "value": 17.100000381469727,
       "date": "2026-10-15"
     },
     {
       "name": "VIX 5d change %",
-      "value": 13.043479875305696,
+      "value": 10.966908181646918,
       "date": "2026-10-15"
     },
     {
       "name": "RSP/SPY (breadth proxy)",
-      "value": 0.2782023913609876,
+      "value": 0.2782786374661618,
       "date": "2026-10-15"
     },
     {
       "name": "RSP/SPY vs 20d EMA %",
-      "value": 0.9867738921248703,
+      "value": 1.0117884494724283,
       "date": "2026-10-15"
     },
     {
       "name": "SOXX/QQQ",
-      "value": 0.7002062100035715,
+      "value": 0.7020041805686132,
       "date": "2026-10-15"
     },
     {
       "name": "SOXX/QQQ vs 20d EMA %",
-      "value": -5.887235076807462,
+      "value": -5.66728578276543,
       "date": "2026-10-15"
     },
     {
       "name": "HYG/SHY (alternative credit proxy)",
-      "value": 0.9473102220287576,
+      "value": 0.9483298961873021,
       "date": "2026-10-15"
     },
     {
       "name": "HYG/LQD",
-      "value": 0.7438088649331582,
+      "value": 0.7451065460358787,
       "date": "2026-10-15"
     },
     {
       "name": "HYG/LQD vs 20d EMA %",
-      "value": -1.0853334534516201,
+      "value": -0.9290452301733088,
       "date": "2026-10-15"
     },
     {
       "name": "VIX/VIX3M",
-      "value": 0.9106116487459307,
+      "value": 0.9052409176275773,
       "date": "2026-10-15"
     }
   ],
   "limitations": [
     "RSP/SPY is a breadth proxy, not S&P 500 constituent participation.",
-    "Expanded fragility and recovery scores are heuristic and have not been backtested; neither is a standalone entry trigger.",
+    "Experimental warning and recovery confirmation thresholds are not yet walk-forward validated.",
+    "Relative ETF strength and VVIX are public proxies, not direct institutional leverage, dealer gamma, or market depth.",
+    "Missing data reduce coverage rather than counting as healthy.",
     "Tactical signals use closing data; any execution is next session.",
     "No options dealer gamma or IV skew is included."
   ]
