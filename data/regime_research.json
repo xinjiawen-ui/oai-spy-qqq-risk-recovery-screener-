@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-10-16T05:17:41.134773+00:00",
+  "generated_at_utc": "2026-10-16T05:25:33.376579+00:00",
   "method": "Ten-year daily adjusted prices; score at close t, hypothetical entry open t+1, exit open t+1+H; historical overlapping observations; NOT calibrated future probabilities or a tradable backtest.",
   "regime_definitions": {
     "Early rebound": "Fragility >=60, Recovery >=50, Recovery 5-day change >0",
@@ -108,10 +108,10 @@
         "Healthy expansion": {
           "5": {
             "samples": 833,
-            "positive_probability_pct": 62.06,
+            "positive_probability_pct": 62.18,
             "wilson_95_pct": [
-              58.72,
-              65.3
+              58.84,
+              65.41
             ],
             "mean_return_pct": 0.197,
             "median_return_pct": 0.425,
@@ -152,10 +152,10 @@
         "Potential deterioration": {
           "5": {
             "samples": 491,
-            "positive_probability_pct": 61.71,
+            "positive_probability_pct": 61.91,
             "wilson_95_pct": [
-              57.34,
-              65.9
+              57.54,
+              66.1
             ],
             "mean_return_pct": 0.38,
             "median_return_pct": 0.39,

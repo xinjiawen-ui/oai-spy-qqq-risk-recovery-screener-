@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-16T05:17:34.379711+00:00",
+  "generated_at_utc": "2026-10-16T05:25:25.143963+00:00",
   "source": "Yahoo Finance via yfinance (unofficial; may be delayed)",
   "assets": {
     "SPY": {
@@ -131,19 +131,19 @@
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 1.0453559885360688,
+        "volatility_acceleration": 1.0453559885360706,
         "vvix_vs_ema20": 1.0470904272254555,
         "down_volume_share": 0.4706985403491262,
         "negative_days_10": 5.0,
         "drawdown_63d_pct": -0.9369968266169648,
         "participation": {
-          "Small caps vs SPY": -1.8843199417349799,
-          "Discretionary vs staples": -2.4245168322424515,
-          "Tech vs utilities": -4.154398253454317
+          "Small caps vs SPY": -1.8843199416203826,
+          "Discretionary vs staples": -2.424516831794743,
+          "Tech vs utilities": -4.154398253509406
         }
       },
       "close": 771.7899780273438,
-      "rsi14": 52.23058316529982,
+      "rsi14": 52.23058316569449,
       "rsi2": 20.660329012903702,
       "realized_vol_20d": 0.0959903040479452,
       "core_exposure_pct": 100.0,
@@ -749,21 +749,21 @@
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 0.8889704227409798,
+        "volatility_acceleration": 0.8889704227409811,
         "vvix_vs_ema20": 1.0470904272254555,
         "down_volume_share": 0.6819030618885586,
         "negative_days_10": 6.0,
         "drawdown_63d_pct": -4.1676505625902855,
         "participation": {
-          "Small caps vs SPY": -1.8843199417349799,
-          "Discretionary vs staples": -2.4245168322424515,
-          "Tech vs utilities": -4.154398253454317
+          "Small caps vs SPY": -1.8843199416203826,
+          "Discretionary vs staples": -2.424516831794743,
+          "Tech vs utilities": -4.154398253509406
         }
       },
       "close": 728.0,
-      "rsi14": 44.143436049810525,
+      "rsi14": 44.14343603964437,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.16310810689729094,
+      "realized_vol_20d": 0.16310810689729083,
       "core_exposure_pct": 100.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -1252,12 +1252,12 @@
     },
     {
       "name": "IWM/SPY vs EMA20 %",
-      "value": -1.8843199417349799,
+      "value": -1.8843199416203826,
       "date": "2026-10-15"
     },
     {
       "name": "XLY/XLP vs EMA20 %",
-      "value": -2.4245168322424515,
+      "value": -2.424516831794743,
       "date": "2026-10-15"
     },
     {
@@ -1277,7 +1277,7 @@
     },
     {
       "name": "RSP/SPY vs 20d EMA %",
-      "value": 1.1084134551456293,
+      "value": 1.1084134552170166,
       "date": "2026-10-15"
     },
     {
@@ -1287,7 +1287,7 @@
     },
     {
       "name": "SOXX/QQQ vs 20d EMA %",
-      "value": -5.054315665658738,
+      "value": -5.054315665187426,
       "date": "2026-10-15"
     },
     {
@@ -1302,7 +1302,7 @@
     },
     {
       "name": "HYG/LQD vs 20d EMA %",
-      "value": -0.9157009932553639,
+      "value": -0.9157009941331617,
       "date": "2026-10-15"
     },
     {
