@@ -169,7 +169,37 @@ def main():
                         "CONFIRMED RE-RISK WATCH" if recovery_count>=5 and recovery_score>=60 and warning_coverage>=80 and warning_score<50 else
                         "RECOVERY DEVELOPING" if recovery_count>=4 and recovery_score>=50 else
                         "UNCONFIRMED BOUNCE" if recovery_count>=2 else "NO RECOVERY CONFIRMATION")
+        # Early rebound radar: divergences are evaluated using close-only information.
+        # This is deliberately separate from the slower recovery-confirmation checklist.
+        def direction(series,n=3):
+            return last(pct(series,n))
+        prior_low=last(x.shift(1).rolling(10,min_periods=5).min())
+        near_low=prior_low is not None and last(x) is not None and last(x)<=prior_low*1.015
+        ret1=last(pct(x,1))
+        ret3=last(pct(x,3))
+        credit3=direction(credit)
+        breadth3=direction(breadth)
+        semi3=direction(semi)
+        vix3=direction(vix)
+        vvix3=direction(s("^VVIX"))
+        rsi2_value=last(rsi)
+        radar=[
+          ("Price near prior 10-day low",near_low,prior_low is not None and last(x) is not None,"Potential capitulation location; not a buy signal by itself"),
+          ("RSI(2) deeply oversold",rsi2_value is not None and rsi2_value<15,rsi2_value is not None,"Short-term exhaustion; can persist during a crash"),
+          ("Credit improves while price remains weak",credit3 is not None and credit3>0 and ret3 is not None and ret3<=0,credit3 is not None and ret3 is not None,"Potential lead-lag divergence; proxy is HYG/LQD"),
+          ("Equal weight improves while price remains weak",breadth3 is not None and breadth3>0 and ret3 is not None and ret3<=0,breadth3 is not None and ret3 is not None,"Broadening beneath index-level weakness"),
+          ("Semiconductors outperform during weakness",semi3 is not None and semi3>0 and ret3 is not None and ret3<=0,semi3 is not None and ret3 is not None,"Growth leadership may stabilize ahead of QQQ"),
+          ("VIX falls while price remains weak",vix3 is not None and vix3<0 and ret3 is not None and ret3<=0,vix3 is not None and ret3 is not None,"Fear easing ahead of price confirmation"),
+          ("VVIX falls while price remains weak",vvix3 is not None and vvix3<0 and ret3 is not None and ret3<=0,vvix3 is not None and ret3 is not None,"Volatility-of-volatility easing; feed may be unavailable"),
+          ("First positive daily return",ret1 is not None and ret1>0,ret1 is not None,"Reversal confirmation, not a leading signal")
+        ]
+        radar_available=sum(known for _,_,known,_ in radar)
+        radar_hits=sum(hit for _,hit,known,_ in radar if known)
+        radar_state=("INSUFFICIENT DATA" if radar_available<6 else
+                     "EARLY REVERSAL WATCH" if radar_hits>=4 else
+                     "POTENTIAL STABILIZATION" if radar_hits>=2 else "NO EARLY REVERSAL")
         rows[ticker]={
+          "rebound_radar":{"state":radar_state,"hits":radar_hits,"available":radar_available,"signals":[{"name":name,"triggered":bool(hit),"available":bool(known),"interpretation":detail} for name,hit,known,detail in radar],"inputs":{"credit_3d_pct":credit3,"breadth_3d_pct":breadth3,"semi_3d_pct":semi3,"vix_3d_pct":vix3,"vvix_3d_pct":vvix3,"price_3d_pct":ret3}},
           "warning_score":warning_score,"warning_coverage":warning_coverage,"warning_state":warning_state,
           "warning_breakdown":[{"name":n,"weight":w,"score":w if ok and flag else 0,"coverage":w if ok else 0} for n,w,(ok,flag) in warning_checks],
           "recovery_state":recovery_state,"recovery_confirmations":recovery_count,"recovery_confirmation_coverage":recovery_known,"recovery_confirmation_flags":recovery_checks,
@@ -191,7 +221,7 @@ def main():
       metric("HYG/SHY (alternative credit proxy)",ratio("HYG","SHY")),metric("HYG/LQD",credit),metric("HYG/LQD vs 20d EMA %",(credit/ema(credit,20)-1)*100),
       metric("VIX/VIX3M",vix/v3)
     ]
-    output={"generated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"source":"Yahoo Finance via yfinance (unofficial; may be delayed)","assets":rows,"metrics":metrics,"limitations":["RSP/SPY is a breadth proxy, not S&P 500 constituent participation.","Experimental warning and recovery confirmation thresholds are not yet walk-forward validated.","Relative ETF strength and VVIX are public proxies, not direct institutional leverage, dealer gamma, or market depth.","Missing data reduce coverage rather than counting as healthy.","Tactical signals use closing data; any execution is next session.","No options dealer gamma or IV skew is included."]}
+    output={"generated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"source":"Yahoo Finance via yfinance (unofficial; may be delayed)","assets":rows,"metrics":metrics,"limitations":["RSP/SPY is a breadth proxy, not S&P 500 constituent participation.","Experimental warning and recovery confirmation thresholds are not yet walk-forward validated.","Relative ETF strength and VVIX are public proxies, not direct institutional leverage, dealer gamma, or market depth.","Missing data reduce coverage rather than counting as healthy.","Rebound radar is a descriptive research checklist, not a validated leading indicator or calibrated bottom probability.","Tactical signals use closing data; any execution is next session.","No options dealer gamma or IV skew is included."]}
     if not rows:raise RuntimeError("No usable SPY/QQQ rows")
     dest=ROOT/"data"/"latest.json";dest.parent.mkdir(exist_ok=True)
     dest.write_text(json.dumps(output,indent=2,allow_nan=False))
