@@ -1,8 +1,45 @@
 {
-  "generated_at_utc": "2026-10-17T09:44:29.339143+00:00",
+  "generated_at_utc": "2026-10-17T09:48:41.688832+00:00",
   "source": "Yahoo Finance via yfinance (unofficial; may be delayed)",
   "assets": {
     "SPY": {
+      "rebound_v2": {
+        "version": "v2.1",
+        "phase": "SELLING EXHAUSTION WATCH",
+        "early_score": 22,
+        "early_coverage": 100,
+        "groups": {
+          "exhaustion": {
+            "score": 50,
+            "coverage": 100,
+            "observed": 2,
+            "possible": 2
+          },
+          "divergence": {
+            "score": 35,
+            "coverage": 100,
+            "observed": 3,
+            "possible": 3
+          },
+          "volatility_easing": {
+            "score": 0,
+            "coverage": 100,
+            "observed": 2,
+            "possible": 2
+          },
+          "price_followthrough": {
+            "score": 0,
+            "coverage": 100,
+            "observed": 3,
+            "possible": 3
+          }
+        },
+        "confirmation_score": 25,
+        "confirmation_coverage": 100,
+        "credit_gate": false,
+        "breadth_gate": true,
+        "method": "Grouped descriptive evidence; not calibrated, not backtested."
+      },
       "rebound_radar": {
         "state": "POTENTIAL STABILIZATION",
         "hits": 2,
@@ -131,21 +168,21 @@
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 0.9879457652126948,
+        "volatility_acceleration": 0.9879457652126938,
         "vvix_vs_ema20": 1.2150820721989317,
         "down_volume_share": 0.616244318397216,
         "negative_days_10": 6.0,
         "drawdown_63d_pct": -2.0331446058168168,
         "participation": {
-          "Small caps vs SPY": -2.2309562382708648,
-          "Discretionary vs staples": -3.888155043010977,
-          "Tech vs utilities": -7.555884300165683
+          "Small caps vs SPY": -2.230956238374504,
+          "Discretionary vs staples": -3.888155043269037,
+          "Tech vs utilities": -7.555884300260429
         }
       },
       "close": 763.25,
-      "rsi14": 44.08868220035151,
+      "rsi14": 44.088682200299566,
       "rsi2": 20.41012514220705,
-      "realized_vol_20d": 0.1046782891384669,
+      "realized_vol_20d": 0.104678289138467,
       "core_exposure_pct": 100.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -621,6 +658,43 @@
       ]
     },
     "QQQ": {
+      "rebound_v2": {
+        "version": "v2.1",
+        "phase": "SELLING EXHAUSTION WATCH",
+        "early_score": 32,
+        "early_coverage": 100,
+        "groups": {
+          "exhaustion": {
+            "score": 100,
+            "coverage": 100,
+            "observed": 2,
+            "possible": 2
+          },
+          "divergence": {
+            "score": 35,
+            "coverage": 100,
+            "observed": 3,
+            "possible": 3
+          },
+          "volatility_easing": {
+            "score": 0,
+            "coverage": 100,
+            "observed": 2,
+            "possible": 2
+          },
+          "price_followthrough": {
+            "score": 0,
+            "coverage": 100,
+            "observed": 3,
+            "possible": 3
+          }
+        },
+        "confirmation_score": 25,
+        "confirmation_coverage": 100,
+        "credit_gate": false,
+        "breadth_gate": true,
+        "method": "Grouped descriptive evidence; not calibrated, not backtested."
+      },
       "rebound_radar": {
         "state": "POTENTIAL STABILIZATION",
         "hits": 3,
@@ -749,21 +823,21 @@
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 0.8973900090559885,
+        "volatility_acceleration": 0.897390009055988,
         "vvix_vs_ema20": 1.2150820721989317,
         "down_volume_share": 0.8026072007529494,
         "negative_days_10": 7.0,
         "drawdown_63d_pct": -6.563460905432783,
         "participation": {
-          "Small caps vs SPY": -2.2309562382708648,
-          "Discretionary vs staples": -3.888155043010977,
-          "Tech vs utilities": -7.555884300165683
+          "Small caps vs SPY": -2.230956238374504,
+          "Discretionary vs staples": -3.888155043269037,
+          "Tech vs utilities": -7.555884300260429
         }
       },
       "close": 709.7999877929688,
-      "rsi14": 34.995593550214295,
+      "rsi14": 34.99559355044934,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.18556893361804924,
+      "realized_vol_20d": 0.1855689336180491,
       "core_exposure_pct": 100.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -1252,12 +1326,12 @@
     },
     {
       "name": "IWM/SPY vs EMA20 %",
-      "value": -2.2309562382708648,
+      "value": -2.230956238374504,
       "date": "2026-10-16"
     },
     {
       "name": "XLY/XLP vs EMA20 %",
-      "value": -3.888155043010977,
+      "value": -3.888155043269037,
       "date": "2026-10-16"
     },
     {
@@ -1277,7 +1351,7 @@
     },
     {
       "name": "RSP/SPY vs 20d EMA %",
-      "value": 1.6320732381911007,
+      "value": 1.6320732381924108,
       "date": "2026-10-16"
     },
     {
@@ -1287,7 +1361,7 @@
     },
     {
       "name": "SOXX/QQQ vs 20d EMA %",
-      "value": -6.058160549592007,
+      "value": -6.058160549503655,
       "date": "2026-10-16"
     },
     {
@@ -1302,7 +1376,7 @@
     },
     {
       "name": "HYG/LQD vs 20d EMA %",
-      "value": -1.0570866232530007,
+      "value": -1.0570865854936495,
       "date": "2026-10-16"
     },
     {
