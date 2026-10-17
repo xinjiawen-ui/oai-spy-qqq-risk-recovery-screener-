@@ -1,12 +1,12 @@
 {
-  "generated_at_utc": "2026-10-17T00:42:00.986899+00:00",
+  "generated_at_utc": "2026-10-17T09:44:33.007237+00:00",
   "method": "60% chronological training, 40% untouched test; next-open entry; 5bps/side; nonoverlapping holds; cash zero return; daily Sharpe with zero risk-free assumption; no claim of full walk-forward validation.",
   "results": {
     "SPY": {
       "benchmark_test": {
-        "sharpe": 1.3531859316137942,
-        "annualized_return_pct": 22.57703257304149,
-        "max_drawdown_pct": -19.766219528089522,
+        "sharpe": 1.4114528842774483,
+        "annualized_return_pct": 23.64059528386968,
+        "max_drawdown_pct": -19.766230954250585,
         "trades": 1,
         "win_rate_pct": 100.0,
         "exposure_pct": 100.0
@@ -20,17 +20,17 @@
                 "recovery_min": 30
               },
               "train": {
-                "sharpe": 0.7969270439677009,
-                "annualized_return_pct": 7.025458982559085,
-                "max_drawdown_pct": -12.956019783500194,
+                "sharpe": 0.7966637192137468,
+                "annualized_return_pct": 7.020648391873374,
+                "max_drawdown_pct": -12.955969732330441,
                 "trades": 63,
                 "win_rate_pct": 66.66666666666666,
-                "exposure_pct": 20.916334661354583
+                "exposure_pct": 20.902455209024552
               },
               "test": {
-                "sharpe": 0.7081986654977267,
-                "annualized_return_pct": 4.276966489813727,
-                "max_drawdown_pct": -7.412449282155686,
+                "sharpe": 0.7081969109299477,
+                "annualized_return_pct": 4.276951511515481,
+                "max_drawdown_pct": -7.4124975795200605,
                 "trades": 30,
                 "win_rate_pct": 56.666666666666664,
                 "exposure_pct": 14.925373134328357
@@ -44,17 +44,17 @@
                 "recovery_rise_5d": 10
               },
               "train": {
-                "sharpe": 1.0416686354881708,
-                "annualized_return_pct": 7.12187566701783,
-                "max_drawdown_pct": -7.606337204052272,
+                "sharpe": 1.0413247068729394,
+                "annualized_return_pct": 7.117001823749525,
+                "max_drawdown_pct": -7.606352291432595,
                 "trades": 42,
                 "win_rate_pct": 71.42857142857143,
-                "exposure_pct": 13.94422310756972
+                "exposure_pct": 13.934970139349701
               },
               "test": {
-                "sharpe": 0.7043693506772671,
-                "annualized_return_pct": 3.454254435019921,
-                "max_drawdown_pct": -5.316734978746796,
+                "sharpe": 0.7043668359979588,
+                "annualized_return_pct": 3.454239290355421,
+                "max_drawdown_pct": -5.316683824767654,
                 "trades": 24,
                 "win_rate_pct": 54.166666666666664,
                 "exposure_pct": 11.940298507462686
@@ -71,17 +71,17 @@
                 "recovery_min": 30
               },
               "train": {
-                "sharpe": 0.9589706710540096,
-                "annualized_return_pct": 10.42950271352221,
-                "max_drawdown_pct": -12.722822655267652,
+                "sharpe": 0.9586503613824686,
+                "annualized_return_pct": 10.422207934021777,
+                "max_drawdown_pct": -12.722750240650694,
                 "trades": 51,
                 "win_rate_pct": 74.50980392156863,
-                "exposure_pct": 33.86454183266932
+                "exposure_pct": 33.842070338420704
               },
               "test": {
-                "sharpe": 0.9745805511719964,
-                "annualized_return_pct": 7.175219142878864,
-                "max_drawdown_pct": -10.30618156817994,
+                "sharpe": 0.9745791341615552,
+                "annualized_return_pct": 7.17519815677321,
+                "max_drawdown_pct": -10.306200934692566,
                 "trades": 24,
                 "win_rate_pct": 66.66666666666666,
                 "exposure_pct": 23.88059701492537
@@ -95,17 +95,17 @@
                 "recovery_rise_5d": 20
               },
               "train": {
-                "sharpe": 1.3393137606917376,
-                "annualized_return_pct": 10.84834211313568,
-                "max_drawdown_pct": -6.953800763686113,
+                "sharpe": 1.3388672654709468,
+                "annualized_return_pct": 10.840765887563485,
+                "max_drawdown_pct": -6.953800763686136,
                 "trades": 28,
                 "win_rate_pct": 82.14285714285714,
-                "exposure_pct": 18.59229747675963
+                "exposure_pct": 18.579960185799603
               },
               "test": {
-                "sharpe": 0.8714457047083799,
-                "annualized_return_pct": 6.089341702824891,
-                "max_drawdown_pct": -7.572079549908384,
+                "sharpe": 0.871446310921928,
+                "annualized_return_pct": 6.089337368546888,
+                "max_drawdown_pct": -7.572053679992186,
                 "trades": 22,
                 "win_rate_pct": 59.09090909090909,
                 "exposure_pct": 21.890547263681594
@@ -122,17 +122,17 @@
                 "recovery_min": 30
               },
               "train": {
-                "sharpe": 1.0526937401737748,
-                "annualized_return_pct": 13.344753937596266,
-                "max_drawdown_pct": -13.33044743073839,
+                "sharpe": 1.0523428135433457,
+                "annualized_return_pct": 13.335322637538894,
+                "max_drawdown_pct": -13.330456594221952,
                 "trades": 38,
                 "win_rate_pct": 78.94736842105263,
-                "exposure_pct": 50.46480743691899
+                "exposure_pct": 50.431320504313206
               },
               "test": {
-                "sharpe": 1.0452506067295946,
-                "annualized_return_pct": 9.140737450671166,
-                "max_drawdown_pct": -13.281164454260718,
+                "sharpe": 1.0452484303332092,
+                "annualized_return_pct": 9.14070197694361,
+                "max_drawdown_pct": -13.281191444210382,
                 "trades": 19,
                 "win_rate_pct": 73.68421052631578,
                 "exposure_pct": 37.81094527363184
@@ -146,17 +146,17 @@
                 "recovery_rise_5d": 20
               },
               "train": {
-                "sharpe": 0.9709646124628615,
-                "annualized_return_pct": 9.737404702842213,
-                "max_drawdown_pct": -13.403754222531795,
+                "sharpe": 0.9706448372073425,
+                "annualized_return_pct": 9.730653913599596,
+                "max_drawdown_pct": -13.403752444914597,
                 "trades": 24,
                 "win_rate_pct": 83.33333333333334,
-                "exposure_pct": 31.872509960159363
+                "exposure_pct": 31.851360318513606
               },
               "test": {
-                "sharpe": 0.7866426096334176,
-                "annualized_return_pct": 8.647957913225612,
-                "max_drawdown_pct": -14.967856097800603,
+                "sharpe": 0.7866444519712615,
+                "annualized_return_pct": 8.647974321739916,
+                "max_drawdown_pct": -14.967832530809133,
                 "trades": 17,
                 "win_rate_pct": 82.35294117647058,
                 "exposure_pct": 33.83084577114428
@@ -169,9 +169,9 @@
     },
     "QQQ": {
       "benchmark_test": {
-        "sharpe": 1.323027550672558,
-        "annualized_return_pct": 29.361759646064577,
-        "max_drawdown_pct": -24.171435071823367,
+        "sharpe": 1.3757450040192098,
+        "annualized_return_pct": 30.71432831645349,
+        "max_drawdown_pct": -24.171443725480867,
         "trades": 1,
         "win_rate_pct": 100.0,
         "exposure_pct": 100.0
@@ -185,17 +185,17 @@
                 "recovery_min": 30
               },
               "train": {
-                "sharpe": 0.8779627402537008,
-                "annualized_return_pct": 9.42338741774973,
-                "max_drawdown_pct": -14.68065195731345,
+                "sharpe": 0.8776748288413543,
+                "annualized_return_pct": 9.416893937388204,
+                "max_drawdown_pct": -14.68061407057364,
                 "trades": 59,
                 "win_rate_pct": 64.40677966101694,
-                "exposure_pct": 19.588313413014607
+                "exposure_pct": 19.575315195753152
               },
               "test": {
-                "sharpe": 0.42147791190920525,
-                "annualized_return_pct": 3.758918525785937,
-                "max_drawdown_pct": -17.699685585990675,
+                "sharpe": 0.42148239638683166,
+                "annualized_return_pct": 3.7589605727077924,
+                "max_drawdown_pct": -17.699655452550868,
                 "trades": 30,
                 "win_rate_pct": 60.0,
                 "exposure_pct": 14.925373134328357
@@ -209,17 +209,17 @@
                 "recovery_rise_5d": 20
               },
               "train": {
-                "sharpe": 1.0310210889793767,
-                "annualized_return_pct": 9.095538025150528,
-                "max_drawdown_pct": -9.837597931868757,
+                "sharpe": 1.030680207624012,
+                "annualized_return_pct": 9.08925066374524,
+                "max_drawdown_pct": -9.83751330072522,
                 "trades": 41,
                 "win_rate_pct": 73.17073170731707,
-                "exposure_pct": 13.612217795484726
+                "exposure_pct": 13.60318513603185
               },
               "test": {
-                "sharpe": 0.4258247026537846,
-                "annualized_return_pct": 2.80109014146539,
-                "max_drawdown_pct": -6.4189257051345265,
+                "sharpe": 0.4258251656249195,
+                "annualized_return_pct": 2.801090846706633,
+                "max_drawdown_pct": -6.418887770326442,
                 "trades": 27,
                 "win_rate_pct": 59.25925925925925,
                 "exposure_pct": 13.432835820895523
@@ -236,17 +236,17 @@
                 "recovery_min": 50
               },
               "train": {
-                "sharpe": 1.0544757981105093,
-                "annualized_return_pct": 15.784847910172894,
-                "max_drawdown_pct": -21.309051018584956,
+                "sharpe": 1.054128465052135,
+                "annualized_return_pct": 15.773671560631497,
+                "max_drawdown_pct": -21.30909534480757,
                 "trades": 82,
                 "win_rate_pct": 69.51219512195121,
-                "exposure_pct": 54.448871181938905
+                "exposure_pct": 54.4127405441274
               },
               "test": {
-                "sharpe": 0.9580558425744382,
-                "annualized_return_pct": 13.932565474425939,
-                "max_drawdown_pct": -15.181043669334827,
+                "sharpe": 0.9580574056212768,
+                "annualized_return_pct": 13.932585114894502,
+                "max_drawdown_pct": -15.181039008953512,
                 "trades": 58,
                 "win_rate_pct": 58.620689655172406,
                 "exposure_pct": 57.711442786069654
@@ -260,17 +260,17 @@
                 "recovery_rise_5d": 20
               },
               "train": {
-                "sharpe": 1.1159290213844992,
-                "annualized_return_pct": 12.072352779688767,
-                "max_drawdown_pct": -12.440166576306966,
+                "sharpe": 1.1155618764234463,
+                "annualized_return_pct": 12.063928032831406,
+                "max_drawdown_pct": -12.440095360192927,
                 "trades": 32,
                 "win_rate_pct": 78.125,
-                "exposure_pct": 21.248339973439574
+                "exposure_pct": 21.234240212342403
               },
               "test": {
-                "sharpe": 0.7074591199878629,
-                "annualized_return_pct": 6.232944305398003,
-                "max_drawdown_pct": -10.99133322686705,
+                "sharpe": 0.70745820188186,
+                "annualized_return_pct": 6.2329330788069015,
+                "max_drawdown_pct": -10.991327562998855,
                 "trades": 21,
                 "win_rate_pct": 52.38095238095239,
                 "exposure_pct": 20.8955223880597
@@ -287,17 +287,17 @@
                 "recovery_min": 40
               },
               "train": {
-                "sharpe": 0.9295459643438749,
-                "annualized_return_pct": 16.477451045866644,
-                "max_drawdown_pct": -22.008940622774897,
+                "sharpe": 0.9292346264110312,
+                "annualized_return_pct": 16.465621957669853,
+                "max_drawdown_pct": -22.0090097489816,
                 "trades": 48,
                 "win_rate_pct": 75.0,
-                "exposure_pct": 63.745019920318725
+                "exposure_pct": 63.70272063702721
               },
               "test": {
-                "sharpe": 1.4757175515611387,
-                "annualized_return_pct": 23.59043787778461,
-                "max_drawdown_pct": -21.827692478994255,
+                "sharpe": 1.4757200976628755,
+                "annualized_return_pct": 23.59046709180386,
+                "max_drawdown_pct": -21.827713385775148,
                 "trades": 30,
                 "win_rate_pct": 76.66666666666667,
                 "exposure_pct": 59.70149253731343
@@ -311,17 +311,17 @@
                 "recovery_rise_5d": 30
               },
               "train": {
-                "sharpe": 1.0640520029081888,
-                "annualized_return_pct": 11.963941192552397,
-                "max_drawdown_pct": -14.062547927336233,
+                "sharpe": 1.0636954792743187,
+                "annualized_return_pct": 11.955509157408928,
+                "max_drawdown_pct": -14.062540195834917,
                 "trades": 22,
                 "win_rate_pct": 81.81818181818183,
-                "exposure_pct": 29.216467463479418
+                "exposure_pct": 29.1970802919708
               },
               "test": {
-                "sharpe": 0.8643829620418594,
-                "annualized_return_pct": 8.034039789316182,
-                "max_drawdown_pct": -7.485676451106871,
+                "sharpe": 0.8643847506944293,
+                "annualized_return_pct": 8.034048093393631,
+                "max_drawdown_pct": -7.485654588972091,
                 "trades": 13,
                 "win_rate_pct": 61.53846153846154,
                 "exposure_pct": 25.870646766169152

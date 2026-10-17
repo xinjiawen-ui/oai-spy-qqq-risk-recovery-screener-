@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-17T00:41:56.335078+00:00",
+  "generated_at_utc": "2026-10-17T09:44:29.339143+00:00",
   "source": "Yahoo Finance via yfinance (unofficial; may be delayed)",
   "assets": {
     "SPY": {
@@ -58,17 +58,17 @@
           }
         ],
         "inputs": {
-          "credit_3d_pct": -0.8664591237636188,
-          "breadth_3d_pct": 1.6093441223985039,
-          "semi_3d_pct": -3.342839962108002,
+          "credit_3d_pct": -1.1179432908861031,
+          "breadth_3d_pct": 2.3113663662378103,
+          "semi_3d_pct": -4.970782369781668,
           "vix_3d_pct": 30.91027617458073,
           "vvix_3d_pct": 28.73039025274671,
-          "price_3d_pct": -0.7994796545297667
+          "price_3d_pct": -1.8971490829625015
         }
       },
-      "warning_score": 55,
+      "warning_score": 70,
       "warning_coverage": 100,
-      "warning_state": "REDUCE EXPOSURE WATCH",
+      "warning_state": "DELEVERAGE WARNING",
       "warning_breakdown": [
         {
           "name": "Participation weakening",
@@ -97,7 +97,7 @@
         {
           "name": "Distribution volume",
           "weight": 15,
-          "score": 0,
+          "score": 15,
           "coverage": 15
         },
         {
@@ -131,27 +131,27 @@
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 0.8680982299232528,
+        "volatility_acceleration": 0.9879457652126948,
         "vvix_vs_ema20": 1.2150820721989317,
-        "down_volume_share": 0.4494094095985053,
-        "negative_days_10": 5.0,
-        "drawdown_63d_pct": -0.9369968266169648,
+        "down_volume_share": 0.616244318397216,
+        "negative_days_10": 6.0,
+        "drawdown_63d_pct": -2.0331446058168168,
         "participation": {
-          "Small caps vs SPY": -1.7079259270617264,
-          "Discretionary vs staples": -2.1986873760972636,
-          "Tech vs utilities": -3.773672073867218
+          "Small caps vs SPY": -2.2309562382708648,
+          "Discretionary vs staples": -3.888155043010977,
+          "Tech vs utilities": -7.555884300165683
         }
       },
-      "close": 771.7899780273438,
-      "rsi14": 52.23058350989932,
-      "rsi2": 100.0,
-      "realized_vol_20d": 0.09600184205588817,
+      "close": 763.25,
+      "rsi14": 44.08868220035151,
+      "rsi2": 20.41012514220705,
+      "realized_vol_20d": 0.1046782891384669,
       "core_exposure_pct": 100.0,
-      "original_score": 2,
+      "original_score": 3,
       "original_coverage": 5,
       "original_factors": {
         "Trend": {
-          "flag": false,
+          "flag": true,
           "available": true
         },
         "VIX \u226525": {
@@ -171,7 +171,7 @@
           "available": true
         }
       },
-      "risk_score": 40,
+      "risk_score": 60,
       "risk_coverage": 100,
       "risk_breakdown": [
         {
@@ -183,7 +183,7 @@
         {
           "name": "Price and volume",
           "weight": 20,
-          "score": 0,
+          "score": 20,
           "coverage": 20
         },
         {
@@ -211,7 +211,7 @@
           "coverage": 10
         }
       ],
-      "recovery_score": 40,
+      "recovery_score": 30,
       "recovery_coverage": 100,
       "recovery_breakdown": [
         {
@@ -247,7 +247,7 @@
         {
           "name": "Trend follow-through",
           "weight": 10,
-          "score": 10,
+          "score": 0,
           "coverage": 10
         }
       ],
@@ -255,7 +255,7 @@
       "credit_filter_pass": false,
       "credit_status": "FAIL",
       "credit_alt_status": "FAIL",
-      "oversold": false,
+      "oversold": true,
       "date": "2026-10-16",
       "history": [
         {
@@ -616,7 +616,7 @@
         },
         {
           "date": "2026-10-16",
-          "close": 771.79
+          "close": 763.25
         }
       ]
     },
@@ -676,15 +676,15 @@
           }
         ],
         "inputs": {
-          "credit_3d_pct": -0.8664591237636188,
-          "breadth_3d_pct": 1.6093441223985039,
-          "semi_3d_pct": -3.342839962108002,
+          "credit_3d_pct": -1.1179432908861031,
+          "breadth_3d_pct": 2.3113663662378103,
+          "semi_3d_pct": -4.970782369781668,
           "vix_3d_pct": 30.91027617458073,
           "vvix_3d_pct": 28.73039025274671,
-          "price_3d_pct": -2.0939531141456857
+          "price_3d_pct": -4.541605927970849
         }
       },
-      "warning_score": 75,
+      "warning_score": 85,
       "warning_coverage": 100,
       "warning_state": "DELEVERAGE WARNING",
       "warning_breakdown": [
@@ -721,7 +721,7 @@
         {
           "name": "Persistent selling",
           "weight": 10,
-          "score": 0,
+          "score": 10,
           "coverage": 10
         },
         {
@@ -749,21 +749,21 @@
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 0.7793809961004735,
+        "volatility_acceleration": 0.8973900090559885,
         "vvix_vs_ema20": 1.2150820721989317,
-        "down_volume_share": 0.6236973957853924,
-        "negative_days_10": 6.0,
-        "drawdown_63d_pct": -4.1676505625902855,
+        "down_volume_share": 0.8026072007529494,
+        "negative_days_10": 7.0,
+        "drawdown_63d_pct": -6.563460905432783,
         "participation": {
-          "Small caps vs SPY": -1.7079259270617264,
-          "Discretionary vs staples": -2.1986873760972636,
-          "Tech vs utilities": -3.773672073867218
+          "Small caps vs SPY": -2.2309562382708648,
+          "Discretionary vs staples": -3.888155043010977,
+          "Tech vs utilities": -7.555884300165683
         }
       },
-      "close": 728.0,
-      "rsi14": 44.14343636766085,
+      "close": 709.7999877929688,
+      "rsi14": 34.995593550214295,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.1618453373160934,
+      "realized_vol_20d": 0.18556893361804924,
       "core_exposure_pct": 100.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -1234,7 +1234,7 @@
         },
         {
           "date": "2026-10-16",
-          "close": 728.0
+          "close": 709.8
         }
       ]
     }
@@ -1252,12 +1252,12 @@
     },
     {
       "name": "IWM/SPY vs EMA20 %",
-      "value": -1.7079259270617264,
+      "value": -2.2309562382708648,
       "date": "2026-10-16"
     },
     {
       "name": "XLY/XLP vs EMA20 %",
-      "value": -2.1986873760972636,
+      "value": -3.888155043010977,
       "date": "2026-10-16"
     },
     {
@@ -1272,37 +1272,37 @@
     },
     {
       "name": "RSP/SPY (breadth proxy)",
-      "value": 0.27857319493773314,
+      "value": 0.28049786614856287,
       "date": "2026-10-16"
     },
     {
       "name": "RSP/SPY vs 20d EMA %",
-      "value": 1.0017927445961305,
+      "value": 1.6320732381911007,
       "date": "2026-10-16"
     },
     {
       "name": "SOXX/QQQ",
-      "value": 0.7070192609514508,
+      "value": 0.6951113315492861,
       "date": "2026-10-16"
     },
     {
       "name": "SOXX/QQQ vs 20d EMA %",
-      "value": -4.595071259932116,
+      "value": -6.058160549592007,
       "date": "2026-10-16"
     },
     {
       "name": "HYG/SHY (alternative credit proxy)",
-      "value": 0.9488251492771879,
+      "value": 0.9446902659016517,
       "date": "2026-10-16"
     },
     {
       "name": "HYG/LQD",
-      "value": 0.7452173647673234,
+      "value": 0.7433268808135857,
       "date": "2026-10-16"
     },
     {
       "name": "HYG/LQD vs 20d EMA %",
-      "value": -0.829214565751768,
+      "value": -1.0570866232530007,
       "date": "2026-10-16"
     },
     {
