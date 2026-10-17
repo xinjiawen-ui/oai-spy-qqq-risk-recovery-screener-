@@ -198,7 +198,66 @@ def main():
         radar_state=("INSUFFICIENT DATA" if radar_available<6 else
                      "EARLY REVERSAL WATCH" if radar_hits>=4 else
                      "POTENTIAL STABILIZATION" if radar_hits>=2 else "NO EARLY REVERSAL")
+        # Rebound v2: grouped evidence avoids double-counting correlated signals.
+        # Exhaustion is a prerequisite context, NOT confirmation of a tradable bottom.
+        def grouped_score(items):
+            observed=[(w,hit) for w,known,hit in items if known]
+            total=sum(w for w,_ in observed)
+            return {"score":round(100*sum(w for w,hit in observed if hit)/total) if total else None,
+                    "coverage":round(100*total/sum(w for w,_,_ in items)) if items else 0,
+                    "observed":len(observed),"possible":len(items)}
+        radar_map={name:(bool(hit),bool(known)) for name,hit,known,_ in radar}
+        def signal_item(name,weight):
+            hit,known=radar_map[name]
+            return (weight,known,hit)
+        exhaustion=grouped_score([
+            signal_item("Price near prior 10-day low",50),
+            signal_item("RSI(2) deeply oversold",50)])
+        divergence=grouped_score([
+            signal_item("Credit improves while price remains weak",35),
+            signal_item("Equal weight improves while price remains weak",35),
+            signal_item("Semiconductors outperform during weakness",30)])
+        vol_easing=grouped_score([
+            signal_item("VIX falls while price remains weak",60),
+            signal_item("VVIX falls while price remains weak",40)])
+        followthrough=grouped_score([
+            (40,ret1 is not None,ret1 is not None and ret1>0),
+            (30,ret3 is not None,ret3 is not None and ret3>0),
+            (30,x20 is not None,x20>0 if x20 is not None else False)])
+        groups={"exhaustion":exhaustion,"divergence":divergence,"volatility_easing":vol_easing,"price_followthrough":followthrough}
+        # Do not infer strong evidence from one surviving input.
+        early_groups=[(35,divergence),(25,vol_easing),(20,exhaustion),(20,followthrough)]
+        early_observed=sum(w*g["coverage"]/100 for w,g in early_groups)
+        early_score=round(sum(w*g["coverage"]/100*g["score"]/100 for w,g in early_groups if g["score"] is not None)/early_observed*100) if early_observed else None
+        early_coverage=round(early_observed)
+        recovery_checks_v2=[
+            (25,breadth_trend is not None,breadth_trend is not None and breadth_trend>0),
+            (25,credit_change is not None,credit_change is not None and credit_change>0),
+            (20,semi_level is not None,semi_level is not None and semi_level>0),
+            (20,ret3 is not None,ret3 is not None and ret3>0),
+            (10,vix_change is not None,vix_change is not None and vix_change<0)]
+        confirmation=grouped_score(recovery_checks_v2)
+        credit_gate=credit_change is not None and credit_change>0
+        breadth_gate=breadth_trend is not None and breadth_trend>0
+        if early_coverage<70 or confirmation["coverage"]<70:
+            phase="INSUFFICIENT DATA"
+        elif confirmation["score"]>=75 and credit_gate and breadth_gate and ret3 is not None and ret3>0:
+            phase="RECOVERY CONFIRMATION"
+        elif divergence["score"] is not None and divergence["score"]>=55 and (vol_easing["score"] or 0)>=40 and confirmation["score"]>=40:
+            phase="EARLY STABILIZATION"
+        elif exhaustion["score"] is not None and exhaustion["score"]>=50:
+            phase="SELLING EXHAUSTION WATCH"
+        else:
+            phase="NO RELIABLE REVERSAL"
+        rebound_v2={"version":"v2.1","phase":phase,"early_score":early_score,
+                    "early_coverage":early_coverage,"groups":groups,
+                    "confirmation_score":confirmation["score"],
+                    "confirmation_coverage":confirmation["coverage"],
+                    "credit_gate":credit_gate if credit_change is not None else None,
+                    "breadth_gate":breadth_gate if breadth_trend is not None else None,
+                    "method":"Grouped descriptive evidence; not calibrated, not backtested."}
         rows[ticker]={
+          "rebound_v2":rebound_v2,
           "rebound_radar":{"state":radar_state,"hits":radar_hits,"available":radar_available,"signals":[{"name":name,"triggered":bool(hit),"available":bool(known),"interpretation":detail} for name,hit,known,detail in radar],"inputs":{"credit_3d_pct":credit3,"breadth_3d_pct":breadth3,"semi_3d_pct":semi3,"vix_3d_pct":vix3,"vvix_3d_pct":vvix3,"price_3d_pct":ret3}},
           "warning_score":warning_score,"warning_coverage":warning_coverage,"warning_state":warning_state,
           "warning_breakdown":[{"name":n,"weight":w,"score":w if ok and flag else 0,"coverage":w if ok else 0} for n,w,(ok,flag) in warning_checks],
