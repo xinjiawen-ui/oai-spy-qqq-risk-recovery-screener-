@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-10-21T00:47:28.367856+00:00",
+  "generated_at_utc": "2026-10-22T00:50:01.028678+00:00",
   "method": "Ten-year daily adjusted prices; score at close t, hypothetical entry open t+1, exit open t+1+H; historical overlapping observations; NOT calibrated future probabilities or a tradable backtest.",
   "regime_definitions": {
     "Early rebound": "Fragility >=60, Recovery >=50, Recovery 5-day change >0",
@@ -11,11 +11,11 @@
   },
   "assets": {
     "SPY": {
-      "as_of": "2026-10-19",
+      "as_of": "2026-10-20",
       "current_regime": "Mixed / transitional",
-      "fragility": 45,
+      "fragility": 40,
       "recovery": 30,
-      "recovery_change_5d": -15.0,
+      "recovery_change_5d": 0.0,
       "regimes": {
         "Early rebound": {
           "5": {
@@ -107,55 +107,55 @@
         },
         "Healthy expansion": {
           "5": {
-            "samples": 831,
-            "positive_probability_pct": 61.97,
+            "samples": 830,
+            "positive_probability_pct": 61.93,
             "wilson_95_pct": [
-              58.62,
-              65.21
+              58.58,
+              65.17
             ],
-            "mean_return_pct": 0.192,
-            "median_return_pct": 0.41,
+            "mean_return_pct": 0.191,
+            "median_return_pct": 0.407,
             "p10_return_pct": -2.149,
-            "p90_return_pct": 2.162,
-            "prob_gain_2pct": 11.91,
-            "prob_loss_2pct": 10.47
+            "p90_return_pct": 2.163,
+            "prob_gain_2pct": 11.93,
+            "prob_loss_2pct": 10.48
           },
           "10": {
-            "samples": 830,
-            "positive_probability_pct": 66.27,
+            "samples": 829,
+            "positive_probability_pct": 66.22,
             "wilson_95_pct": [
-              62.98,
-              69.4
+              62.94,
+              69.36
             ],
             "mean_return_pct": 0.568,
             "median_return_pct": 0.874,
-            "p10_return_pct": -2.291,
-            "p90_return_pct": 3.356,
-            "prob_gain_2pct": 25.66,
-            "prob_loss_2pct": 12.29
+            "p10_return_pct": -2.295,
+            "p90_return_pct": 3.358,
+            "prob_gain_2pct": 25.69,
+            "prob_loss_2pct": 12.3
           },
           "20": {
-            "samples": 827,
-            "positive_probability_pct": 72.55,
+            "samples": 826,
+            "positive_probability_pct": 72.52,
             "wilson_95_pct": [
-              69.41,
-              75.48
+              69.37,
+              75.45
             ],
-            "mean_return_pct": 1.203,
-            "median_return_pct": 1.781,
-            "p10_return_pct": -3.704,
+            "mean_return_pct": 1.2,
+            "median_return_pct": 1.78,
+            "p10_return_pct": -3.705,
             "p90_return_pct": 5.025,
-            "prob_gain_2pct": 47.4,
-            "prob_loss_2pct": 16.57
+            "prob_gain_2pct": 47.34,
+            "prob_loss_2pct": 16.59
           }
         },
         "Potential deterioration": {
           "5": {
             "samples": 489,
-            "positive_probability_pct": 61.55,
+            "positive_probability_pct": 61.76,
             "wilson_95_pct": [
-              57.17,
-              65.76
+              57.38,
+              65.96
             ],
             "mean_return_pct": 0.38,
             "median_return_pct": 0.39,
@@ -195,55 +195,55 @@
         },
         "Mixed / transitional": {
           "5": {
-            "samples": 899,
-            "positive_probability_pct": 62.63,
+            "samples": 900,
+            "positive_probability_pct": 62.56,
             "wilson_95_pct": [
-              59.42,
-              65.73
+              59.35,
+              65.66
             ],
-            "mean_return_pct": 0.324,
-            "median_return_pct": 0.544,
-            "p10_return_pct": -2.336,
-            "p90_return_pct": 2.592,
-            "prob_gain_2pct": 17.69,
-            "prob_loss_2pct": 12.24
+            "mean_return_pct": 0.322,
+            "median_return_pct": 0.54,
+            "p10_return_pct": -2.335,
+            "p90_return_pct": 2.589,
+            "prob_gain_2pct": 17.67,
+            "prob_loss_2pct": 12.22
           },
           "10": {
-            "samples": 897,
-            "positive_probability_pct": 65.11,
+            "samples": 898,
+            "positive_probability_pct": 65.03,
             "wilson_95_pct": [
-              61.93,
-              68.15
+              61.86,
+              68.08
             ],
-            "mean_return_pct": 0.57,
+            "mean_return_pct": 0.568,
             "median_return_pct": 0.864,
-            "p10_return_pct": -3.235,
-            "p90_return_pct": 3.783,
-            "prob_gain_2pct": 29.88,
-            "prob_loss_2pct": 15.72
+            "p10_return_pct": -3.232,
+            "p90_return_pct": 3.782,
+            "prob_gain_2pct": 29.84,
+            "prob_loss_2pct": 15.7
           },
           "20": {
-            "samples": 891,
-            "positive_probability_pct": 68.8,
+            "samples": 892,
+            "positive_probability_pct": 68.72,
             "wilson_95_pct": [
-              65.68,
-              71.76
+              65.6,
+              71.68
             ],
-            "mean_return_pct": 0.948,
-            "median_return_pct": 1.768,
+            "mean_return_pct": 0.946,
+            "median_return_pct": 1.767,
             "p10_return_pct": -4.685,
-            "p90_return_pct": 5.468,
-            "prob_gain_2pct": 47.14,
-            "prob_loss_2pct": 21.1
+            "p90_return_pct": 5.465,
+            "prob_gain_2pct": 47.09,
+            "prob_loss_2pct": 21.08
           }
         }
       }
     },
     "QQQ": {
-      "as_of": "2026-10-19",
+      "as_of": "2026-10-20",
       "current_regime": "Mixed / transitional",
-      "fragility": 50,
-      "recovery": 35,
+      "fragility": 45,
+      "recovery": 30,
       "recovery_change_5d": 0.0,
       "regimes": {
         "Early rebound": {
@@ -306,46 +306,46 @@
         },
         "Healthy expansion": {
           "5": {
-            "samples": 815,
-            "positive_probability_pct": 59.51,
+            "samples": 814,
+            "positive_probability_pct": 59.46,
             "wilson_95_pct": [
-              56.1,
-              62.83
+              56.05,
+              62.78
             ],
-            "mean_return_pct": 0.286,
-            "median_return_pct": 0.505,
-            "p10_return_pct": -3.162,
-            "p90_return_pct": 3.163,
-            "prob_gain_2pct": 21.23,
-            "prob_loss_2pct": 15.58
+            "mean_return_pct": 0.285,
+            "median_return_pct": 0.502,
+            "p10_return_pct": -3.164,
+            "p90_return_pct": 3.164,
+            "prob_gain_2pct": 21.25,
+            "prob_loss_2pct": 15.6
           },
           "10": {
-            "samples": 813,
-            "positive_probability_pct": 64.58,
+            "samples": 812,
+            "positive_probability_pct": 64.66,
             "wilson_95_pct": [
-              61.23,
-              67.79
+              61.31,
+              67.87
             ],
-            "mean_return_pct": 0.792,
-            "median_return_pct": 1.239,
-            "p10_return_pct": -3.74,
-            "p90_return_pct": 4.853,
-            "prob_gain_2pct": 37.15,
-            "prob_loss_2pct": 17.47
+            "mean_return_pct": 0.794,
+            "median_return_pct": 1.24,
+            "p10_return_pct": -3.747,
+            "p90_return_pct": 4.854,
+            "prob_gain_2pct": 37.19,
+            "prob_loss_2pct": 17.49
           },
           "20": {
-            "samples": 809,
-            "positive_probability_pct": 68.11,
+            "samples": 808,
+            "positive_probability_pct": 68.07,
             "wilson_95_pct": [
-              64.82,
-              71.23
+              64.78,
+              71.19
             ],
             "mean_return_pct": 1.637,
-            "median_return_pct": 2.279,
-            "p10_return_pct": -5.268,
-            "p90_return_pct": 7.285,
-            "prob_gain_2pct": 51.92,
-            "prob_loss_2pct": 21.51
+            "median_return_pct": 2.294,
+            "p10_return_pct": -5.273,
+            "p90_return_pct": 7.287,
+            "prob_gain_2pct": 51.98,
+            "prob_loss_2pct": 21.53
           }
         },
         "Potential deterioration": {
@@ -394,46 +394,46 @@
         },
         "Mixed / transitional": {
           "5": {
-            "samples": 943,
-            "positive_probability_pct": 61.29,
+            "samples": 944,
+            "positive_probability_pct": 61.23,
             "wilson_95_pct": [
-              58.15,
-              64.35
+              58.08,
+              64.29
             ],
-            "mean_return_pct": 0.448,
-            "median_return_pct": 0.75,
-            "p10_return_pct": -3.234,
-            "p90_return_pct": 3.575,
-            "prob_gain_2pct": 29.27,
-            "prob_loss_2pct": 17.39
+            "mean_return_pct": 0.444,
+            "median_return_pct": 0.749,
+            "p10_return_pct": -3.252,
+            "p90_return_pct": 3.574,
+            "prob_gain_2pct": 29.24,
+            "prob_loss_2pct": 17.48
           },
           "10": {
-            "samples": 942,
-            "positive_probability_pct": 64.86,
+            "samples": 943,
+            "positive_probability_pct": 64.79,
             "wilson_95_pct": [
-              61.76,
-              67.84
+              61.69,
+              67.78
             ],
-            "mean_return_pct": 0.834,
-            "median_return_pct": 1.206,
-            "p10_return_pct": -4.503,
-            "p90_return_pct": 5.048,
-            "prob_gain_2pct": 40.98,
-            "prob_loss_2pct": 20.81
+            "mean_return_pct": 0.826,
+            "median_return_pct": 1.202,
+            "p10_return_pct": -4.527,
+            "p90_return_pct": 5.045,
+            "prob_gain_2pct": 40.93,
+            "prob_loss_2pct": 20.89
           },
           "20": {
-            "samples": 937,
-            "positive_probability_pct": 69.37,
+            "samples": 938,
+            "positive_probability_pct": 69.3,
             "wilson_95_pct": [
-              66.34,
-              72.24
+              66.27,
+              72.16
             ],
-            "mean_return_pct": 1.451,
-            "median_return_pct": 2.168,
-            "p10_return_pct": -5.924,
-            "p90_return_pct": 7.343,
-            "prob_gain_2pct": 52.19,
-            "prob_loss_2pct": 22.41
+            "mean_return_pct": 1.445,
+            "median_return_pct": 2.167,
+            "p10_return_pct": -5.922,
+            "p90_return_pct": 7.342,
+            "prob_gain_2pct": 52.13,
+            "prob_loss_2pct": 22.49
           }
         }
       }
