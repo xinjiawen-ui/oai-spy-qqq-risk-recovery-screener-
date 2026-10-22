@@ -26,6 +26,7 @@ jobs:
           node --check /tmp/dashboard-inline.js
       - run: python -m unittest discover -s tests
       - run: python scripts/update.py
+      - run: python scripts/macro_credit.py
       - run: python scripts/backtest.py
       - run: python scripts/rebound_test.py
       - run: python scripts/regime_research.py
@@ -33,7 +34,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/latest.json data/score_history.json data/backtest.json data/rebound_comparison.json data/regime_research.json
+          git add data/macro_credit.json data/latest.json data/score_history.json data/backtest.json data/rebound_comparison.json data/regime_research.json
           if ! git diff --cached --quiet; then
             git commit -m "Refresh daily market snapshot"
             # Incorporate concurrent changes without overwriting the remote branch.
