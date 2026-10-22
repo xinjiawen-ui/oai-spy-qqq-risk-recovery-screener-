@@ -110,6 +110,24 @@ const rows=[
 return '<section class="card" style="margin-bottom:14px"><h2>Qualitative market risk dashboard <span class="pill">Daily close</span></h2><p>Descriptive 1–5 stress ratings from available market proxies; not validated probabilities. Missing inputs are excluded.</p><div class="grid">'+rows.map(([name,v,note])=>'<div class="card"><div class="asset-head"><strong>'+esc(name)+'</strong><span class="pill '+(v==null?'warn':v>=4?'bad':v<=2?'good':'warn')+'">'+(v==null?'N/A':v+'/5')+'</span></div><div style="display:flex;gap:5px;margin:12px 0">'+[1,2,3,4,5].map(n=>'<span style="flex:1;height:9px;border-radius:4px;background:'+(v!=null&&n<=v?(v>=4?'#e47972':v<=2?'#69c9a1':'#e2a44c'):'#30415e')+'"></span>').join('')+'</div><small>'+esc(note)+'</small></div>').join('')+'</div><p class="section-note">Snapshot '+esc(a.date||q.date||'unknown')+'. Ratings use round(1 + 4 × triggered / observed conditions). N/A indicates insufficient inputs.</p></section>';
 }
 
+
+async function macroDesk(){
+ let d;try{const r=await fetch('./data/macro_credit.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('No published FRED snapshot');d=await r.json()}catch(e){return '<section class="card"><h2>Macro & credit transmission</h2><p>Direct Treasury yields / OAS feed unavailable. Existing price proxies remain visible above. No false green status assigned.</p></section>'}
+ const s=d.series||{}, get=id=>s[id]||{};
+ const v=id=>get(id).value;
+ const delta=id=>get(id).change_7d;
+ const conditions=[
+  {id:'DGS10',title:'US 10Y Treasury yield',warning:delta('DGS10')!=null&&delta('DGS10')>=0.15},
+  {id:'DGS2',title:'US 2Y Treasury yield',warning:delta('DGS2')!=null&&delta('DGS2')>=0.15},
+  {id:'BAMLH0A0HYM2',title:'US high-yield OAS',warning:delta('BAMLH0A0HYM2')!=null&&delta('BAMLH0A0HYM2')>=0.25},
+  {id:'BAMLC0A0CM',title:'Investment-grade OAS',warning:delta('BAMLC0A0CM')!=null&&delta('BAMLC0A0CM')>=0.10}
+ ];
+ const valid=conditions.filter(x=>v(x.id)!=null&&delta(x.id)!=null);
+ const flags=valid.filter(x=>x.warning).length;
+ const rows=conditions.map(x=>{let o=get(x.id),ok=o.value!=null;return '<tr><td>'+esc(x.title)+'</td><td>'+ (ok?fmt(o.value,2)+'%':'Unavailable')+'</td><td class="'+(ok&&x.warning?'bad':'')+'">'+(o.change_7d==null?'—':(o.change_7d>0?'+':'')+fmt(o.change_7d,2)+'pp')+'</td><td>'+esc(o.date||'—')+'</td></tr>'}).join('');
+ return '<section class="card" style="margin-top:14px"><h2>Rates → credit → equities</h2><p><strong>'+flags+' / '+valid.length+' macro-credit stress flags</strong> · 7-calendar-day changes versus previous available observation; threshold heuristics, not estimated market probabilities. Yields rise when bond prices fall; spreads widen when borrowing becomes riskier.</p><div class="scroll"><table><thead><tr><td>Direct market series</td><th>Latest</th><th>7d Δ</th><th>Observation</th></tr></thead><tbody>'+rows+'</tbody></table></div><p class="section-note">FRED public daily/periodic observations, with publication lag. Values more than 7 calendar days old are suppressed. Missing readings count as missing, never healthy. Indicative alert cutoffs: 10Y/2Y +15bp, HY OAS +25bp, IG OAS +10bp.</p></section>'
+}
+
 function regimeBrief(d){
  const spy=d.assets?.SPY, qqq=d.assets?.QQQ;
  if(!spy||!qqq)return '<section class="card">Market regime unavailable: SPY/QQQ inputs missing.</section>';
@@ -167,4 +185,5 @@ async function refreshDashboard(){
  }finally{button.disabled=false;button.textContent='↻ Refresh data';}
 }
 load();
+macroDesk().then(html=>{const el=document.createElement('div');el.innerHTML=html;document.querySelector('#app').insertBefore(el,document.querySelector('#app').children[1]||null)});
 </script></body></html>
