@@ -43,3 +43,14 @@ Legacy backtests use a single 60/40 chronological split, 5 bps per side and cash
 5. Add an options-data adapter with explicit unavailable status until reliable licensed options data is configured.
 
 Do not invent options statistics or substitute heuristic gamma exposure for measured dealer positions.
+
+
+## Regime-first overhaul (October 2026)
+
+The homepage now starts with a cross-asset regime desk: fragility/recovery, participation, tech leadership, credit, volatility and direct macro-credit readings. Existing scores, historical archives and technical drilldowns remain accessible.
+
+`scripts/macro_credit.py` queries public FRED CSV observations for DGS2, DGS10, DGS30, BAMLH0A0HYM2, BAMLC0A0CM, and T10Y2Y; `data/macro_credit.json` is refreshed by GitHub Actions. Missing/failed/stale (>7 calendar days) inputs are explicitly unavailable and are **never assigned zero risk**. Direct readings are not live: FRED publication lags and market closes may differ. The IEF five-day move is only an ETF price-duration proxy and must not be labeled a Treasury yield. Credit ETF ratios are not credit option-adjusted spreads.
+
+**Research caveats:** the new stress cutoffs and regime labels remain heuristic, not probability estimates or trading instructions. The historic outcome study still covers the legacy model and overlapping observations, and **does not validate the direct-yield/OAS macro panel**. Neither the dashboard's narrative classifications nor its tactical position sizes should be considered institutional-grade validated forecasts until a point-in-time, vintage-aware walk-forward study is completed with realistic cost, execution, and portfolio benchmark assumptions. The user-facing Refresh button checks GitHub Pages' latest published snapshot; it does not trigger new price collection.
+
+Before production deployment: run the GitHub Actions workflow on the feature branch (or merge and manually trigger main), check unit tests, JS syntax and published JSON schema, then compare displayed metrics and dates to source observations.
