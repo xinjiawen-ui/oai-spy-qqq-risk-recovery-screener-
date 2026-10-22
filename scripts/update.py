@@ -278,7 +278,7 @@ def main():
       metric("RSP/SPY (breadth proxy)",breadth),metric("RSP/SPY vs 20d EMA %",(breadth/ema(breadth,20)-1)*100),
       metric("SOXX/QQQ",semi),metric("SOXX/QQQ vs 20d EMA %",(semi/ema(semi,20)-1)*100),
       metric("HYG/SHY (alternative credit proxy)",ratio("HYG","SHY")),metric("HYG/LQD",credit),metric("HYG/LQD vs 20d EMA %",(credit/ema(credit,20)-1)*100),
-      metric("VIX/VIX3M",vix/v3)
+      metric("VIX/VIX3M",vix/v3),metric("IEF 5d return % (Treasury duration proxy)",pct(s("IEF"),5))
     ]
     output={"generated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"source":"Yahoo Finance via yfinance (unofficial; may be delayed)","assets":rows,"metrics":metrics,"limitations":["RSP/SPY is a breadth proxy, not S&P 500 constituent participation.","Experimental warning and recovery confirmation thresholds are not yet walk-forward validated.","Relative ETF strength and VVIX are public proxies, not direct institutional leverage, dealer gamma, or market depth.","Missing data reduce coverage rather than counting as healthy.","Rebound radar is a descriptive research checklist, not a validated leading indicator or calibrated bottom probability.","Tactical signals use closing data; any execution is next session.","No options dealer gamma or IV skew is included."]}
     if not rows:raise RuntimeError("No usable SPY/QQQ rows")
