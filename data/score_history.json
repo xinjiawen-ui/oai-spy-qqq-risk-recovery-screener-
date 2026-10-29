@@ -300,6 +300,36 @@
       "original_score": 2,
       "entry_signal": false,
       "model_version": "v2-2026-10-15"
+    },
+    {
+      "date": "2026-10-29",
+      "ticker": "QQQ",
+      "close": 715.3400268554688,
+      "fragility": 30,
+      "fragility_coverage": 100,
+      "recovery": 72,
+      "recovery_coverage": 100,
+      "rsi14": 44.4219122522046,
+      "rsi2": 29.801791428344956,
+      "credit_status": "FAIL",
+      "original_score": 3,
+      "entry_signal": false,
+      "model_version": "v2-2026-10-15"
+    },
+    {
+      "date": "2026-10-29",
+      "ticker": "SPY",
+      "close": 769.3599853515625,
+      "fragility": 15,
+      "fragility_coverage": 100,
+      "recovery": 82,
+      "recovery_coverage": 100,
+      "rsi14": 50.744365241991105,
+      "rsi2": 47.32155507841876,
+      "credit_status": "FAIL",
+      "original_score": 2,
+      "entry_signal": false,
+      "model_version": "v2-2026-10-15"
     }
   ]
 }
