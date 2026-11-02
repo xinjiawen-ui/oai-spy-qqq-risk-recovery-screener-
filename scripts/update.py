@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import yfinance as yf
 from credit_regime import fetch_diagnostic
+from market_regime import classify
 
 TICKERS=["SPY","QQQ","RSP","SOXX","XLK","XLP","HYG","LQD","^VIX","^VIX3M","IEF","SHY","IWM","XLY","XLU","^VVIX"]
 ROOT=pathlib.Path(__file__).resolve().parents[1]
@@ -273,6 +274,8 @@ def main():
           "date":last_date.strftime("%Y-%m-%d"),
           "history":[{"date":i.strftime("%Y-%m-%d"),"close":round(float(v),2)} for i,v in x.dropna().tail(90).items()]
         }
+    for a in rows.values():
+        a["market_regime"]=classify(a)
     def metric(name,series):return {"name":name,"value":last(series),"date":series.dropna().index[-1].strftime("%Y-%m-%d") if len(series.dropna()) else None}
     metrics=[
       metric("VVIX",s("^VVIX")),metric("VVIX / EMA20",s("^VVIX")/ema(s("^VVIX"),20)),metric("IWM/SPY vs EMA20 %",(ratio("IWM","SPY")/ema(ratio("IWM","SPY"),20)-1)*100),metric("XLY/XLP vs EMA20 %",(ratio("XLY","XLP")/ema(ratio("XLY","XLP"),20)-1)*100),metric("VIX",vix),metric("VIX 5d change %",pct(vix,5)),
@@ -305,7 +308,7 @@ def main():
                 "recovery":a["recovery_score"],"recovery_coverage":a["recovery_coverage"],
                 "rsi14":a["rsi14"],"rsi2":a["rsi2"],
                 "credit_status":a["credit_status"],"original_score":a["original_score"],
-                "entry_signal":a["entry_signal"],"model_version":"v2-2026-10-15"
+                "entry_signal":a["entry_signal"],"market_regime":a["market_regime"]["code"],"regime_version":"six-regime-v1","model_version":"v2-2026-10-15"
             })
     archive["records"].sort(key=lambda r:(r["date"],r["ticker"]))
     archive_path.write_text(json.dumps(archive,indent=2,allow_nan=False))
