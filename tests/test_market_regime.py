@@ -11,7 +11,7 @@ def sample(**changes):
     return a
 class TestRegime(unittest.TestCase):
     def test_healthy(self):
-        self.assertEqual(classify(sample())["code"],"CONFIRMED_RECOVERY")
+        self.assertEqual(classify(sample())["code"],"HEALTHY_BULL")
     def test_deleveraging(self):
         self.assertEqual(classify(sample(risk_score=75,warning_score=80))["code"],"DELEVERAGING")
     def test_bottom(self):
