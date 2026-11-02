@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-02T10:24:19.167147+00:00",
+  "generated_at_utc": "2026-11-02T10:28:06.286904+00:00",
   "source": "Yahoo Finance via yfinance (unofficial; may be delayed)",
   "assets": {
     "SPY": {
@@ -98,7 +98,7 @@
           "credit_3d_pct": -0.3976183223484475,
           "breadth_3d_pct": 2.608876244458136,
           "semi_3d_pct": -5.067220407867379,
-          "vix_3d_pct": 11.768183258870412,
+          "vix_3d_pct": 11.235952901685264,
           "vvix_3d_pct": 10.16457885600306,
           "price_3d_pct": -2.148104635174053
         }
@@ -168,21 +168,21 @@
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 1.3030000320487873,
+        "volatility_acceleration": 1.3030000320487858,
         "vvix_vs_ema20": 1.081314075702497,
         "down_volume_share": 0.511565170215314,
         "negative_days_10": 4.0,
         "drawdown_63d_pct": -2.999660545863869,
         "participation": {
-          "Small caps vs SPY": 1.5978674404286242,
-          "Discretionary vs staples": -1.883668035491337,
-          "Tech vs utilities": -7.186191650250406
+          "Small caps vs SPY": 1.5978674404286908,
+          "Discretionary vs staples": -1.883668035580044,
+          "Tech vs utilities": -7.1861916502503735
         }
       },
       "close": 755.719970703125,
-      "rsi14": 40.306929939605624,
+      "rsi14": 40.30692993946937,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.11247540973168087,
+      "realized_vol_20d": 0.11247540973168071,
       "core_exposure_pct": 100.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -762,7 +762,7 @@
           "credit_3d_pct": -0.3976183223484475,
           "breadth_3d_pct": 2.608876244458136,
           "semi_3d_pct": -5.067220407867379,
-          "vix_3d_pct": 11.768183258870412,
+          "vix_3d_pct": 11.235952901685264,
           "vvix_3d_pct": 10.16457885600306,
           "price_3d_pct": -4.840065024762808
         }
@@ -832,21 +832,21 @@
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 1.3496109836338357,
+        "volatility_acceleration": 1.3496109836338372,
         "vvix_vs_ema20": 1.081314075702497,
         "down_volume_share": 0.6022342458421229,
         "negative_days_10": 5.0,
         "drawdown_63d_pct": -9.1053873253101,
         "participation": {
-          "Small caps vs SPY": 1.5978674404286242,
-          "Discretionary vs staples": -1.883668035491337,
-          "Tech vs utilities": -7.186191650250406
+          "Small caps vs SPY": 1.5978674404286908,
+          "Discretionary vs staples": -1.883668035580044,
+          "Tech vs utilities": -7.1861916502503735
         }
       },
       "close": 690.489990234375,
-      "rsi14": 34.880034794342905,
+      "rsi14": 34.88003479496146,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.22188605265519704,
+      "realized_vol_20d": 0.22188605265519706,
       "core_exposure_pct": 90.1,
       "original_score": 3,
       "original_coverage": 5,
@@ -1344,22 +1344,22 @@
     },
     {
       "name": "IWM/SPY vs EMA20 %",
-      "value": 1.5978674404286242,
+      "value": 1.5978674404286908,
       "date": "2026-11-02"
     },
     {
       "name": "XLY/XLP vs EMA20 %",
-      "value": -1.883668035491337,
+      "value": -1.883668035580044,
       "date": "2026-11-02"
     },
     {
       "name": "VIX",
-      "value": 18.899999618530273,
+      "value": 18.809999465942383,
       "date": "2026-11-02"
     },
     {
       "name": "VIX 5d change %",
-      "value": 2.7732476661685546,
+      "value": 2.2838504090998413,
       "date": "2026-11-02"
     },
     {
@@ -1369,7 +1369,7 @@
     },
     {
       "name": "RSP/SPY vs 20d EMA %",
-      "value": 2.5289527555739433,
+      "value": 2.528952755595504,
       "date": "2026-11-02"
     },
     {
@@ -1379,7 +1379,7 @@
     },
     {
       "name": "SOXX/QQQ vs 20d EMA %",
-      "value": -3.914818325751046,
+      "value": -3.914818325900904,
       "date": "2026-11-02"
     },
     {
@@ -1394,12 +1394,12 @@
     },
     {
       "name": "HYG/LQD vs 20d EMA %",
-      "value": -0.46477035254262056,
+      "value": -0.46477034110201654,
       "date": "2026-11-02"
     },
     {
       "name": "VIX/VIX3M",
-      "value": 0.9095283442736632,
+      "value": 0.9051972494895456,
       "date": "2026-11-02"
     },
     {
