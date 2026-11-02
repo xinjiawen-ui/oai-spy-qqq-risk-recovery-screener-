@@ -25,12 +25,12 @@ def classify(a):
         key="BOTTOM_FORMATION"; reason="Elevated stress coincides with tentative reversal evidence."
     elif risk>=50 and warn>=50:
         key="DELEVERAGING"; reason="Fragility and deleveraging warning remain elevated."
+    elif risk<=25 and warn<30 and rec>=65 and confirm>=65 and credit is True and breadth is True:
+        key="HEALTHY_BULL"; reason="Low fragility with strong breadth, credit and recovery confirmation."
     elif confirm>=75 and rec>=60 and credit is True and breadth is True and warn<50:
         key="CONFIRMED_RECOVERY"; reason="Recovery, breadth and credit jointly confirm; trend persistence still needs validation."
     elif early>=40 and (confirm>=40 or rec>=45) and warn<70:
         key="EARLY_RECOVERY"; reason="Rebound evidence exists without complete recovery confirmation."
-    elif risk<=25 and warn<30 and rec>=65 and confirm>=65:
-        key="HEALTHY_BULL"; reason="Low fragility and broad recovery support."
     elif risk<50 and warn<50 and rec>=40:
         key="FRAGILE_BULL"; reason="Constructive conditions, but confirmation remains incomplete."
     else:
