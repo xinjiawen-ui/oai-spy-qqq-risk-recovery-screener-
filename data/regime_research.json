@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-11-05T02:40:49.665206+00:00",
+  "generated_at_utc": "2026-11-06T02:44:16.709028+00:00",
   "method": "Ten-year daily adjusted prices; score at close t, hypothetical entry open t+1, exit open t+1+H; historical overlapping observations; NOT calibrated future probabilities or a tradable backtest.",
   "regime_definitions": {
     "Early rebound": "Fragility >=60, Recovery >=50, Recovery 5-day change >0",
@@ -11,11 +11,11 @@
   },
   "assets": {
     "SPY": {
-      "as_of": "2026-11-04",
-      "current_regime": "Potential deterioration",
-      "fragility": 30,
-      "recovery": 50,
-      "recovery_change_5d": -5.0,
+      "as_of": "2026-11-05",
+      "current_regime": "Market stress",
+      "fragility": 65,
+      "recovery": 25,
+      "recovery_change_5d": -57.0,
       "regimes": {
         "Early rebound": {
           "5": {
@@ -108,10 +108,10 @@
         "Healthy expansion": {
           "5": {
             "samples": 825,
-            "positive_probability_pct": 61.94,
+            "positive_probability_pct": 62.06,
             "wilson_95_pct": [
-              58.58,
-              65.19
+              58.7,
+              65.31
             ],
             "mean_return_pct": 0.192,
             "median_return_pct": 0.41,
@@ -135,18 +135,18 @@
             "prob_loss_2pct": 12.35
           },
           "20": {
-            "samples": 825,
-            "positive_probability_pct": 72.12,
+            "samples": 826,
+            "positive_probability_pct": 72.03,
             "wilson_95_pct": [
-              68.96,
-              75.07
+              68.88,
+              74.99
             ],
-            "mean_return_pct": 1.179,
-            "median_return_pct": 1.734,
-            "p10_return_pct": -3.706,
-            "p90_return_pct": 5.026,
-            "prob_gain_2pct": 46.79,
-            "prob_loss_2pct": 16.61
+            "mean_return_pct": 1.176,
+            "median_return_pct": 1.714,
+            "p10_return_pct": -3.705,
+            "p90_return_pct": 5.025,
+            "prob_gain_2pct": 46.73,
+            "prob_loss_2pct": 16.59
           }
         },
         "Potential deterioration": {
@@ -195,32 +195,32 @@
         },
         "Mixed / transitional": {
           "5": {
-            "samples": 910,
-            "positive_probability_pct": 62.42,
+            "samples": 911,
+            "positive_probability_pct": 62.35,
             "wilson_95_pct": [
-              59.22,
-              65.51
+              59.16,
+              65.44
             ],
-            "mean_return_pct": 0.313,
-            "median_return_pct": 0.519,
-            "p10_return_pct": -2.28,
+            "mean_return_pct": 0.312,
+            "median_return_pct": 0.518,
+            "p10_return_pct": -2.274,
             "p90_return_pct": 2.584,
-            "prob_gain_2pct": 17.47,
-            "prob_loss_2pct": 12.09
+            "prob_gain_2pct": 17.45,
+            "prob_loss_2pct": 12.07
           },
           "10": {
-            "samples": 906,
-            "positive_probability_pct": 64.57,
+            "samples": 907,
+            "positive_probability_pct": 64.5,
             "wilson_95_pct": [
-              61.4,
-              67.62
+              61.33,
+              67.55
             ],
-            "mean_return_pct": 0.552,
-            "median_return_pct": 0.838,
-            "p10_return_pct": -3.213,
-            "p90_return_pct": 3.775,
-            "prob_gain_2pct": 29.58,
-            "prob_loss_2pct": 15.78
+            "mean_return_pct": 0.551,
+            "median_return_pct": 0.836,
+            "p10_return_pct": -3.212,
+            "p90_return_pct": 3.774,
+            "prob_gain_2pct": 29.55,
+            "prob_loss_2pct": 15.77
           },
           "20": {
             "samples": 897,
@@ -240,11 +240,11 @@
       }
     },
     "QQQ": {
-      "as_of": "2026-11-04",
-      "current_regime": "Mixed / transitional",
-      "fragility": 50,
-      "recovery": 40,
-      "recovery_change_5d": -25.0,
+      "as_of": "2026-11-05",
+      "current_regime": "Market stress",
+      "fragility": 65,
+      "recovery": 25,
+      "recovery_change_5d": -47.0,
       "regimes": {
         "Early rebound": {
           "5": {
@@ -306,18 +306,18 @@
         },
         "Healthy expansion": {
           "5": {
-            "samples": 810,
-            "positive_probability_pct": 59.63,
+            "samples": 811,
+            "positive_probability_pct": 59.56,
             "wilson_95_pct": [
-              56.21,
-              62.96
+              56.14,
+              62.88
             ],
-            "mean_return_pct": 0.295,
-            "median_return_pct": 0.519,
-            "p10_return_pct": -3.168,
-            "p90_return_pct": 3.172,
-            "prob_gain_2pct": 21.48,
-            "prob_loss_2pct": 15.56
+            "mean_return_pct": 0.289,
+            "median_return_pct": 0.516,
+            "p10_return_pct": -3.178,
+            "p90_return_pct": 3.17,
+            "prob_gain_2pct": 21.45,
+            "prob_loss_2pct": 15.66
           },
           "10": {
             "samples": 810,
@@ -334,18 +334,18 @@
             "prob_loss_2pct": 17.78
           },
           "20": {
-            "samples": 809,
-            "positive_probability_pct": 67.49,
+            "samples": 810,
+            "positive_probability_pct": 67.41,
             "wilson_95_pct": [
-              64.19,
-              70.63
+              64.1,
+              70.55
             ],
-            "mean_return_pct": 1.591,
-            "median_return_pct": 2.279,
-            "p10_return_pct": -5.371,
-            "p90_return_pct": 7.285,
-            "prob_gain_2pct": 51.92,
-            "prob_loss_2pct": 22.13
+            "mean_return_pct": 1.577,
+            "median_return_pct": 2.26,
+            "p10_return_pct": -5.377,
+            "p90_return_pct": 7.283,
+            "prob_gain_2pct": 51.85,
+            "prob_loss_2pct": 22.22
           }
         },
         "Potential deterioration": {
@@ -408,18 +408,18 @@
             "prob_loss_2pct": 17.73
           },
           "10": {
-            "samples": 949,
-            "positive_probability_pct": 64.28,
+            "samples": 950,
+            "positive_probability_pct": 64.21,
             "wilson_95_pct": [
-              61.18,
-              67.26
+              61.11,
+              67.2
             ],
-            "mean_return_pct": 0.79,
+            "mean_return_pct": 0.785,
             "median_return_pct": 1.185,
-            "p10_return_pct": -4.54,
-            "p90_return_pct": 5.027,
-            "prob_gain_2pct": 40.57,
-            "prob_loss_2pct": 21.29
+            "p10_return_pct": -4.536,
+            "p90_return_pct": 5.024,
+            "prob_gain_2pct": 40.53,
+            "prob_loss_2pct": 21.37
           },
           "20": {
             "samples": 941,
