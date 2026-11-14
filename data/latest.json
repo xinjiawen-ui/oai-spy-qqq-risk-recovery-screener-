@@ -1,16 +1,16 @@
 {
-  "generated_at_utc": "2026-11-13T02:48:52.262350+00:00",
+  "generated_at_utc": "2026-11-14T02:37:18.635481+00:00",
   "source": "Yahoo Finance via yfinance (unofficial; may be delayed)",
   "assets": {
     "SPY": {
       "rebound_v2": {
         "version": "v2.1",
-        "phase": "NO RELIABLE REVERSAL",
-        "early_score": 6,
+        "phase": "SELLING EXHAUSTION WATCH",
+        "early_score": 16,
         "early_coverage": 100,
         "groups": {
           "exhaustion": {
-            "score": 0,
+            "score": 50,
             "coverage": 100,
             "observed": 2,
             "possible": 2
@@ -42,7 +42,7 @@
       },
       "rebound_radar": {
         "state": "NO EARLY REVERSAL",
-        "hits": 0,
+        "hits": 1,
         "available": 8,
         "signals": [
           {
@@ -53,7 +53,7 @@
           },
           {
             "name": "RSI(2) deeply oversold",
-            "triggered": false,
+            "triggered": true,
             "available": true,
             "interpretation": "Short-term exhaustion; can persist during a crash"
           },
@@ -95,12 +95,12 @@
           }
         ],
         "inputs": {
-          "credit_3d_pct": 0.8775171077503252,
-          "breadth_3d_pct": -0.6885959912600881,
-          "semi_3d_pct": 4.254268555185159,
-          "vix_3d_pct": -6.1244945214953495,
-          "vvix_3d_pct": -1.7474359599414568,
-          "price_3d_pct": 0.5885547385261258
+          "credit_3d_pct": 0.7265595825072246,
+          "breadth_3d_pct": -0.46388050224045463,
+          "semi_3d_pct": 1.0802146713367655,
+          "vix_3d_pct": -0.8221986379217006,
+          "vvix_3d_pct": 5.070890681108442,
+          "price_3d_pct": 0.5933982702744478
         }
       },
       "warning_score": 20,
@@ -168,22 +168,22 @@
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 0.836100011102325,
-        "vvix_vs_ema20": 0.9553722410684929,
-        "down_volume_share": 0.5772071275011541,
+        "volatility_acceleration": 0.9083213888401143,
+        "vvix_vs_ema20": 1.0027024155069317,
+        "down_volume_share": 0.5464139011117498,
         "negative_days_10": 5.0,
-        "drawdown_63d_pct": -2.8199605926103044,
+        "drawdown_63d_pct": -3.1729364882329802,
         "participation": {
-          "Small caps vs SPY": -0.11309817273662537,
-          "Discretionary vs staples": 0.3588498809328433,
-          "Tech vs utilities": -4.524382671095539
+          "Small caps vs SPY": -0.06605808699262639,
+          "Discretionary vs staples": -1.3022298239633745,
+          "Tech vs utilities": -6.312141195967036
         }
       },
-      "close": 757.1199951171875,
-      "rsi14": 48.542364608195406,
-      "rsi2": 78.61686178806565,
-      "realized_vol_20d": 0.22367835041590975,
-      "core_exposure_pct": 67.1,
+      "close": 754.3699951171875,
+      "rsi14": 47.12688790567667,
+      "rsi2": 0.0,
+      "realized_vol_20d": 0.22071860437993102,
+      "core_exposure_pct": 68.0,
       "original_score": 2,
       "original_coverage": 5,
       "original_factors": {
@@ -291,14 +291,10 @@
       "entry_signal": false,
       "credit_filter_pass": true,
       "credit_status": "PASS",
-      "credit_alt_status": "PASS",
-      "oversold": false,
-      "date": "2026-11-12",
+      "credit_alt_status": "FAIL",
+      "oversold": true,
+      "date": "2026-11-13",
       "history": [
-        {
-          "date": "2026-07-10",
-          "close": 753.08
-        },
         {
           "date": "2026-07-13",
           "close": 747.31
@@ -654,6 +650,10 @@
         {
           "date": "2026-11-12",
           "close": 757.12
+        },
+        {
+          "date": "2026-11-13",
+          "close": 754.37
         }
       ],
       "market_regime": {
@@ -669,12 +669,12 @@
     "QQQ": {
       "rebound_v2": {
         "version": "v2.1",
-        "phase": "NO RELIABLE REVERSAL",
-        "early_score": 6,
+        "phase": "SELLING EXHAUSTION WATCH",
+        "early_score": 16,
         "early_coverage": 100,
         "groups": {
           "exhaustion": {
-            "score": 0,
+            "score": 50,
             "coverage": 100,
             "observed": 2,
             "possible": 2
@@ -706,7 +706,7 @@
       },
       "rebound_radar": {
         "state": "NO EARLY REVERSAL",
-        "hits": 0,
+        "hits": 1,
         "available": 8,
         "signals": [
           {
@@ -717,7 +717,7 @@
           },
           {
             "name": "RSI(2) deeply oversold",
-            "triggered": false,
+            "triggered": true,
             "available": true,
             "interpretation": "Short-term exhaustion; can persist during a crash"
           },
@@ -759,12 +759,12 @@
           }
         ],
         "inputs": {
-          "credit_3d_pct": 0.8775171077503252,
-          "breadth_3d_pct": -0.6885959912600881,
-          "semi_3d_pct": 4.254268555185159,
-          "vix_3d_pct": -6.1244945214953495,
-          "vvix_3d_pct": -1.7474359599414568,
-          "price_3d_pct": 1.2983009702195902
+          "credit_3d_pct": 0.7265595825072246,
+          "breadth_3d_pct": -0.46388050224045463,
+          "semi_3d_pct": 1.0802146713367655,
+          "vix_3d_pct": -0.8221986379217006,
+          "vvix_3d_pct": 5.070890681108442,
+          "price_3d_pct": 0.7602710309691174
         }
       },
       "warning_score": 25,
@@ -832,22 +832,22 @@
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 0.7784712282419777,
-        "vvix_vs_ema20": 0.9553722410684929,
-        "down_volume_share": 0.5615221246688415,
+        "volatility_acceleration": 0.9312035111263004,
+        "vvix_vs_ema20": 1.0027024155069317,
+        "down_volume_share": 0.5286983167591573,
         "negative_days_10": 5.0,
-        "drawdown_63d_pct": -9.410788084364885,
+        "drawdown_63d_pct": -10.500745243413911,
         "participation": {
-          "Small caps vs SPY": -0.11309817273662537,
-          "Discretionary vs staples": 0.3588498809328433,
-          "Tech vs utilities": -4.524382671095539
+          "Small caps vs SPY": -0.06605808699262639,
+          "Discretionary vs staples": -1.3022298239633745,
+          "Tech vs utilities": -6.312141195967036
         }
       },
-      "close": 688.1699829101562,
-      "rsi14": 45.38314347891437,
-      "rsi2": 87.6050484891845,
-      "realized_vol_20d": 0.36178163532232305,
-      "core_exposure_pct": 55.3,
+      "close": 679.8900146484375,
+      "rsi14": 42.81007349070348,
+      "rsi2": 0.0,
+      "realized_vol_20d": 0.3539561784599648,
+      "core_exposure_pct": 56.5,
       "original_score": 2,
       "original_coverage": 5,
       "original_factors": {
@@ -955,14 +955,10 @@
       "entry_signal": false,
       "credit_filter_pass": true,
       "credit_status": "PASS",
-      "credit_alt_status": "PASS",
-      "oversold": false,
-      "date": "2026-11-12",
+      "credit_alt_status": "FAIL",
+      "oversold": true,
+      "date": "2026-11-13",
       "history": [
-        {
-          "date": "2026-07-10",
-          "close": 724.75
-        },
         {
           "date": "2026-07-13",
           "close": 711.0
@@ -1318,6 +1314,10 @@
         {
           "date": "2026-11-12",
           "close": 688.17
+        },
+        {
+          "date": "2026-11-13",
+          "close": 679.89
         }
       ],
       "market_regime": {
@@ -1334,78 +1334,78 @@
   "metrics": [
     {
       "name": "VVIX",
-      "value": 96.70999908447266,
-      "date": "2026-11-12"
+      "value": 101.52999877929688,
+      "date": "2026-11-13"
     },
     {
       "name": "VVIX / EMA20",
-      "value": 0.9553722410684929,
-      "date": "2026-11-12"
+      "value": 1.0027024155069317,
+      "date": "2026-11-13"
     },
     {
       "name": "IWM/SPY vs EMA20 %",
-      "value": -0.11309817273662537,
-      "date": "2026-11-12"
+      "value": -0.06605808699262639,
+      "date": "2026-11-13"
     },
     {
       "name": "XLY/XLP vs EMA20 %",
-      "value": 0.3588498809328433,
-      "date": "2026-11-12"
+      "value": -1.3022298239633745,
+      "date": "2026-11-13"
     },
     {
       "name": "VIX",
-      "value": 18.700000762939453,
-      "date": "2026-11-12"
+      "value": 19.299999237060547,
+      "date": "2026-11-13"
     },
     {
       "name": "VIX 5d change %",
-      "value": -33.640878068035896,
-      "date": "2026-11-12"
+      "value": -24.72699026329743,
+      "date": "2026-11-13"
     },
     {
       "name": "RSP/SPY (breadth proxy)",
-      "value": 0.2915257854028012,
-      "date": "2026-11-12"
+      "value": 0.29317179248062925,
+      "date": "2026-11-13"
     },
     {
       "name": "RSP/SPY vs 20d EMA %",
-      "value": 1.1747852874725018,
-      "date": "2026-11-12"
+      "value": 1.5771245801924572,
+      "date": "2026-11-13"
     },
     {
       "name": "SOXX/QQQ",
-      "value": 0.22522052594874473,
-      "date": "2026-11-12"
+      "value": 0.21959434590160726,
+      "date": "2026-11-13"
     },
     {
       "name": "SOXX/QQQ vs 20d EMA %",
-      "value": -0.44631879263339336,
-      "date": "2026-11-12"
+      "value": -2.6613233462519648,
+      "date": "2026-11-13"
     },
     {
       "name": "HYG/SHY (alternative credit proxy)",
-      "value": 0.948730637613912,
-      "date": "2026-11-12"
+      "value": 0.9478872018854202,
+      "date": "2026-11-13"
     },
     {
       "name": "HYG/LQD",
-      "value": 0.7470160220982204,
-      "date": "2026-11-12"
+      "value": 0.7483708225706006,
+      "date": "2026-11-13"
     },
     {
       "name": "HYG/LQD vs 20d EMA %",
-      "value": 0.4626392820281877,
-      "date": "2026-11-12"
+      "value": 0.5830684815737452,
+      "date": "2026-11-13"
     },
     {
       "name": "VIX/VIX3M",
-      "value": 0.932203452681446,
-      "date": "2026-11-12"
+      "value": 0.9359844059918124,
+      "date": "2026-11-13"
     },
     {
       "name": "IEF 5d return % (Treasury duration proxy)",
-      "value": -1.9136697976190553,
-      "date": "2026-11-12"
+      "value": -1.981275509178615,
+      "date": "2026-11-13"
     }
   ],
   "limitations": [
