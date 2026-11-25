@@ -1,12 +1,12 @@
 {
-  "generated_at_utc": "2026-11-24T06:16:51.447605+00:00",
+  "generated_at_utc": "2026-11-25T04:59:00.516351+00:00",
   "source": "Yahoo Finance via yfinance (unofficial; may be delayed)",
   "assets": {
     "SPY": {
       "rebound_v2": {
         "version": "v2.1",
         "phase": "NO RELIABLE REVERSAL",
-        "early_score": 28,
+        "early_score": 6,
         "early_coverage": 100,
         "groups": {
           "exhaustion": {
@@ -16,33 +16,33 @@
             "possible": 2
           },
           "divergence": {
-            "score": 30,
+            "score": 0,
             "coverage": 100,
             "observed": 3,
             "possible": 3
           },
           "volatility_easing": {
-            "score": 40,
+            "score": 0,
             "coverage": 100,
             "observed": 2,
             "possible": 2
           },
           "price_followthrough": {
-            "score": 40,
+            "score": 30,
             "coverage": 100,
             "observed": 3,
             "possible": 3
           }
         },
-        "confirmation_score": 0,
+        "confirmation_score": 45,
         "confirmation_coverage": 100,
         "credit_gate": false,
-        "breadth_gate": false,
+        "breadth_gate": true,
         "method": "Grouped descriptive evidence; not calibrated, not backtested."
       },
       "rebound_radar": {
-        "state": "POTENTIAL STABILIZATION",
-        "hits": 3,
+        "state": "NO EARLY REVERSAL",
+        "hits": 0,
         "available": 8,
         "signals": [
           {
@@ -71,7 +71,7 @@
           },
           {
             "name": "Semiconductors outperform during weakness",
-            "triggered": true,
+            "triggered": false,
             "available": true,
             "interpretation": "Growth leadership may stabilize ahead of QQQ"
           },
@@ -83,24 +83,24 @@
           },
           {
             "name": "VVIX falls while price remains weak",
-            "triggered": true,
+            "triggered": false,
             "available": true,
             "interpretation": "Volatility-of-volatility easing; feed may be unavailable"
           },
           {
             "name": "First positive daily return",
-            "triggered": true,
+            "triggered": false,
             "available": true,
             "interpretation": "Reversal confirmation, not a leading signal"
           }
         ],
         "inputs": {
-          "credit_3d_pct": -0.9188395070682365,
-          "breadth_3d_pct": -0.1296587005647165,
-          "semi_3d_pct": 0.13847608539254708,
-          "vix_3d_pct": 8.387627923802032,
-          "vvix_3d_pct": -0.8532585222565059,
-          "price_3d_pct": -1.08326952169987
+          "credit_3d_pct": -0.8138445937564409,
+          "breadth_3d_pct": 0.6916641613899932,
+          "semi_3d_pct": -5.749275444542734,
+          "vix_3d_pct": -7.31364235107943,
+          "vvix_3d_pct": -10.251769422286749,
+          "price_3d_pct": 0.4065031639175043
         }
       },
       "warning_score": 90,
@@ -157,10 +157,10 @@
         }
       ],
       "recovery_state": "NO RECOVERY CONFIRMATION",
-      "recovery_confirmations": 0,
+      "recovery_confirmations": 1,
       "recovery_confirmation_coverage": 6,
       "recovery_confirmation_flags": {
-        "Breadth improving": false,
+        "Breadth improving": true,
         "Credit improving": false,
         "Semiconductors stabilizing": false,
         "Five-day price momentum positive": false,
@@ -168,22 +168,22 @@
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 1.563070782202263,
-        "vvix_vs_ema20": 1.0553228483667951,
-        "down_volume_share": 0.8085535821920857,
+        "volatility_acceleration": 1.5626266604193642,
+        "vvix_vs_ema20": 1.0232303163255074,
+        "down_volume_share": 0.8149384620590214,
         "negative_days_10": 8.0,
-        "drawdown_63d_pct": -7.290562947825041,
+        "drawdown_63d_pct": -7.741081964816631,
         "participation": {
-          "Small caps vs SPY": -0.1994458155798129,
-          "Discretionary vs staples": -0.52020673323111,
-          "Tech vs utilities": -4.711863918135862
+          "Small caps vs SPY": 0.7379448034573244,
+          "Discretionary vs staples": -1.3437928221247453,
+          "Tech vs utilities": -7.280881988265319
         }
       },
-      "close": 722.2899780273438,
-      "rsi14": 41.52705905805509,
-      "rsi2": 55.48341759468846,
-      "realized_vol_20d": 0.31880702516646364,
-      "core_exposure_pct": 47.1,
+      "close": 718.780029296875,
+      "rsi14": 40.48478140893198,
+      "rsi2": 90.2474141834518,
+      "realized_vol_20d": 0.3173517239921862,
+      "core_exposure_pct": 47.3,
       "original_score": 5,
       "original_coverage": 5,
       "original_factors": {
@@ -208,19 +208,19 @@
           "available": true
         }
       },
-      "risk_score": 75,
+      "risk_score": 50,
       "risk_coverage": 100,
       "risk_breakdown": [
         {
           "name": "Breadth proxy",
           "weight": 25,
-          "score": 10,
+          "score": 0,
           "coverage": 25
         },
         {
           "name": "Price and volume",
           "weight": 20,
-          "score": 20,
+          "score": 15,
           "coverage": 20
         },
         {
@@ -232,7 +232,7 @@
         {
           "name": "VIX dynamics",
           "weight": 15,
-          "score": 15,
+          "score": 5,
           "coverage": 15
         },
         {
@@ -248,13 +248,13 @@
           "coverage": 10
         }
       ],
-      "recovery_score": 15,
+      "recovery_score": 25,
       "recovery_coverage": 100,
       "recovery_breakdown": [
         {
           "name": "Breadth improvement",
           "weight": 25,
-          "score": 10,
+          "score": 25,
           "coverage": 25
         },
         {
@@ -272,7 +272,7 @@
         {
           "name": "Price / volume reversal",
           "weight": 15,
-          "score": 5,
+          "score": 0,
           "coverage": 15
         },
         {
@@ -293,12 +293,8 @@
       "credit_status": "FAIL",
       "credit_alt_status": "FAIL",
       "oversold": false,
-      "date": "2026-11-23",
+      "date": "2026-11-24",
       "history": [
-        {
-          "date": "2026-07-21",
-          "close": 746.43
-        },
         {
           "date": "2026-07-22",
           "close": 745.56
@@ -654,6 +650,10 @@
         {
           "date": "2026-11-23",
           "close": 722.29
+        },
+        {
+          "date": "2026-11-24",
+          "close": 718.78
         }
       ],
       "market_regime": {
@@ -670,7 +670,7 @@
       "rebound_v2": {
         "version": "v2.1",
         "phase": "NO RELIABLE REVERSAL",
-        "early_score": 28,
+        "early_score": 37,
         "early_coverage": 100,
         "groups": {
           "exhaustion": {
@@ -680,28 +680,28 @@
             "possible": 2
           },
           "divergence": {
-            "score": 30,
+            "score": 35,
             "coverage": 100,
             "observed": 3,
             "possible": 3
           },
           "volatility_easing": {
-            "score": 40,
+            "score": 100,
             "coverage": 100,
             "observed": 2,
             "possible": 2
           },
           "price_followthrough": {
-            "score": 40,
+            "score": 0,
             "coverage": 100,
             "observed": 3,
             "possible": 3
           }
         },
-        "confirmation_score": 0,
+        "confirmation_score": 25,
         "confirmation_coverage": 100,
         "credit_gate": false,
-        "breadth_gate": false,
+        "breadth_gate": true,
         "method": "Grouped descriptive evidence; not calibrated, not backtested."
       },
       "rebound_radar": {
@@ -729,19 +729,19 @@
           },
           {
             "name": "Equal weight improves while price remains weak",
-            "triggered": false,
+            "triggered": true,
             "available": true,
             "interpretation": "Broadening beneath index-level weakness"
           },
           {
             "name": "Semiconductors outperform during weakness",
-            "triggered": true,
+            "triggered": false,
             "available": true,
             "interpretation": "Growth leadership may stabilize ahead of QQQ"
           },
           {
             "name": "VIX falls while price remains weak",
-            "triggered": false,
+            "triggered": true,
             "available": true,
             "interpretation": "Fear easing ahead of price confirmation"
           },
@@ -753,18 +753,18 @@
           },
           {
             "name": "First positive daily return",
-            "triggered": true,
+            "triggered": false,
             "available": true,
             "interpretation": "Reversal confirmation, not a leading signal"
           }
         ],
         "inputs": {
-          "credit_3d_pct": -0.9188395070682365,
-          "breadth_3d_pct": -0.1296587005647165,
-          "semi_3d_pct": 0.13847608539254708,
-          "vix_3d_pct": 8.387627923802032,
-          "vvix_3d_pct": -0.8532585222565059,
-          "price_3d_pct": -1.285800115719793
+          "credit_3d_pct": -0.8138445937564409,
+          "breadth_3d_pct": 0.6916641613899932,
+          "semi_3d_pct": -5.749275444542734,
+          "vix_3d_pct": -7.31364235107943,
+          "vvix_3d_pct": -10.251769422286749,
+          "price_3d_pct": -1.075902684765384
         }
       },
       "warning_score": 90,
@@ -821,10 +821,10 @@
         }
       ],
       "recovery_state": "NO RECOVERY CONFIRMATION",
-      "recovery_confirmations": 0,
+      "recovery_confirmations": 1,
       "recovery_confirmation_coverage": 6,
       "recovery_confirmation_flags": {
-        "Breadth improving": false,
+        "Breadth improving": true,
         "Credit improving": false,
         "Semiconductors stabilizing": false,
         "Five-day price momentum positive": false,
@@ -832,22 +832,22 @@
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 1.536665382480619,
-        "vvix_vs_ema20": 1.0553228483667951,
-        "down_volume_share": 0.7077277847466991,
+        "volatility_acceleration": 1.5624523554039844,
+        "vvix_vs_ema20": 1.0232303163255074,
+        "down_volume_share": 0.7159189790157109,
         "negative_days_10": 7.0,
-        "drawdown_63d_pct": -14.299811453536805,
+        "drawdown_63d_pct": -16.00189582918383,
         "participation": {
-          "Small caps vs SPY": -0.1994458155798129,
-          "Discretionary vs staples": -0.52020673323111,
-          "Tech vs utilities": -4.711863918135862
+          "Small caps vs SPY": 0.7379448034573244,
+          "Discretionary vs staples": -1.3437928221247453,
+          "Tech vs utilities": -7.280881988265319
         }
       },
-      "close": 651.030029296875,
-      "rsi14": 42.186631996569716,
-      "rsi2": 53.783031806593215,
-      "realized_vol_20d": 0.4799868141927829,
-      "core_exposure_pct": 41.7,
+      "close": 638.0999755859375,
+      "rsi14": 39.45078984611209,
+      "rsi2": 76.7068326081913,
+      "realized_vol_20d": 0.47883159293188,
+      "core_exposure_pct": 41.8,
       "original_score": 5,
       "original_coverage": 5,
       "original_factors": {
@@ -872,19 +872,19 @@
           "available": true
         }
       },
-      "risk_score": 75,
+      "risk_score": 50,
       "risk_coverage": 100,
       "risk_breakdown": [
         {
           "name": "Breadth proxy",
           "weight": 25,
-          "score": 10,
+          "score": 0,
           "coverage": 25
         },
         {
           "name": "Price and volume",
           "weight": 20,
-          "score": 20,
+          "score": 15,
           "coverage": 20
         },
         {
@@ -896,7 +896,7 @@
         {
           "name": "VIX dynamics",
           "weight": 15,
-          "score": 15,
+          "score": 5,
           "coverage": 15
         },
         {
@@ -912,13 +912,13 @@
           "coverage": 10
         }
       ],
-      "recovery_score": 15,
+      "recovery_score": 25,
       "recovery_coverage": 100,
       "recovery_breakdown": [
         {
           "name": "Breadth improvement",
           "weight": 25,
-          "score": 10,
+          "score": 25,
           "coverage": 25
         },
         {
@@ -936,7 +936,7 @@
         {
           "name": "Price / volume reversal",
           "weight": 15,
-          "score": 5,
+          "score": 0,
           "coverage": 15
         },
         {
@@ -957,12 +957,8 @@
       "credit_status": "FAIL",
       "credit_alt_status": "FAIL",
       "oversold": false,
-      "date": "2026-11-23",
+      "date": "2026-11-24",
       "history": [
-        {
-          "date": "2026-07-21",
-          "close": 708.23
-        },
         {
           "date": "2026-07-22",
           "close": 704.62
@@ -1318,6 +1314,10 @@
         {
           "date": "2026-11-23",
           "close": 651.03
+        },
+        {
+          "date": "2026-11-24",
+          "close": 638.1
         }
       ],
       "market_regime": {
@@ -1334,78 +1334,78 @@
   "metrics": [
     {
       "name": "VVIX",
-      "value": 117.36000061035156,
-      "date": "2026-11-23"
+      "value": 114.06999969482422,
+      "date": "2026-11-24"
     },
     {
       "name": "VVIX / EMA20",
-      "value": 1.0553228483667951,
-      "date": "2026-11-23"
+      "value": 1.0232303163255074,
+      "date": "2026-11-24"
     },
     {
       "name": "IWM/SPY vs EMA20 %",
-      "value": -0.1994458155798129,
-      "date": "2026-11-23"
+      "value": 0.7379448034573244,
+      "date": "2026-11-24"
     },
     {
       "name": "XLY/XLP vs EMA20 %",
-      "value": -0.52020673323111,
-      "date": "2026-11-23"
+      "value": -1.3437928221247453,
+      "date": "2026-11-24"
     },
     {
       "name": "VIX",
-      "value": 26.6200008392334,
-      "date": "2026-11-23"
+      "value": 26.360000610351562,
+      "date": "2026-11-24"
     },
     {
       "name": "VIX 5d change %",
-      "value": 16.193806270323343,
-      "date": "2026-11-23"
+      "value": 3.5349629153277995,
+      "date": "2026-11-24"
     },
     {
       "name": "RSP/SPY (breadth proxy)",
-      "value": 0.29464621384537887,
-      "date": "2026-11-23"
+      "value": 0.29767105093774954,
+      "date": "2026-11-24"
     },
     {
       "name": "RSP/SPY vs 20d EMA %",
-      "value": 0.8946004442046851,
-      "date": "2026-11-23"
+      "value": 1.7433329372613882,
+      "date": "2026-11-24"
     },
     {
       "name": "SOXX/QQQ",
-      "value": 0.21538177182417137,
-      "date": "2026-11-23"
+      "value": 0.20156715254389682,
+      "date": "2026-11-24"
     },
     {
       "name": "SOXX/QQQ vs 20d EMA %",
-      "value": -1.9412264277969271,
-      "date": "2026-11-23"
+      "value": -7.505687312413278,
+      "date": "2026-11-24"
     },
     {
       "name": "HYG/SHY (alternative credit proxy)",
-      "value": 0.9380899464183982,
-      "date": "2026-11-23"
+      "value": 0.9369866444908841,
+      "date": "2026-11-24"
     },
     {
       "name": "HYG/LQD",
-      "value": 0.7362647591491989,
-      "date": "2026-11-23"
+      "value": 0.7363907855380083,
+      "date": "2026-11-24"
     },
     {
       "name": "HYG/LQD vs 20d EMA %",
-      "value": -0.8631272247995647,
-      "date": "2026-11-23"
+      "value": -0.766188946327484,
+      "date": "2026-11-24"
     },
     {
       "name": "VIX/VIX3M",
-      "value": 1.0439216015385646,
-      "date": "2026-11-23"
+      "value": 1.0349431221433296,
+      "date": "2026-11-24"
     },
     {
       "name": "IEF 5d return % (Treasury duration proxy)",
-      "value": 1.5514201673546335,
-      "date": "2026-11-23"
+      "value": 1.3604641939136908,
+      "date": "2026-11-24"
     }
   ],
   "limitations": [
