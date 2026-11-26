@@ -938,6 +938,40 @@
       "market_regime": "DELEVERAGING",
       "regime_version": "six-regime-v1",
       "model_version": "v2-2026-10-15"
+    },
+    {
+      "date": "2026-11-25",
+      "ticker": "QQQ",
+      "close": 633.9299926757812,
+      "fragility": 65,
+      "fragility_coverage": 100,
+      "recovery": 25,
+      "recovery_coverage": 100,
+      "rsi14": 38.581794892078726,
+      "rsi2": 0.0,
+      "credit_status": "FAIL",
+      "original_score": 5,
+      "entry_signal": false,
+      "market_regime": "DELEVERAGING",
+      "regime_version": "six-regime-v1",
+      "model_version": "v2-2026-10-15"
+    },
+    {
+      "date": "2026-11-25",
+      "ticker": "SPY",
+      "close": 716.7000122070312,
+      "fragility": 60,
+      "fragility_coverage": 100,
+      "recovery": 25,
+      "recovery_coverage": 100,
+      "rsi14": 39.84652741286353,
+      "rsi2": 0.0,
+      "credit_status": "FAIL",
+      "original_score": 5,
+      "entry_signal": false,
+      "market_regime": "DELEVERAGING",
+      "regime_version": "six-regime-v1",
+      "model_version": "v2-2026-10-15"
     }
   ]
 }
