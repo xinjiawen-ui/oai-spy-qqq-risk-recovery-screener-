@@ -1,12 +1,12 @@
 {
-  "generated_at_utc": "2026-11-26T04:16:22.646420+00:00",
+  "generated_at_utc": "2026-11-26T22:37:28.393836+00:00",
   "source": "Yahoo Finance via yfinance (unofficial; may be delayed)",
   "assets": {
     "SPY": {
       "rebound_v2": {
         "version": "v2.1",
         "phase": "SELLING EXHAUSTION WATCH",
-        "early_score": 16,
+        "early_score": 32,
         "early_coverage": 100,
         "groups": {
           "exhaustion": {
@@ -16,33 +16,33 @@
             "possible": 2
           },
           "divergence": {
-            "score": 0,
+            "score": 35,
             "coverage": 100,
             "observed": 3,
             "possible": 3
           },
           "volatility_easing": {
-            "score": 0,
+            "score": 40,
             "coverage": 100,
             "observed": 2,
             "possible": 2
           },
           "price_followthrough": {
-            "score": 30,
+            "score": 0,
             "coverage": 100,
             "observed": 3,
             "possible": 3
           }
         },
-        "confirmation_score": 45,
+        "confirmation_score": 35,
         "confirmation_coverage": 100,
         "credit_gate": false,
         "breadth_gate": true,
         "method": "Grouped descriptive evidence; not calibrated, not backtested."
       },
       "rebound_radar": {
-        "state": "NO EARLY REVERSAL",
-        "hits": 1,
+        "state": "POTENTIAL STABILIZATION",
+        "hits": 3,
         "available": 8,
         "signals": [
           {
@@ -65,7 +65,7 @@
           },
           {
             "name": "Equal weight improves while price remains weak",
-            "triggered": false,
+            "triggered": true,
             "available": true,
             "interpretation": "Broadening beneath index-level weakness"
           },
@@ -83,7 +83,7 @@
           },
           {
             "name": "VVIX falls while price remains weak",
-            "triggered": false,
+            "triggered": true,
             "available": true,
             "interpretation": "Volatility-of-volatility easing; feed may be unavailable"
           },
@@ -95,12 +95,12 @@
           }
         ],
         "inputs": {
-          "credit_3d_pct": -0.3278370263627539,
-          "breadth_3d_pct": 0.09911760821956772,
-          "semi_3d_pct": -0.45703865940681654,
-          "vix_3d_pct": -21.17581109882415,
-          "vvix_3d_pct": -16.4094774514163,
-          "price_3d_pct": 3.8981769970872993
+          "credit_3d_pct": -0.3451918757227501,
+          "breadth_3d_pct": 2.1627109628714614,
+          "semi_3d_pct": -6.267139214546802,
+          "vix_3d_pct": 0.6761772808130839,
+          "vvix_3d_pct": -1.687119416015881,
+          "price_3d_pct": -0.7739226613083239
         }
       },
       "warning_score": 90,
@@ -156,33 +156,33 @@
           "coverage": 5
         }
       ],
-      "recovery_state": "NO RECOVERY CONFIRMATION",
-      "recovery_confirmations": 1,
+      "recovery_state": "UNCONFIRMED BOUNCE",
+      "recovery_confirmations": 3,
       "recovery_confirmation_coverage": 6,
       "recovery_confirmation_flags": {
         "Breadth improving": true,
         "Credit improving": false,
         "Semiconductors stabilizing": false,
-        "Five-day price momentum positive": false,
-        "VIX cooling": false,
+        "Five-day price momentum positive": true,
+        "VIX cooling": true,
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 1.567442703078825,
-        "vvix_vs_ema20": 1.0315446117097538,
-        "down_volume_share": 0.8778063840509592,
-        "negative_days_10": 9.0,
+        "volatility_acceleration": 1.4983321103590628,
+        "vvix_vs_ema20": 1.028454877445941,
+        "down_volume_share": 0.8778391184980117,
+        "negative_days_10": 8.0,
         "drawdown_63d_pct": -8.008062290343199,
         "participation": {
-          "Small caps vs SPY": 1.5216963898875946,
-          "Discretionary vs staples": -1.7989918491512213,
-          "Tech vs utilities": -7.744932625399626
+          "Small caps vs SPY": 1.3747805445730288,
+          "Discretionary vs staples": -1.6304527885666276,
+          "Tech vs utilities": -7.059390953758237
         }
       },
       "close": 716.7000122070312,
-      "rsi14": 39.84652741286353,
+      "rsi14": 39.846527412863125,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.31638170481134753,
+      "realized_vol_20d": 0.3166274819164729,
       "core_exposure_pct": 47.4,
       "original_score": 5,
       "original_coverage": 5,
@@ -208,7 +208,7 @@
           "available": true
         }
       },
-      "risk_score": 60,
+      "risk_score": 50,
       "risk_coverage": 100,
       "risk_breakdown": [
         {
@@ -232,7 +232,7 @@
         {
           "name": "VIX dynamics",
           "weight": 15,
-          "score": 15,
+          "score": 5,
           "coverage": 15
         },
         {
@@ -248,7 +248,7 @@
           "coverage": 10
         }
       ],
-      "recovery_score": 25,
+      "recovery_score": 40,
       "recovery_coverage": 100,
       "recovery_breakdown": [
         {
@@ -272,13 +272,13 @@
         {
           "name": "Price / volume reversal",
           "weight": 15,
-          "score": 0,
+          "score": 10,
           "coverage": 15
         },
         {
           "name": "Volatility easing",
           "weight": 10,
-          "score": 0,
+          "score": 5,
           "coverage": 10
         },
         {
@@ -293,12 +293,8 @@
       "credit_status": "FAIL",
       "credit_alt_status": "FAIL",
       "oversold": true,
-      "date": "2026-11-25",
+      "date": "2026-11-26",
       "history": [
-        {
-          "date": "2026-07-23",
-          "close": 736.35
-        },
         {
           "date": "2026-07-24",
           "close": 737.1
@@ -654,6 +650,10 @@
         {
           "date": "2026-11-25",
           "close": 716.7
+        },
+        {
+          "date": "2026-11-26",
+          "close": 716.7
         }
       ],
       "market_regime": {
@@ -670,7 +670,7 @@
       "rebound_v2": {
         "version": "v2.1",
         "phase": "SELLING EXHAUSTION WATCH",
-        "early_score": 16,
+        "early_score": 32,
         "early_coverage": 100,
         "groups": {
           "exhaustion": {
@@ -680,33 +680,33 @@
             "possible": 2
           },
           "divergence": {
-            "score": 0,
+            "score": 35,
             "coverage": 100,
             "observed": 3,
             "possible": 3
           },
           "volatility_easing": {
-            "score": 0,
+            "score": 40,
             "coverage": 100,
             "observed": 2,
             "possible": 2
           },
           "price_followthrough": {
-            "score": 30,
+            "score": 0,
             "coverage": 100,
             "observed": 3,
             "possible": 3
           }
         },
-        "confirmation_score": 45,
+        "confirmation_score": 35,
         "confirmation_coverage": 100,
         "credit_gate": false,
         "breadth_gate": true,
         "method": "Grouped descriptive evidence; not calibrated, not backtested."
       },
       "rebound_radar": {
-        "state": "NO EARLY REVERSAL",
-        "hits": 1,
+        "state": "POTENTIAL STABILIZATION",
+        "hits": 3,
         "available": 8,
         "signals": [
           {
@@ -729,7 +729,7 @@
           },
           {
             "name": "Equal weight improves while price remains weak",
-            "triggered": false,
+            "triggered": true,
             "available": true,
             "interpretation": "Broadening beneath index-level weakness"
           },
@@ -747,7 +747,7 @@
           },
           {
             "name": "VVIX falls while price remains weak",
-            "triggered": false,
+            "triggered": true,
             "available": true,
             "interpretation": "Volatility-of-volatility easing; feed may be unavailable"
           },
@@ -759,12 +759,12 @@
           }
         ],
         "inputs": {
-          "credit_3d_pct": -0.3278370263627539,
-          "breadth_3d_pct": 0.09911760821956772,
-          "semi_3d_pct": -0.45703865940681654,
-          "vix_3d_pct": -21.17581109882415,
-          "vvix_3d_pct": -16.4094774514163,
-          "price_3d_pct": 4.187686738032337
+          "credit_3d_pct": -0.3451918757227501,
+          "breadth_3d_pct": 2.1627109628714614,
+          "semi_3d_pct": -6.267139214546802,
+          "vix_3d_pct": 0.6761772808130839,
+          "vvix_3d_pct": -1.687119416015881,
+          "price_3d_pct": -2.626612575699794
         }
       },
       "warning_score": 90,
@@ -820,34 +820,34 @@
           "coverage": 5
         }
       ],
-      "recovery_state": "NO RECOVERY CONFIRMATION",
-      "recovery_confirmations": 1,
+      "recovery_state": "UNCONFIRMED BOUNCE",
+      "recovery_confirmations": 2,
       "recovery_confirmation_coverage": 6,
       "recovery_confirmation_flags": {
         "Breadth improving": true,
         "Credit improving": false,
         "Semiconductors stabilizing": false,
         "Five-day price momentum positive": false,
-        "VIX cooling": false,
+        "VIX cooling": true,
         "Risk-on participation": false
       },
       "stress_diagnostics": {
-        "volatility_acceleration": 1.560426187960923,
-        "vvix_vs_ema20": 1.0315446117097538,
-        "down_volume_share": 0.8006673727826362,
-        "negative_days_10": 8.0,
+        "volatility_acceleration": 1.5377187778646924,
+        "vvix_vs_ema20": 1.028454877445941,
+        "down_volume_share": 0.8007880138591014,
+        "negative_days_10": 7.0,
         "drawdown_63d_pct": -16.55082338329663,
         "participation": {
-          "Small caps vs SPY": 1.5216963898875946,
-          "Discretionary vs staples": -1.7989918491512213,
-          "Tech vs utilities": -7.744932625399626
+          "Small caps vs SPY": 1.3747805445730288,
+          "Discretionary vs staples": -1.6304527885666276,
+          "Tech vs utilities": -7.059390953758237
         }
       },
       "close": 633.9299926757812,
-      "rsi14": 38.581794892078726,
+      "rsi14": 38.58179489233929,
       "rsi2": 0.0,
-      "realized_vol_20d": 0.47682629928907083,
-      "core_exposure_pct": 41.9,
+      "realized_vol_20d": 0.4763818690306009,
+      "core_exposure_pct": 42.0,
       "original_score": 5,
       "original_coverage": 5,
       "original_factors": {
@@ -872,7 +872,7 @@
           "available": true
         }
       },
-      "risk_score": 65,
+      "risk_score": 55,
       "risk_coverage": 100,
       "risk_breakdown": [
         {
@@ -896,7 +896,7 @@
         {
           "name": "VIX dynamics",
           "weight": 15,
-          "score": 15,
+          "score": 5,
           "coverage": 15
         },
         {
@@ -912,7 +912,7 @@
           "coverage": 10
         }
       ],
-      "recovery_score": 25,
+      "recovery_score": 30,
       "recovery_coverage": 100,
       "recovery_breakdown": [
         {
@@ -942,7 +942,7 @@
         {
           "name": "Volatility easing",
           "weight": 10,
-          "score": 0,
+          "score": 5,
           "coverage": 10
         },
         {
@@ -957,12 +957,8 @@
       "credit_status": "FAIL",
       "credit_alt_status": "FAIL",
       "oversold": true,
-      "date": "2026-11-25",
+      "date": "2026-11-26",
       "history": [
-        {
-          "date": "2026-07-23",
-          "close": 691.24
-        },
         {
           "date": "2026-07-24",
           "close": 683.52
@@ -1318,6 +1314,10 @@
         {
           "date": "2026-11-25",
           "close": 633.93
+        },
+        {
+          "date": "2026-11-26",
+          "close": 633.93
         }
       ],
       "market_regime": {
@@ -1335,77 +1335,77 @@
     {
       "name": "VVIX",
       "value": 115.37999725341797,
-      "date": "2026-11-25"
+      "date": "2026-11-26"
     },
     {
       "name": "VVIX / EMA20",
-      "value": 1.0315446117097538,
-      "date": "2026-11-25"
+      "value": 1.028454877445941,
+      "date": "2026-11-26"
     },
     {
       "name": "IWM/SPY vs EMA20 %",
-      "value": 1.5216963898875946,
-      "date": "2026-11-25"
+      "value": 1.3747805445730288,
+      "date": "2026-11-26"
     },
     {
       "name": "XLY/XLP vs EMA20 %",
-      "value": -1.7989918491512213,
-      "date": "2026-11-25"
+      "value": -1.6304527885666276,
+      "date": "2026-11-26"
     },
     {
       "name": "VIX",
-      "value": 28.290000915527344,
-      "date": "2026-11-25"
+      "value": 26.799999237060547,
+      "date": "2026-11-26"
     },
     {
       "name": "VIX 5d change %",
-      "value": 15.187302649405154,
-      "date": "2026-11-25"
+      "value": -5.766530471872278,
+      "date": "2026-11-26"
     },
     {
       "name": "RSP/SPY (breadth proxy)",
       "value": 0.3010185598138986,
-      "date": "2026-11-25"
+      "date": "2026-11-26"
     },
     {
       "name": "RSP/SPY vs 20d EMA %",
-      "value": 2.605339251719152,
-      "date": "2026-11-25"
+      "value": 2.3513772891297746,
+      "date": "2026-11-26"
     },
     {
       "name": "SOXX/QQQ",
       "value": 0.20188349634119301,
-      "date": "2026-11-25"
+      "date": "2026-11-26"
     },
     {
       "name": "SOXX/QQQ vs 20d EMA %",
-      "value": -6.7065353741304286,
-      "date": "2026-11-25"
+      "value": -6.10682307660827,
+      "date": "2026-11-26"
     },
     {
       "name": "HYG/SHY (alternative credit proxy)",
       "value": 0.9372856101805505,
-      "date": "2026-11-25"
+      "date": "2026-11-26"
     },
     {
       "name": "HYG/LQD",
       "value": 0.7337232330168062,
-      "date": "2026-11-25"
+      "date": "2026-11-26"
     },
     {
       "name": "HYG/LQD vs 20d EMA %",
-      "value": -1.019547583446434,
-      "date": "2026-11-25"
+      "value": -0.9233444223092024,
+      "date": "2026-11-26"
     },
     {
       "name": "VIX/VIX3M",
-      "value": 1.076074550412768,
-      "date": "2026-11-25"
+      "value": 1.0193989465109523,
+      "date": "2026-11-26"
     },
     {
       "name": "IEF 5d return % (Treasury duration proxy)",
-      "value": 1.5330312316301775,
-      "date": "2026-11-25"
+      "value": 1.3653356836998531,
+      "date": "2026-11-26"
     }
   ],
   "limitations": [

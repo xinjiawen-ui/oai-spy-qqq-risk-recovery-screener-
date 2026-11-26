@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-11-26T04:16:28.216945+00:00",
+  "generated_at_utc": "2026-11-26T22:37:34.989930+00:00",
   "method": "Ten-year daily adjusted prices; score at close t, hypothetical entry open t+1, exit open t+1+H; historical overlapping observations; NOT calibrated future probabilities or a tradable backtest.",
   "regime_definitions": {
     "Early rebound": "Fragility >=60, Recovery >=50, Recovery 5-day change >0",
@@ -313,7 +313,7 @@
               62.72
             ],
             "mean_return_pct": 0.274,
-            "median_return_pct": 0.499,
+            "median_return_pct": 0.498,
             "p10_return_pct": -3.237,
             "p90_return_pct": 3.163,
             "prob_gain_2pct": 21.37,
