@@ -1,6 +1,14 @@
 name: Update market data and deploy
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'requirements.txt'
+      - '.github/workflows/dashboard.yml'
   schedule:
     - cron: '35 22 * * 1-5'
 permissions:
@@ -24,6 +32,7 @@ jobs:
         run: |
           python scripts/validate_dashboard.py
           node --check /tmp/dashboard-inline.js
+          node tests/dashboard_smoke.cjs
       - run: python -m unittest discover -s tests
       - run: python scripts/update.py
       - run: python scripts/backtest.py

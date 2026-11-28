@@ -4,13 +4,15 @@ import urllib.request
 import numpy as np
 import pandas as pd
 
-VERSION = "november-checklist-v1"
+VERSION = "november-checklist-v2"
 MANUAL = [
  ("Fundamentals","Forward EPS revisions / earnings breadth","FactSet Earnings Insight; positive revisions vs price drawdown","https://insight.factset.com/"),
  ("Fundamentals","Forward P/E and earnings yield less 10Y","Index provider / FactSet; compare to own history, not a full equity risk premium","https://insight.factset.com/"),
  ("Fundamentals","AI monetisation, capex and funding","Verify AI lab revenue, hyperscaler capex, GPU prices, cash flow and credit; SALP forecasts are narrative, not facts","https://www.sec.gov/edgar/search/"),
  ("Fundamentals","AI borrower credit / concentration","Issuer bond spreads, liquidity, covenants, customer concentration and debt maturities","https://www.finra.org/finra-data/fixed-income"),
  ("Macro","CPI, core PCE, payrolls and surprise","Actual vs contemporaneous consensus; check inflation and growth direction jointly","https://www.bls.gov/"),
+ ("Macro","Truflation / high-frequency inflation nowcast","Supplementary measure; compare methodology and direction with official CPI/PCE","https://truflation.com/"),
+ ("Macro","Initial jobless claims and labour trend","Weekly releases; compare four-week average and surprises","https://www.dol.gov/agencies/eta/ui-claims"),
  ("Macro","Fed policy and rate expectations","Fed funds futures, 2Y/5Y/10Y yields, real yield and curve; separate inflation from growth shocks","https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html"),
  ("Macro","Tariffs / regulatory and geopolitical shock","Verify announcement, effective date and earnings exposure; do not score unverified headlines","https://www.federalreserve.gov/"),
  ("Breadth","Constituent advance/decline, above 50/200DMA, new lows","Use point-in-time membership; equal-weight ETFs are proxies only","https://www.spglobal.com/spdji/"),
@@ -23,7 +25,7 @@ MANUAL = [
 ]
 def fetch_rates(as_of):
     """FRED rate observations lagged one day; failure is explicit, not filled."""
-    ids=["DGS2","DGS5","DGS10","DFII10","T10Y2Y"]
+    ids=["DGS2","DGS5","DGS10","DFII10","T10Y2Y","BAMLC0A0CM"]
     url="https://fred.stlouisfed.org/graph/graph.csv?id="+",".join(ids)
     try:
         with urllib.request.urlopen(url,timeout=12) as response:
@@ -67,6 +69,13 @@ def build_checklist(close, volume, assets, credit, rates=None):
         for n in (20,50,100,200):
             v=value((x/x.ewm(span=n,adjust=False,min_periods=n).mean()-1)*100)
             signed("Trend",f"Distance to EMA{n}",v,"%","Above EMA supportive; below EMA stress")
+        delta=x.diff()
+        gain=delta.clip(lower=0).ewm(alpha=1/14,adjust=False,min_periods=14).mean()
+        loss=(-delta.clip(upper=0)).ewm(alpha=1/14,adjust=False,min_periods=14).mean()
+        rs=100-100/(1+gain/loss.replace(0,np.nan))
+        rs=rs.where(loss!=0,100).where((gain!=0)|(loss!=0),50)
+        rsi=value(rs)
+        add("Trend","RSI14",rsi,"","Oversold below 30; overbought above 70; not standalone entry","WATCH")
         dd=value((x/x.rolling(63,min_periods=63).max()-1)*100)
         add("Trend","63-session drawdown",dd,"%","Stress at -10% or worse; watch at -5%","STRESS" if dd is not None and dd<=-10 else "WATCH" if dd is not None and dd<=-5 else "SUPPORT")
         neg=int((ret.tail(10)<0).sum()) if len(ret)>=10 else None
@@ -88,6 +97,14 @@ def build_checklist(close, volume, assets, credit, rates=None):
         add("Credit","HY OAS 20-observation change",oas,"bp","Widening stress; tightening support","STRESS" if oas is not None and oas>0 else "SUPPORT" if oas is not None and oas<0 else "WATCH","FRED BAMLH0A0HYM2",credit.get("observation_date"))
         oas_level=credit.get("oas_pct") if credit.get("status")=="available" else None
         add("Credit","HY OAS level",oas_level,"%","Context; widening and percentile matter more than a fixed threshold","STRESS" if oas_level is not None and oas_level>=6.5 else "WATCH","FRED BAMLH0A0HYM2",credit.get("observation_date"))
+        ig=rates.get("BAMLC0A0CM",pd.Series(dtype=float)).dropna()
+        ig=ig[ig.index<date] if len(ig) else ig
+        ig_date=ig.index[-1].strftime("%Y-%m-%d") if len(ig) else None
+        ig_fresh=bool(len(ig) and (date-ig.index[-1]).days<=7)
+        ig_level=value(ig) if ig_fresh else None
+        ig_change=value(ig.diff(20)*100) if ig_fresh else None
+        add("Credit","IG OAS level",ig_level,"%","Direct investment-grade option-adjusted spread","WATCH","https://fred.stlouisfed.org/series/BAMLC0A0CM",ig_date)
+        add("Credit","IG OAS 20-observation change",ig_change,"bp","Widening stress; tightening support","STRESS" if ig_change is not None and ig_change>0 else "SUPPORT" if ig_change is not None and ig_change<0 else "WATCH","https://fred.stlouisfed.org/series/BAMLC0A0CM",ig_date)
         for k,label in [("DGS2","2Y Treasury"),("DGS5","5Y Treasury"),("DGS10","10Y Treasury"),("DFII10","10Y real Treasury"),("T10Y2Y","10Y–2Y curve")]:
             z=rates.get(k,pd.Series(dtype=float)).dropna()
             z=z[z.index<date] if len(z) else z
@@ -107,6 +124,10 @@ def build_checklist(close, volume, assets, credit, rates=None):
         vix=series("^VIX"); term=value(ratio("^VIX","^VIX3M"))
         v=value(vix)
         add("Volatility","VIX level",v,"","30+ acute stress; level is context, not a buy trigger","STRESS" if v is not None and v>=30 else "WATCH")
+        vvix=value(series("^VVIX"))
+        add("Volatility","VVIX level",vvix,"","Volatility of VIX; no direct dealer position inference","WATCH")
+        accel=float(ret.tail(5).std()/ret.tail(20).std()) if len(ret)>=20 and ret.tail(20).std()>0 else None
+        add("Volatility","Realised volatility acceleration 5d/20d",accel,"x","1.3x or higher flags accelerating risk","STRESS" if accel is not None and accel>=1.3 else "WATCH")
         for t in ("^VIX","^VVIX"):
             v=change(series(t),5)
             add("Volatility",f"{t} 5d change",v,"%","Falling fear supports stabilization; rising >=15% warns","SUPPORT" if v is not None and v<0 else "STRESS" if v is not None and v>=15 else "WATCH")
