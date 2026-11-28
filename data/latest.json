@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-28T10:45:00.498785+00:00",
+  "generated_at_utc": "2026-11-28T10:52:52.916782+00:00",
   "source": "Yahoo Finance via yfinance (unofficial; may be delayed)",
   "assets": {
     "SPY": {
@@ -174,15 +174,15 @@
         "negative_days_10": 7.0,
         "drawdown_63d_pct": -6.516579314481263,
         "participation": {
-          "Small caps vs SPY": 1.4299386163112215,
-          "Discretionary vs staples": 0.030863755963883577,
-          "Tech vs utilities": -4.290209649764187
+          "Small caps vs SPY": 1.4299386163108663,
+          "Discretionary vs staples": 0.030863755992882602,
+          "Tech vs utilities": -4.290209649761135
         }
       },
       "close": 728.3200073242188,
-      "rsi14": 45.421371399352175,
+      "rsi14": 45.4213714000671,
       "rsi2": 100.0,
-      "realized_vol_20d": 0.31909656978450046,
+      "realized_vol_20d": 0.3190965697845005,
       "core_exposure_pct": 47.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -838,15 +838,15 @@
         "negative_days_10": 6.0,
         "drawdown_63d_pct": -14.30508210934538,
         "participation": {
-          "Small caps vs SPY": 1.4299386163112215,
-          "Discretionary vs staples": 0.030863755963883577,
-          "Tech vs utilities": -4.290209649764187
+          "Small caps vs SPY": 1.4299386163108663,
+          "Discretionary vs staples": 0.030863755992882602,
+          "Tech vs utilities": -4.290209649761135
         }
       },
       "close": 650.989990234375,
-      "rsi14": 44.39347062320305,
+      "rsi14": 44.393470623208415,
       "rsi2": 100.0,
-      "realized_vol_20d": 0.4766215461392721,
+      "realized_vol_20d": 0.47662154613927216,
       "core_exposure_pct": 42.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -1344,12 +1344,12 @@
     },
     {
       "name": "IWM/SPY vs EMA20 %",
-      "value": 1.4299386163112215,
+      "value": 1.4299386163108663,
       "date": "2026-11-27"
     },
     {
       "name": "XLY/XLP vs EMA20 %",
-      "value": 0.030863755963883577,
+      "value": 0.030863755992882602,
       "date": "2026-11-27"
     },
     {
@@ -1369,7 +1369,7 @@
     },
     {
       "name": "RSP/SPY vs 20d EMA %",
-      "value": 1.7618232447850435,
+      "value": 1.7618232447848214,
       "date": "2026-11-27"
     },
     {
@@ -1379,7 +1379,7 @@
     },
     {
       "name": "SOXX/QQQ vs 20d EMA %",
-      "value": -3.830342944482823,
+      "value": -3.830342944482845,
       "date": "2026-11-27"
     },
     {
@@ -1394,7 +1394,7 @@
     },
     {
       "name": "HYG/LQD vs 20d EMA %",
-      "value": -0.47995766960382547,
+      "value": -0.47995767371300513,
       "date": "2026-11-27"
     },
     {
@@ -1424,7 +1424,7 @@
     "reason": "Direct FRED spread feed unavailable; ETF proxies remain separate."
   },
   "comprehensive_checklist": {
-    "version": "november-checklist-v1",
+    "version": "november-checklist-v2",
     "experimental": true,
     "assets": {
       "SPY": {
@@ -1516,6 +1516,16 @@
             "unit": "%",
             "rule": "Above EMA supportive; below EMA stress",
             "status": "STRESS",
+            "source": "Yahoo Finance (proxy)",
+            "as_of": "2026-11-27"
+          },
+          {
+            "group": "Trend",
+            "name": "RSI14",
+            "value": 45.0619,
+            "unit": "",
+            "rule": "Oversold below 30; overbought above 70; not standalone entry",
+            "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
             "as_of": "2026-11-27"
           },
@@ -1637,6 +1647,26 @@
             "rule": "Context; widening and percentile matter more than a fixed threshold",
             "status": "UNAVAILABLE",
             "source": "FRED BAMLH0A0HYM2",
+            "as_of": null
+          },
+          {
+            "group": "Credit",
+            "name": "IG OAS level",
+            "value": null,
+            "unit": "%",
+            "rule": "Direct investment-grade option-adjusted spread",
+            "status": "UNAVAILABLE",
+            "source": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
+            "as_of": null
+          },
+          {
+            "group": "Credit",
+            "name": "IG OAS 20-observation change",
+            "value": null,
+            "unit": "bp",
+            "rule": "Widening stress; tightening support",
+            "status": "UNAVAILABLE",
+            "source": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
             "as_of": null
           },
           {
@@ -1786,6 +1816,26 @@
             "unit": "",
             "rule": "30+ acute stress; level is context, not a buy trigger",
             "status": "WATCH",
+            "source": "Yahoo Finance (proxy)",
+            "as_of": "2026-11-27"
+          },
+          {
+            "group": "Volatility",
+            "name": "VVIX level",
+            "value": 107.84,
+            "unit": "",
+            "rule": "Volatility of VIX; no direct dealer position inference",
+            "status": "WATCH",
+            "source": "Yahoo Finance (proxy)",
+            "as_of": "2026-11-27"
+          },
+          {
+            "group": "Volatility",
+            "name": "Realised volatility acceleration 5d/20d",
+            "value": 1.5027,
+            "unit": "x",
+            "rule": "1.3x or higher flags accelerating risk",
+            "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
             "as_of": "2026-11-27"
           },
@@ -1920,7 +1970,7 @@
             "as_of": "2026-11-27"
           }
         ],
-        "coverage": 76
+        "coverage": 74
       },
       "QQQ": {
         "rows": [
@@ -2011,6 +2061,16 @@
             "unit": "%",
             "rule": "Above EMA supportive; below EMA stress",
             "status": "STRESS",
+            "source": "Yahoo Finance (proxy)",
+            "as_of": "2026-11-27"
+          },
+          {
+            "group": "Trend",
+            "name": "RSI14",
+            "value": 44.019,
+            "unit": "",
+            "rule": "Oversold below 30; overbought above 70; not standalone entry",
+            "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
             "as_of": "2026-11-27"
           },
@@ -2132,6 +2192,26 @@
             "rule": "Context; widening and percentile matter more than a fixed threshold",
             "status": "UNAVAILABLE",
             "source": "FRED BAMLH0A0HYM2",
+            "as_of": null
+          },
+          {
+            "group": "Credit",
+            "name": "IG OAS level",
+            "value": null,
+            "unit": "%",
+            "rule": "Direct investment-grade option-adjusted spread",
+            "status": "UNAVAILABLE",
+            "source": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
+            "as_of": null
+          },
+          {
+            "group": "Credit",
+            "name": "IG OAS 20-observation change",
+            "value": null,
+            "unit": "bp",
+            "rule": "Widening stress; tightening support",
+            "status": "UNAVAILABLE",
+            "source": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
             "as_of": null
           },
           {
@@ -2286,6 +2366,26 @@
           },
           {
             "group": "Volatility",
+            "name": "VVIX level",
+            "value": 107.84,
+            "unit": "",
+            "rule": "Volatility of VIX; no direct dealer position inference",
+            "status": "WATCH",
+            "source": "Yahoo Finance (proxy)",
+            "as_of": "2026-11-27"
+          },
+          {
+            "group": "Volatility",
+            "name": "Realised volatility acceleration 5d/20d",
+            "value": 1.5571,
+            "unit": "x",
+            "rule": "1.3x or higher flags accelerating risk",
+            "status": "STRESS",
+            "source": "Yahoo Finance (proxy)",
+            "as_of": "2026-11-27"
+          },
+          {
+            "group": "Volatility",
             "name": "^VIX 5d change",
             "value": -33.6584,
             "unit": "%",
@@ -2415,7 +2515,7 @@
             "as_of": "2026-11-27"
           }
         ],
-        "coverage": 76
+        "coverage": 74
       }
     },
     "manual": [
@@ -2452,6 +2552,20 @@
         "name": "CPI, core PCE, payrolls and surprise",
         "rule": "Actual vs contemporaneous consensus; check inflation and growth direction jointly",
         "source": "https://www.bls.gov/",
+        "status": "MANUAL / NOT OBSERVED"
+      },
+      {
+        "group": "Macro",
+        "name": "Truflation / high-frequency inflation nowcast",
+        "rule": "Supplementary measure; compare methodology and direction with official CPI/PCE",
+        "source": "https://truflation.com/",
+        "status": "MANUAL / NOT OBSERVED"
+      },
+      {
+        "group": "Macro",
+        "name": "Initial jobless claims and labour trend",
+        "rule": "Weekly releases; compare four-week average and surprises",
+        "source": "https://www.dol.gov/agencies/eta/ui-claims",
         "status": "MANUAL / NOT OBSERVED"
       },
       {
