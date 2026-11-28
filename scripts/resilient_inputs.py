@@ -76,6 +76,7 @@ def augment(checklist,close,assets,inputs):
     for ticker,a in checklist["assets"].items():
         date=pd.Timestamp(assets[ticker]["date"])
         rows=a["rows"]
+        originals=list(rows)
         def s(k):
             if k not in close:return pd.Series(dtype=float)
             z=close[k].loc[:date].dropna()
@@ -128,11 +129,16 @@ def augment(checklist,close,assets,inputs):
           ("Macro","Dollar / financial conditions: UUP","UUP",None,20,0,"Dollar ETF return, not policy expectations"),
           ("Options / liquidity","Tail-risk sentiment: VIX 5d change","^VIX",None,5,-1,"Implied volatility, not dealer gamma or flows"),
           ("Options / liquidity","Short-dated fear: VIX9D/VIX","^VIX9D","^VIX",5,-1,"Relative implied volatility change; not options positioning"),
-          ("Systematic flows","Leveraged ETF activity: TQQQ/QQQ","TQQQ","QQQ",5,0,"Relative return, not actual rebalance dollars"),
         ]
         for group,name,k,base,n,sign,rule in contexts:
             row=emit(group,name,ret(k,n,base),"%",rule,"Yahoo Finance "+k+("/"+base if base else ""),direction=sign)
             if row:rows.append(row)
+        day_return=ret(ticker,1)
+        if day_return is not None:
+            for lev in (3,2,-3):
+                v=1000*lev*(lev-1)*day_return/100
+                row=emit("Systematic flows",f"{lev:+d}x ETF rebalance per $1B AUM",v,"USD M","Underlying-equivalent scenario per hypothetical $1B starting AUM; excludes subscriptions, redemptions and actual hedges","Model: L*(L-1)*AUM*index return","MODEL",direction=1)
+                if row:rows.append(row)
         for k,label,lag,maxage,n,unit in [
             ("CPIAUCSL","CPI year-on-year",45,100,12,"%"),("PCEPILFE","Core PCE year-on-year",45,100,12,"%"),
             ("UNRATE","Unemployment rate",45,100,0,"%"),("ICSA","Initial claims 4-week average",14,30,0,"claims"),
@@ -147,9 +153,8 @@ def augment(checklist,close,assets,inputs):
             if row:rows.append(row)
         for row in rows:
             if row.get("data_kind"):continue
-            row["data_kind"]="DIRECT" if row["source"].startswith(("FRED","https://fred","https://home.treasury")) else "MODEL" if row["source"].startswith(("Model","Scenario")) else "MARKET"
+            row["data_kind"]="DIRECT" if row["source"].startswith(("FRED","https://fred","https://home.treasury")) else "MODEL" if row["source"].startswith(("Model","Scenario")) else "DIRECT" if row["source"].startswith("Calculated:") else "MARKET"
         covered={name for row in rows for name in row.get("replaces",[])}
-        originals=[row for row in rows if not row.get("replaces") and row["name"] not in [x[1] for x in contexts]]
         a["direct_coverage"]=a["coverage"]
         a["effective_coverage"]=round(100*sum(row["value"] is not None or row["name"] in covered for row in originals)/len(originals)) if originals else 0
     return checklist
