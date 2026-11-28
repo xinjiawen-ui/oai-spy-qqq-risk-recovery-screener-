@@ -4,7 +4,7 @@ import urllib.request
 import numpy as np
 import pandas as pd
 
-VERSION = "november-checklist-v2"
+VERSION = "november-checklist-v3-resilient"
 MANUAL = [
  ("Fundamentals","Forward EPS revisions / earnings breadth","FactSet Earnings Insight; positive revisions vs price drawdown","https://insight.factset.com/"),
  ("Fundamentals","Forward P/E and earnings yield less 10Y","Index provider / FactSet; compare to own history, not a full equity risk premium","https://insight.factset.com/"),
@@ -26,7 +26,7 @@ MANUAL = [
 def fetch_rates(as_of):
     """FRED rate observations lagged one day; failure is explicit, not filled."""
     ids=["DGS2","DGS5","DGS10","DFII10","T10Y2Y","BAMLC0A0CM"]
-    url="https://fred.stlouisfed.org/graph/graph.csv?id="+",".join(ids)
+    url="https://fred.stlouisfed.org/graph/fredgraph.csv?id="+",".join(ids)
     try:
         with urllib.request.urlopen(url,timeout=12) as response:
             df=pd.read_csv(io.StringIO(response.read().decode()))
@@ -111,7 +111,7 @@ def build_checklist(close, volume, assets, credit, rates=None):
             observed=z.index[-1].strftime("%Y-%m-%d") if len(z) else None
             fresh=bool(len(z) and (date-z.index[-1]).days<=7)
             v=value(z) if fresh else None
-            source="https://fred.stlouisfed.org/series/"+k
+            source=z.attrs.get("source","https://fred.stlouisfed.org/series/"+k)
             add("Macro",label,v,"%","Lagged direct observation; not a forecast","WATCH",source,observed)
             bp=value(z.diff(5)*100) if fresh else None
             add("Macro",label+" 5-observation change",bp,"bp","Rise >=20bp warns for yields; curve change needs growth context","STRESS" if k!="T10Y2Y" and bp is not None and bp>=20 else "WATCH",source,observed)
