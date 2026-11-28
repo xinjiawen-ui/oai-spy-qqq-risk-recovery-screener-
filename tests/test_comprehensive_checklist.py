@@ -30,6 +30,15 @@ class ChecklistTest(unittest.TestCase):
         self.assertIsNone(rows["QQQE/QQQ 5d relative return"]["value"])
         self.assertEqual(rows["2Y Treasury"]["value"],4.0)
         self.assertEqual(rows["2Y Treasury"]["as_of"],self.idx[-2].strftime("%Y-%m-%d"))
+    def test_ig_spread_lag_and_rsi(self):
+        dates=self.idx[-23:]
+        ig=pd.Series(np.arange(23)*.01+1,index=dates)
+        out=build_checklist(self.close,self.vol,self.assets,{}, {"BAMLC0A0CM":ig})
+        rows={r["name"]:r for r in out["assets"]["SPY"]["rows"]}
+        self.assertAlmostEqual(rows["IG OAS level"]["value"],1.21)
+        self.assertAlmostEqual(rows["IG OAS 20-observation change"]["value"],20.0)
+        self.assertEqual(rows["IG OAS 20-observation change"]["status"],"STRESS")
+        self.assertTrue(0<=rows["RSI14"]["value"]<=100)
     def test_rolloff_bounded(self):
         out=build_checklist(self.close,self.vol,self.assets,{}, {})
         rows={r["name"]:r for r in out["assets"]["SPY"]["rows"]}
