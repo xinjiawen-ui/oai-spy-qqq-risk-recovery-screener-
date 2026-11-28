@@ -1,4 +1,6 @@
 """Additive descriptive checklist. No changes to production signals or backtests."""
+import io
+import urllib.request
 import numpy as np
 import pandas as pd
 
@@ -19,9 +21,22 @@ MANUAL = [
  ("Options / liquidity","Fund flows, buybacks, holiday / expiry seasonality","Confirm cash ETF flows and liquidity; calendar effects not directional certainty","https://www.cboe.com/"),
  ("Recovery validation","Catalyst and follow-through","Track source/date, earnings vs sentiment vs flows, 2-3 closes, breadth, credit and failed breakout","https://www.sec.gov/edgar/search/"),
 ]
-def build_checklist(close, volume, assets, credit):
+def fetch_rates(as_of):
+    """FRED rate observations lagged one day; failure is explicit, not filled."""
+    ids=["DGS2","DGS5","DGS10","DFII10","T10Y2Y"]
+    url="https://fred.stlouisfed.org/graph/graph.csv?id="+",".join(ids)
+    try:
+        with urllib.request.urlopen(url,timeout=12) as response:
+            df=pd.read_csv(io.StringIO(response.read().decode()))
+        df.index=pd.to_datetime(df.iloc[:,0])
+        return {k:pd.to_numeric(df[k],errors="coerce").dropna().sort_index().loc[lambda z:z.index<pd.Timestamp(as_of)] for k in ids if k in df}
+    except Exception:
+        return {}
+
+def build_checklist(close, volume, assets, credit, rates=None):
     """Use unfilled prices; require exact latest ETF session for daily signals."""
     result={}
+    rates = rates if rates is not None else {}
     for ticker,a in assets.items():
         date=pd.Timestamp(a["date"])
         x=close[ticker].dropna().loc[:date] if ticker in close else pd.Series(dtype=float)
@@ -71,10 +86,21 @@ def build_checklist(close, volume, assets, credit):
         signed("Credit","HYG/SHY 5d relative return",change(ratio("HYG","SHY"),5),"%","Alternative proxy; not OAS")
         oas=credit.get("change_20_observations_bps") if credit.get("status")=="available" else None
         add("Credit","HY OAS 20-observation change",oas,"bp","Widening stress; tightening support","STRESS" if oas is not None and oas>0 else "SUPPORT" if oas is not None and oas<0 else "WATCH","FRED BAMLH0A0HYM2",credit.get("observation_date"))
+        oas_level=credit.get("oas_pct") if credit.get("status")=="available" else None
+        add("Credit","HY OAS level",oas_level,"%","Context; widening and percentile matter more than a fixed threshold","STRESS" if oas_level is not None and oas_level>=6.5 else "WATCH","FRED BAMLH0A0HYM2",credit.get("observation_date"))
+        for k,label in [("DGS2","2Y Treasury"),("DGS5","5Y Treasury"),("DGS10","10Y Treasury"),("DFII10","10Y real Treasury"),("T10Y2Y","10Y–2Y curve")]:
+            z=rates.get(k,pd.Series(dtype=float)).dropna()
+            z=z[z.index<date] if len(z) else z
+            observed=z.index[-1].strftime("%Y-%m-%d") if len(z) else None
+            fresh=bool(len(z) and (date-z.index[-1]).days<=7)
+            v=value(z) if fresh else None
+            source="https://fred.stlouisfed.org/series/"+k
+            add("Macro",label,v,"%","Lagged direct observation; not a forecast","WATCH",source,observed)
+            bp=value(z.diff(5)*100) if fresh else None
+            add("Macro",label+" 5-observation change",bp,"bp","Rise >=20bp warns for yields; curve change needs growth context","STRESS" if k!="T10Y2Y" and bp is not None and bp>=20 else "WATCH",source,observed)
         for t in ("^TNX","^IRX"):
             z=series(t); v=value(z)
             add("Macro",f"{t} yield",v,"%","10Y / 13-week yield reference, not Fed funds expectations","WATCH")
-            ch=change(z,5)
             # absolute yield change, not % change
             bp=value(z.diff(5)*100)
             add("Macro",f"{t} 5d yield change",bp,"bp","Rise >=20bp warning; falling yields require growth context","STRESS" if bp is not None and bp>=20 else "WATCH")
