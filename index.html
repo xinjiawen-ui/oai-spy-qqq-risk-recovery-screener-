@@ -93,7 +93,7 @@ function decisionOverview(d){
  if(!c.assets)return html+'<p>New checklist pending refresh.</p></section>';
  html+='<div class="scroll"><table class="evidence-table"><thead><tr><th>Driver</th><th>SPY</th><th>QQQ</th></tr></thead><tbody>';
  for(const g of groupOrder){
-   const cell=t=>{const rows=(c.assets?.[t]?.rows||[]).filter(x=>x.group===g);if(!rows.length)return 'Manual review';const n=s=>rows.filter(x=>x.status===s).length;return '<span class="good">'+n('SUPPORT')+' support</span> · <span class="bad">'+n('STRESS')+' stress</span><br><small>'+n('WATCH')+' watch · '+n('UNAVAILABLE')+' missing</small>';};
+   const cell=t=>{const all=c.assets?.[t]?.rows||[];const replaced=new Set(all.flatMap(x=>x.replaces||[]));const rows=all.filter(x=>x.group===g&&!replaced.has(x.name)&&x.value!=null);if(!rows.length)return 'Manual review';const n=s=>rows.filter(x=>x.status===s).length;return '<span class="good">'+n('SUPPORT')+' support</span> · <span class="bad">'+n('STRESS')+' stress</span><br><small>'+n('WATCH')+' watch · '+n('UNAVAILABLE')+' missing</small>';};
    html+='<tr><td>'+esc(groupNames[g])+'</td><td>'+cell('SPY')+'</td><td>'+cell('QQQ')+'</td></tr>';
  }
  return html+'</tbody></table></div><p><button onclick="showTab(\'checklist\')">Open evidence checklist</button></p><small>Recovery measures broad improvement; confirmation is the stricter rebound gate. No thresholds or backtests changed.</small></section>';
@@ -101,16 +101,18 @@ function decisionOverview(d){
 function evidencePanel(d){
  const c=d.comprehensive_checklist;
  if(!c)return '<section class="card">Checklist awaits the next successful workflow.</section>';
- const a=c.assets?.SPY?.rows||[],b=c.assets?.QQQ?.rows||[];
+ const allA=c.assets?.SPY?.rows||[],allB=c.assets?.QQQ?.rows||[];
+ const active=rows=>{const replaced=new Set(rows.flatMap(x=>x.replaces||[]));return rows.filter(x=>!replaced.has(x.name)&&x.value!=null);};
+ const a=active(allA),b=active(allB);
  const day=[d.assets?.SPY?.date,d.assets?.QQQ?.date].filter(Boolean).sort().join('/');
- let html='<section class="card"><h2>Evidence checklist</h2><p>Market-wide readings are shown once where identical. ETF-specific observations are compared side by side. Coverage: SPY '+esc(c.assets?.SPY?.coverage??'N/A')+'% · QQQ '+esc(c.assets?.QQQ?.coverage??'N/A')+'%. Missing data are never classified as healthy.</p>';
- const cell=x=>x?fmtVal(x)+'<span class="state '+statusClass(x.status)+'">'+esc(x.status)+'</span><small>'+esc(x.as_of||'No date')+'</small>':'—';
+ let html='<section class="card"><h2>Evidence checklist</h2><p>Market-wide readings are shown once where identical. ETF-specific observations are compared side by side. Effective input coverage (including explicitly labelled substitutes): SPY '+esc(c.assets?.SPY?.effective_coverage??c.assets?.SPY?.coverage??'N/A')+'% · QQQ '+esc(c.assets?.QQQ?.effective_coverage??c.assets?.QQQ?.coverage??'N/A')+'%. Primary observations: SPY '+esc(c.assets?.SPY?.coverage??'N/A')+'% · QQQ '+esc(c.assets?.QQQ?.coverage??'N/A')+'%. Replaced or unresolved raw fields remain in downloadable data; no invented observations.</p>';
+ const cell=x=>x?fmtVal(x)+'<span class="state '+statusClass(x.status)+'">'+esc(x.status)+' · '+esc(x.data_kind||'MARKET')+'</span><small>'+esc(x.as_of||'No date')+'</small>':'—';
  for(const g of groupOrder){
    const ar=a.filter(x=>x.group===g),br=b.filter(x=>x.group===g);
    const names=[...new Set([...ar,...br].map(x=>x.name))];
    // Keep Yahoo 10Y only as fallback when direct 10Y is absent; other raw feeds downloadable.
    const direct=ar.find(x=>x.name==='10Y Treasury'&&x.value!=null)&&br.find(x=>x.name==='10Y Treasury'&&x.value!=null);
-   const display=names.filter(n=>!(direct&&n.startsWith('^TNX')));
+   const display=names.filter(n=>!(n.startsWith('^TNX')&&(direct||names.some(k=>k.startsWith('10Y Treasury')&&k.includes('market quote')))));
    if(!display.length)continue;
    html+='<details open><summary>'+esc(groupNames[g])+'</summary><div class="scroll"><table class="evidence-table"><thead><tr><th>Indicator</th><th>SPY</th><th>QQQ</th><th>Interpretation / source</th></tr></thead><tbody>';
    for(const n of display){
@@ -120,7 +122,9 @@ function evidencePanel(d){
    }
    html+='</tbody></table></div></details>';
  }
- html+='</section><section class="card panel"><h2>Manual evidence journal</h2><p>Enter a verified assessment and a dated source or note for the market session shown. Stored only in this browser; not included in automated scores and not synced to GitHub.</p><p id="journalStatus" role="status"></p>';
+ const gaps=rows=>{const replaced=new Set(rows.flatMap(x=>x.replaces||[]));return rows.filter(x=>x.value==null&&!replaced.has(x.name)).map(x=>x.name);};const unresolved=[...new Set([...gaps(allA),...gaps(allB)])];
+ if(unresolved.length)html+='<details><summary>Remaining source gaps ('+unresolved.length+')</summary><p>'+unresolved.map(esc).join(' · ')+'</p><p>All direct and usable substitute feeds failed for these observations. No numerical value is implied.</p></details>';
+ html+='</section><section class="card panel"><h2>Manual evidence journal</h2><p>Automatic market-price context appears above where available. Enter actual earnings, macro releases, or positioning evidence here; price proxies cannot establish these facts. Stored only in this browser; not included in automated scores and not synced to GitHub.</p><p id="journalStatus" role="status"></p>';
  for(const g of groupOrder){
    const rows=(c.manual||[]).filter(x=>x.group===g);if(!rows.length)continue;
    html+='<details><summary>'+esc(groupNames[g])+'</summary>';
