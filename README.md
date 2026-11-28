@@ -43,3 +43,9 @@ Legacy backtests use a single 60/40 chronological split, 5 bps per side and cash
 5. Add an options-data adapter with explicit unavailable status until reliable licensed options data is configured.
 
 Do not invent options statistics or substitute heuristic gamma exposure for measured dealer positions.
+
+## November comprehensive checklist (experimental)
+
+The daily market regime view now includes a separate SPY/QQQ evidence checklist: 5/20/50/100/200-session trend returns, EMA distances, drawdown and distribution volume; equal-weight participation and sector ratios; HY OAS and credit proxies; direct lagged FRED Treasury and real yields; VIX/VVIX dynamics; 10/20/30/60-day realised volatility and an illustrative 10% vol-target allocation with three five-session roll-off scenarios. Individual statuses are descriptive, not scores, and do not change legacy signals, trade sizes or backtests. New archive rows contain the checklist, version and observed coverage; old rows are preserved.
+
+The manual checklist covers forward earnings revisions, valuations, AI demand/capex/funding, inflation and policy surprises, tariffs, direct constituent breadth, CFTC positioning, actual CTA/vol-control flows, leveraged ETF AUM/rebalance estimates, dealer gamma/skew, cash flows, seasonality and catalyst follow-through. These remain explicitly unobserved until verified independently; no synthetic institutional flow dollars or unlicensed options data are supplied. Automated coverage excludes manual rows and is not confidence or probability. Rate observations exclude same-day values and become unavailable after seven calendar days. ETF data use unfilled prices for the new diagnostics and require a matching last session. The vol roll-off scenarios are hypothetical constant daily returns, not forecasts. All thresholds are experimental; future research should compare against base rates and walk-forward calibration before integrating into trading rules.
