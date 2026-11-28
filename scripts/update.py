@@ -2,11 +2,12 @@ import json, pathlib, datetime
 import numpy as np
 import pandas as pd
 import yfinance as yf
-from credit_regime import fetch_diagnostic
+from credit_regime import diagnose
 from market_regime import classify
-from comprehensive_checklist import build_checklist, fetch_rates
+from comprehensive_checklist import build_checklist
+from resilient_inputs import fetch_inputs, augment
 
-TICKERS=["SPY","QQQ","RSP","SOXX","XLK","XLP","HYG","LQD","^VIX","^VIX3M","IEF","SHY","IWM","XLY","XLU","^VVIX","QQQE","^TNX","^IRX"]
+TICKERS=["SPY","QQQ","RSP","SOXX","XLK","XLP","HYG","LQD","^VIX","^VIX3M","IEF","SHY","IWM","XLY","XLU","^VVIX","QQQE","^TNX","^IRX","^FVX","IEI","TIP","VUG","VTV","USO","UUP","^VIX9D","TQQQ"]
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 def main():
     raw=yf.download(TICKERS,period="1y",interval="1d",auto_adjust=True,progress=False,threads=False)
@@ -286,9 +287,12 @@ def main():
       metric("VIX/VIX3M",vix/v3),metric("IEF 5d return % (Treasury duration proxy)",pct(s("IEF"),5))
     ]
     output={"generated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"source":"Yahoo Finance via yfinance (unofficial; may be delayed)","assets":rows,"metrics":metrics,"limitations":["RSP/SPY is a breadth proxy, not S&P 500 constituent participation.","Experimental warning and recovery confirmation thresholds are not yet walk-forward validated.","Relative ETF strength and VVIX are public proxies, not direct institutional leverage, dealer gamma, or market depth.","Missing data reduce coverage rather than counting as healthy.","Rebound radar is a descriptive research checklist, not a validated leading indicator or calibrated bottom probability.","Tactical signals use closing data; any execution is next session.","No options dealer gamma or IV skew is included."]}
-    output["credit_regime"] = fetch_diagnostic(max(a["date"] for a in rows.values())) if rows else {"status":"unavailable"}
     if not rows:raise RuntimeError("No usable SPY/QQQ rows")
-    output["comprehensive_checklist"] = build_checklist(raw["Close"], raw["Volume"], rows, output["credit_regime"], fetch_rates(max(a["date"] for a in rows.values())))
+    as_of=max(a["date"] for a in rows.values())
+    inputs=fetch_inputs(as_of)
+    hy=inputs.get("BAMLH0A0HYM2",pd.Series(dtype=float,index=pd.DatetimeIndex([])))
+    output["credit_regime"]=diagnose(hy,as_of)
+    output["comprehensive_checklist"]=augment(build_checklist(raw["Close"],raw["Volume"],rows,output["credit_regime"],inputs),raw["Close"],rows,inputs)
     dest=ROOT/"data"/"latest.json";dest.parent.mkdir(exist_ok=True)
     dest.write_text(json.dumps(output,indent=2,allow_nan=False))
     # Archive scores by observation date, replacing rather than duplicating same-day rows.
@@ -310,7 +314,7 @@ def main():
                 "recovery":a["recovery_score"],"recovery_coverage":a["recovery_coverage"],
                 "rsi14":a["rsi14"],"rsi2":a["rsi2"],
                 "credit_status":a["credit_status"],"original_score":a["original_score"],
-                "entry_signal":a["entry_signal"],"checklist_version":output["comprehensive_checklist"]["version"],"checklist_coverage":output["comprehensive_checklist"]["assets"][ticker]["coverage"],"checklist_rows":output["comprehensive_checklist"]["assets"][ticker]["rows"],"market_regime":a["market_regime"]["code"],"regime_version":"six-regime-v1","model_version":"v2-2026-10-15"
+                "entry_signal":a["entry_signal"],"checklist_version":output["comprehensive_checklist"]["version"],"checklist_coverage":output["comprehensive_checklist"]["assets"][ticker]["coverage"],"checklist_effective_coverage":output["comprehensive_checklist"]["assets"][ticker]["effective_coverage"],"checklist_rows":output["comprehensive_checklist"]["assets"][ticker]["rows"],"market_regime":a["market_regime"]["code"],"regime_version":"six-regime-v1","model_version":"v2-2026-10-15"
             })
     archive["records"].sort(key=lambda r:(r["date"],r["ticker"]))
     archive_path.write_text(json.dumps(archive,indent=2,allow_nan=False))
