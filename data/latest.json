@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-28T10:52:52.916782+00:00",
+  "generated_at_utc": "2026-11-28T10:57:06.668088+00:00",
   "source": "Yahoo Finance via yfinance (unofficial; may be delayed)",
   "assets": {
     "SPY": {
@@ -174,15 +174,15 @@
         "negative_days_10": 7.0,
         "drawdown_63d_pct": -6.516579314481263,
         "participation": {
-          "Small caps vs SPY": 1.4299386163108663,
-          "Discretionary vs staples": 0.030863755992882602,
+          "Small caps vs SPY": 1.429938616316151,
+          "Discretionary vs staples": 0.030863755985222063,
           "Tech vs utilities": -4.290209649761135
         }
       },
       "close": 728.3200073242188,
-      "rsi14": 45.4213714000671,
+      "rsi14": 45.421371400068956,
       "rsi2": 100.0,
-      "realized_vol_20d": 0.3190965697845005,
+      "realized_vol_20d": 0.31909656978450046,
       "core_exposure_pct": 47.0,
       "original_score": 3,
       "original_coverage": 5,
@@ -838,8 +838,8 @@
         "negative_days_10": 6.0,
         "drawdown_63d_pct": -14.30508210934538,
         "participation": {
-          "Small caps vs SPY": 1.4299386163108663,
-          "Discretionary vs staples": 0.030863755992882602,
+          "Small caps vs SPY": 1.429938616316151,
+          "Discretionary vs staples": 0.030863755985222063,
           "Tech vs utilities": -4.290209649761135
         }
       },
@@ -1344,12 +1344,12 @@
     },
     {
       "name": "IWM/SPY vs EMA20 %",
-      "value": 1.4299386163108663,
+      "value": 1.429938616316151,
       "date": "2026-11-27"
     },
     {
       "name": "XLY/XLP vs EMA20 %",
-      "value": 0.030863755992882602,
+      "value": 0.030863755985222063,
       "date": "2026-11-27"
     },
     {
@@ -1369,7 +1369,7 @@
     },
     {
       "name": "RSP/SPY vs 20d EMA %",
-      "value": 1.7618232447848214,
+      "value": 1.7618232447817794,
       "date": "2026-11-27"
     },
     {
@@ -1394,7 +1394,7 @@
     },
     {
       "name": "HYG/LQD vs 20d EMA %",
-      "value": -0.47995767371300513,
+      "value": -0.4799576828406926,
       "date": "2026-11-27"
     },
     {
@@ -1420,11 +1420,13 @@
   "credit_regime": {
     "status": "unavailable",
     "source": "https://fred.stlouisfed.org/graph/?g=1&id=BAMLH0A0HYM2",
+    "series": "BAMLH0A0HYM2",
+    "units": "percentage points",
     "experimental": true,
-    "reason": "Direct FRED spread feed unavailable; ETF proxies remain separate."
+    "publication_policy": "Exclude same-day observations; historical vintages not available."
   },
   "comprehensive_checklist": {
-    "version": "november-checklist-v2",
+    "version": "november-checklist-v3-resilient",
     "experimental": true,
     "assets": {
       "SPY": {
@@ -1437,7 +1439,8 @@
             "rule": "Positive trend supportive; negative trend may pressure trend followers",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -1447,7 +1450,8 @@
             "rule": "Positive trend supportive; negative trend may pressure trend followers",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -1457,7 +1461,8 @@
             "rule": "Positive trend supportive; negative trend may pressure trend followers",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -1467,7 +1472,8 @@
             "rule": "Positive trend supportive; negative trend may pressure trend followers",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -1477,7 +1483,8 @@
             "rule": "Positive trend supportive; negative trend may pressure trend followers",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -1487,7 +1494,8 @@
             "rule": "Above EMA supportive; below EMA stress",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -1497,7 +1505,8 @@
             "rule": "Above EMA supportive; below EMA stress",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -1507,7 +1516,8 @@
             "rule": "Above EMA supportive; below EMA stress",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -1517,7 +1527,8 @@
             "rule": "Above EMA supportive; below EMA stress",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -1527,7 +1538,8 @@
             "rule": "Oversold below 30; overbought above 70; not standalone entry",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -1537,7 +1549,8 @@
             "rule": "Stress at -10% or worse; watch at -5%",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -1547,7 +1560,8 @@
             "rule": "7+ red sessions = persistent selling",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -1557,7 +1571,8 @@
             "rule": "60%+ distribution warning",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Breadth",
@@ -1567,7 +1582,8 @@
             "rule": "Positive relative strength supports participation / leadership",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Breadth",
@@ -1577,7 +1593,8 @@
             "rule": "Positive relative strength supports participation / leadership",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Breadth",
@@ -1587,7 +1604,8 @@
             "rule": "Positive relative strength supports participation / leadership",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Breadth",
@@ -1597,7 +1615,8 @@
             "rule": "Positive relative strength supports participation / leadership",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Breadth",
@@ -1607,7 +1626,8 @@
             "rule": "Positive relative strength supports participation / leadership",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Credit",
@@ -1617,7 +1637,8 @@
             "rule": "ETF credit proxy; duration mismatch",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Credit",
@@ -1627,7 +1648,8 @@
             "rule": "Alternative proxy; not OAS",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Credit",
@@ -1637,7 +1659,8 @@
             "rule": "Widening stress; tightening support",
             "status": "UNAVAILABLE",
             "source": "FRED BAMLH0A0HYM2",
-            "as_of": null
+            "as_of": null,
+            "data_kind": "DIRECT"
           },
           {
             "group": "Credit",
@@ -1647,7 +1670,8 @@
             "rule": "Context; widening and percentile matter more than a fixed threshold",
             "status": "UNAVAILABLE",
             "source": "FRED BAMLH0A0HYM2",
-            "as_of": null
+            "as_of": null,
+            "data_kind": "DIRECT"
           },
           {
             "group": "Credit",
@@ -1657,7 +1681,8 @@
             "rule": "Direct investment-grade option-adjusted spread",
             "status": "UNAVAILABLE",
             "source": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-            "as_of": null
+            "as_of": null,
+            "data_kind": "DIRECT"
           },
           {
             "group": "Credit",
@@ -1667,107 +1692,118 @@
             "rule": "Widening stress; tightening support",
             "status": "UNAVAILABLE",
             "source": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-            "as_of": null
+            "as_of": null,
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "2Y Treasury",
-            "value": null,
+            "value": 4.61,
             "unit": "%",
             "rule": "Lagged direct observation; not a forecast",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DGS2",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "2Y Treasury 5-observation change",
-            "value": null,
+            "value": -19.0,
             "unit": "bp",
             "rule": "Rise >=20bp warns for yields; curve change needs growth context",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DGS2",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "5Y Treasury",
-            "value": null,
+            "value": 4.65,
             "unit": "%",
             "rule": "Lagged direct observation; not a forecast",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DGS5",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "5Y Treasury 5-observation change",
-            "value": null,
+            "value": -24.0,
             "unit": "bp",
             "rule": "Rise >=20bp warns for yields; curve change needs growth context",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DGS5",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "10Y Treasury",
-            "value": null,
+            "value": 4.85,
             "unit": "%",
             "rule": "Lagged direct observation; not a forecast",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DGS10",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "10Y Treasury 5-observation change",
-            "value": null,
+            "value": -22.0,
             "unit": "bp",
             "rule": "Rise >=20bp warns for yields; curve change needs growth context",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DGS10",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "10Y real Treasury",
-            "value": null,
+            "value": 2.73,
             "unit": "%",
             "rule": "Lagged direct observation; not a forecast",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DFII10",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_real_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "10Y real Treasury 5-observation change",
-            "value": null,
+            "value": -15.0,
             "unit": "bp",
             "rule": "Rise >=20bp warns for yields; curve change needs growth context",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DFII10",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_real_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "10Y\u20132Y curve",
-            "value": null,
+            "value": 0.24,
             "unit": "%",
             "rule": "Lagged direct observation; not a forecast",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/T10Y2Y",
-            "as_of": null
+            "status": "WATCH",
+            "source": "Calculated: 10Y minus 2Y Treasury yields",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "10Y\u20132Y curve 5-observation change",
-            "value": null,
+            "value": -3.0,
             "unit": "bp",
             "rule": "Rise >=20bp warns for yields; curve change needs growth context",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/T10Y2Y",
-            "as_of": null
+            "status": "WATCH",
+            "source": "Calculated: 10Y minus 2Y Treasury yields",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
@@ -1777,7 +1813,8 @@
             "rule": "10Y / 13-week yield reference, not Fed funds expectations",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Macro",
@@ -1787,7 +1824,8 @@
             "rule": "Rise >=20bp warning; falling yields require growth context",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Macro",
@@ -1797,7 +1835,8 @@
             "rule": "10Y / 13-week yield reference, not Fed funds expectations",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Macro",
@@ -1807,7 +1846,8 @@
             "rule": "Rise >=20bp warning; falling yields require growth context",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Volatility",
@@ -1817,7 +1857,8 @@
             "rule": "30+ acute stress; level is context, not a buy trigger",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Volatility",
@@ -1827,7 +1868,8 @@
             "rule": "Volatility of VIX; no direct dealer position inference",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Volatility",
@@ -1837,7 +1879,8 @@
             "rule": "1.3x or higher flags accelerating risk",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Volatility",
@@ -1847,7 +1890,8 @@
             "rule": "Falling fear supports stabilization; rising >=15% warns",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Volatility",
@@ -1857,7 +1901,8 @@
             "rule": "Falling fear supports stabilization; rising >=15% warns",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Volatility",
@@ -1867,7 +1912,8 @@
             "rule": "Backwardation >=1 stress",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -1877,7 +1923,8 @@
             "rule": "Vol-target funds react to realised rather than only implied volatility",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -1887,7 +1934,8 @@
             "rule": "Vol-target funds react to realised rather than only implied volatility",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -1897,7 +1945,8 @@
             "rule": "Vol-target funds react to realised rather than only implied volatility",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -1907,7 +1956,8 @@
             "rule": "Vol-target funds react to realised rather than only implied volatility",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -1917,7 +1967,8 @@
             "rule": "Capped 100%; not actual fund positioning",
             "status": "WATCH",
             "source": "Model: adjusted ETF returns",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
           },
           {
             "group": "Systematic flows",
@@ -1927,7 +1978,8 @@
             "rule": "Change in illustrative allocation; not flow dollars",
             "status": "SUPPORT",
             "source": "Scenario: 20d realised volatility",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
           },
           {
             "group": "Systematic flows",
@@ -1937,7 +1989,8 @@
             "rule": "Change in illustrative allocation; not flow dollars",
             "status": "SUPPORT",
             "source": "Scenario: 20d realised volatility",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
           },
           {
             "group": "Systematic flows",
@@ -1947,7 +2000,8 @@
             "rule": "Change in illustrative allocation; not flow dollars",
             "status": "SUPPORT",
             "source": "Scenario: 20d realised volatility",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
           },
           {
             "group": "Recovery validation",
@@ -1957,7 +2011,8 @@
             "rule": "Positive follow-through, not confirmation alone",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Recovery validation",
@@ -1967,10 +2022,164 @@
             "rule": "New closing low warns; higher low requires persistence",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
+          },
+          {
+            "group": "Credit",
+            "name": "High-yield credit proxy: HYG/SHY 20d return",
+            "value": -1.0933,
+            "unit": "%",
+            "rule": "Not an OAS level or change; duration and liquidity also affect prices",
+            "status": "STRESS",
+            "source": "Yahoo Finance HYG/SHY",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY",
+            "replaces": [
+              "HY OAS 20-observation change",
+              "HY OAS level"
+            ]
+          },
+          {
+            "group": "Credit",
+            "name": "Investment-grade credit proxy: LQD/IEF 20d return",
+            "value": -0.6129,
+            "unit": "%",
+            "rule": "Duration mismatch; not a measured spread",
+            "status": "STRESS",
+            "source": "Yahoo Finance LQD/IEF",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY",
+            "replaces": [
+              "IG OAS level",
+              "IG OAS 20-observation change"
+            ]
+          },
+          {
+            "group": "Fundamentals",
+            "name": "AI infrastructure sentiment: SOXX/QQQ",
+            "value": -13.9905,
+            "unit": "%",
+            "rule": "Market pricing only; not AI revenue or earnings revisions",
+            "status": "STRESS",
+            "source": "Yahoo Finance SOXX/QQQ",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Fundamentals",
+            "name": "Growth vs value sentiment: VUG/VTV",
+            "value": -5.8473,
+            "unit": "%",
+            "rule": "Relative market pricing, not valuation or EPS data",
+            "status": "STRESS",
+            "source": "Yahoo Finance VUG/VTV",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Fundamentals",
+            "name": "Cyclical earnings sentiment: XLY/XLP",
+            "value": -1.7685,
+            "unit": "%",
+            "rule": "Relative market pricing, not earnings revisions",
+            "status": "STRESS",
+            "source": "Yahoo Finance XLY/XLP",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Macro",
+            "name": "Inflation-sensitive proxy: TIP/IEF",
+            "value": -1.3536,
+            "unit": "%",
+            "rule": "TIPS vs nominal Treasury relative return; not CPI or breakeven",
+            "status": "WATCH",
+            "source": "Yahoo Finance TIP/IEF",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Macro",
+            "name": "Oil price pressure: USO",
+            "value": -18.0867,
+            "unit": "%",
+            "rule": "Oil ETF return, not measured inflation",
+            "status": "WATCH",
+            "source": "Yahoo Finance USO",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Macro",
+            "name": "Dollar / financial conditions: UUP",
+            "value": 2.3416,
+            "unit": "%",
+            "rule": "Dollar ETF return, not policy expectations",
+            "status": "WATCH",
+            "source": "Yahoo Finance UUP",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Options / liquidity",
+            "name": "Tail-risk sentiment: VIX 5d change",
+            "value": -33.6584,
+            "unit": "%",
+            "rule": "Implied volatility, not dealer gamma or flows",
+            "status": "SUPPORT",
+            "source": "Yahoo Finance ^VIX",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Options / liquidity",
+            "name": "Short-dated fear: VIX9D/VIX",
+            "value": -1.6186,
+            "unit": "%",
+            "rule": "Relative implied volatility change; not options positioning",
+            "status": "SUPPORT",
+            "source": "Yahoo Finance ^VIX9D/^VIX",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Systematic flows",
+            "name": "+3x ETF rebalance per $1B AUM",
+            "value": 97.2792,
+            "unit": "USD M",
+            "rule": "Underlying-equivalent scenario per hypothetical $1B starting AUM; excludes subscriptions, redemptions and actual hedges",
+            "status": "SUPPORT",
+            "source": "Model: L*(L-1)*AUM*index return",
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
+          },
+          {
+            "group": "Systematic flows",
+            "name": "+2x ETF rebalance per $1B AUM",
+            "value": 32.4264,
+            "unit": "USD M",
+            "rule": "Underlying-equivalent scenario per hypothetical $1B starting AUM; excludes subscriptions, redemptions and actual hedges",
+            "status": "SUPPORT",
+            "source": "Model: L*(L-1)*AUM*index return",
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
+          },
+          {
+            "group": "Systematic flows",
+            "name": "-3x ETF rebalance per $1B AUM",
+            "value": 194.5583,
+            "unit": "USD M",
+            "rule": "Underlying-equivalent scenario per hypothetical $1B starting AUM; excludes subscriptions, redemptions and actual hedges",
+            "status": "SUPPORT",
+            "source": "Model: L*(L-1)*AUM*index return",
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
           }
         ],
-        "coverage": 74
+        "coverage": 93,
+        "direct_coverage": 93,
+        "effective_coverage": 100
       },
       "QQQ": {
         "rows": [
@@ -1982,7 +2191,8 @@
             "rule": "Positive trend supportive; negative trend may pressure trend followers",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -1992,7 +2202,8 @@
             "rule": "Positive trend supportive; negative trend may pressure trend followers",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -2002,7 +2213,8 @@
             "rule": "Positive trend supportive; negative trend may pressure trend followers",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -2012,7 +2224,8 @@
             "rule": "Positive trend supportive; negative trend may pressure trend followers",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -2022,7 +2235,8 @@
             "rule": "Positive trend supportive; negative trend may pressure trend followers",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -2032,7 +2246,8 @@
             "rule": "Above EMA supportive; below EMA stress",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -2042,7 +2257,8 @@
             "rule": "Above EMA supportive; below EMA stress",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -2052,7 +2268,8 @@
             "rule": "Above EMA supportive; below EMA stress",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -2062,7 +2279,8 @@
             "rule": "Above EMA supportive; below EMA stress",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -2072,7 +2290,8 @@
             "rule": "Oversold below 30; overbought above 70; not standalone entry",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -2082,7 +2301,8 @@
             "rule": "Stress at -10% or worse; watch at -5%",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -2092,7 +2312,8 @@
             "rule": "7+ red sessions = persistent selling",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Trend",
@@ -2102,7 +2323,8 @@
             "rule": "60%+ distribution warning",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Breadth",
@@ -2112,7 +2334,8 @@
             "rule": "Positive relative strength supports participation / leadership",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Breadth",
@@ -2122,7 +2345,8 @@
             "rule": "Positive relative strength supports participation / leadership",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Breadth",
@@ -2132,7 +2356,8 @@
             "rule": "Positive relative strength supports participation / leadership",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Breadth",
@@ -2142,7 +2367,8 @@
             "rule": "Positive relative strength supports participation / leadership",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Breadth",
@@ -2152,7 +2378,8 @@
             "rule": "Positive relative strength supports participation / leadership",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Credit",
@@ -2162,7 +2389,8 @@
             "rule": "ETF credit proxy; duration mismatch",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Credit",
@@ -2172,7 +2400,8 @@
             "rule": "Alternative proxy; not OAS",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Credit",
@@ -2182,7 +2411,8 @@
             "rule": "Widening stress; tightening support",
             "status": "UNAVAILABLE",
             "source": "FRED BAMLH0A0HYM2",
-            "as_of": null
+            "as_of": null,
+            "data_kind": "DIRECT"
           },
           {
             "group": "Credit",
@@ -2192,7 +2422,8 @@
             "rule": "Context; widening and percentile matter more than a fixed threshold",
             "status": "UNAVAILABLE",
             "source": "FRED BAMLH0A0HYM2",
-            "as_of": null
+            "as_of": null,
+            "data_kind": "DIRECT"
           },
           {
             "group": "Credit",
@@ -2202,7 +2433,8 @@
             "rule": "Direct investment-grade option-adjusted spread",
             "status": "UNAVAILABLE",
             "source": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-            "as_of": null
+            "as_of": null,
+            "data_kind": "DIRECT"
           },
           {
             "group": "Credit",
@@ -2212,107 +2444,118 @@
             "rule": "Widening stress; tightening support",
             "status": "UNAVAILABLE",
             "source": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-            "as_of": null
+            "as_of": null,
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "2Y Treasury",
-            "value": null,
+            "value": 4.61,
             "unit": "%",
             "rule": "Lagged direct observation; not a forecast",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DGS2",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "2Y Treasury 5-observation change",
-            "value": null,
+            "value": -19.0,
             "unit": "bp",
             "rule": "Rise >=20bp warns for yields; curve change needs growth context",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DGS2",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "5Y Treasury",
-            "value": null,
+            "value": 4.65,
             "unit": "%",
             "rule": "Lagged direct observation; not a forecast",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DGS5",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "5Y Treasury 5-observation change",
-            "value": null,
+            "value": -24.0,
             "unit": "bp",
             "rule": "Rise >=20bp warns for yields; curve change needs growth context",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DGS5",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "10Y Treasury",
-            "value": null,
+            "value": 4.85,
             "unit": "%",
             "rule": "Lagged direct observation; not a forecast",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DGS10",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "10Y Treasury 5-observation change",
-            "value": null,
+            "value": -22.0,
             "unit": "bp",
             "rule": "Rise >=20bp warns for yields; curve change needs growth context",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DGS10",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "10Y real Treasury",
-            "value": null,
+            "value": 2.73,
             "unit": "%",
             "rule": "Lagged direct observation; not a forecast",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DFII10",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_real_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "10Y real Treasury 5-observation change",
-            "value": null,
+            "value": -15.0,
             "unit": "bp",
             "rule": "Rise >=20bp warns for yields; curve change needs growth context",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/DFII10",
-            "as_of": null
+            "status": "WATCH",
+            "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_real_yield_curve&field_tdr_date_value=2026&page&_format=csv",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "10Y\u20132Y curve",
-            "value": null,
+            "value": 0.24,
             "unit": "%",
             "rule": "Lagged direct observation; not a forecast",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/T10Y2Y",
-            "as_of": null
+            "status": "WATCH",
+            "source": "Calculated: 10Y minus 2Y Treasury yields",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
             "name": "10Y\u20132Y curve 5-observation change",
-            "value": null,
+            "value": -3.0,
             "unit": "bp",
             "rule": "Rise >=20bp warns for yields; curve change needs growth context",
-            "status": "UNAVAILABLE",
-            "source": "https://fred.stlouisfed.org/series/T10Y2Y",
-            "as_of": null
+            "status": "WATCH",
+            "source": "Calculated: 10Y minus 2Y Treasury yields",
+            "as_of": "2026-11-25",
+            "data_kind": "DIRECT"
           },
           {
             "group": "Macro",
@@ -2322,7 +2565,8 @@
             "rule": "10Y / 13-week yield reference, not Fed funds expectations",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Macro",
@@ -2332,7 +2576,8 @@
             "rule": "Rise >=20bp warning; falling yields require growth context",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Macro",
@@ -2342,7 +2587,8 @@
             "rule": "10Y / 13-week yield reference, not Fed funds expectations",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Macro",
@@ -2352,7 +2598,8 @@
             "rule": "Rise >=20bp warning; falling yields require growth context",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Volatility",
@@ -2362,7 +2609,8 @@
             "rule": "30+ acute stress; level is context, not a buy trigger",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Volatility",
@@ -2372,7 +2620,8 @@
             "rule": "Volatility of VIX; no direct dealer position inference",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Volatility",
@@ -2382,7 +2631,8 @@
             "rule": "1.3x or higher flags accelerating risk",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Volatility",
@@ -2392,7 +2642,8 @@
             "rule": "Falling fear supports stabilization; rising >=15% warns",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Volatility",
@@ -2402,7 +2653,8 @@
             "rule": "Falling fear supports stabilization; rising >=15% warns",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Volatility",
@@ -2412,7 +2664,8 @@
             "rule": "Backwardation >=1 stress",
             "status": "SUPPORT",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -2422,7 +2675,8 @@
             "rule": "Vol-target funds react to realised rather than only implied volatility",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -2432,7 +2686,8 @@
             "rule": "Vol-target funds react to realised rather than only implied volatility",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -2442,7 +2697,8 @@
             "rule": "Vol-target funds react to realised rather than only implied volatility",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -2452,7 +2708,8 @@
             "rule": "Vol-target funds react to realised rather than only implied volatility",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Systematic flows",
@@ -2462,7 +2719,8 @@
             "rule": "Capped 100%; not actual fund positioning",
             "status": "WATCH",
             "source": "Model: adjusted ETF returns",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
           },
           {
             "group": "Systematic flows",
@@ -2472,7 +2730,8 @@
             "rule": "Change in illustrative allocation; not flow dollars",
             "status": "SUPPORT",
             "source": "Scenario: 20d realised volatility",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
           },
           {
             "group": "Systematic flows",
@@ -2482,7 +2741,8 @@
             "rule": "Change in illustrative allocation; not flow dollars",
             "status": "SUPPORT",
             "source": "Scenario: 20d realised volatility",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
           },
           {
             "group": "Systematic flows",
@@ -2492,7 +2752,8 @@
             "rule": "Change in illustrative allocation; not flow dollars",
             "status": "SUPPORT",
             "source": "Scenario: 20d realised volatility",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
           },
           {
             "group": "Recovery validation",
@@ -2502,7 +2763,8 @@
             "rule": "Positive follow-through, not confirmation alone",
             "status": "STRESS",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
           },
           {
             "group": "Recovery validation",
@@ -2512,10 +2774,164 @@
             "rule": "New closing low warns; higher low requires persistence",
             "status": "WATCH",
             "source": "Yahoo Finance (proxy)",
-            "as_of": "2026-11-27"
+            "as_of": "2026-11-27",
+            "data_kind": "MARKET"
+          },
+          {
+            "group": "Credit",
+            "name": "High-yield credit proxy: HYG/SHY 20d return",
+            "value": -1.0933,
+            "unit": "%",
+            "rule": "Not an OAS level or change; duration and liquidity also affect prices",
+            "status": "STRESS",
+            "source": "Yahoo Finance HYG/SHY",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY",
+            "replaces": [
+              "HY OAS 20-observation change",
+              "HY OAS level"
+            ]
+          },
+          {
+            "group": "Credit",
+            "name": "Investment-grade credit proxy: LQD/IEF 20d return",
+            "value": -0.6129,
+            "unit": "%",
+            "rule": "Duration mismatch; not a measured spread",
+            "status": "STRESS",
+            "source": "Yahoo Finance LQD/IEF",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY",
+            "replaces": [
+              "IG OAS level",
+              "IG OAS 20-observation change"
+            ]
+          },
+          {
+            "group": "Fundamentals",
+            "name": "AI infrastructure sentiment: SOXX/QQQ",
+            "value": -13.9905,
+            "unit": "%",
+            "rule": "Market pricing only; not AI revenue or earnings revisions",
+            "status": "STRESS",
+            "source": "Yahoo Finance SOXX/QQQ",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Fundamentals",
+            "name": "Growth vs value sentiment: VUG/VTV",
+            "value": -5.8473,
+            "unit": "%",
+            "rule": "Relative market pricing, not valuation or EPS data",
+            "status": "STRESS",
+            "source": "Yahoo Finance VUG/VTV",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Fundamentals",
+            "name": "Cyclical earnings sentiment: XLY/XLP",
+            "value": -1.7685,
+            "unit": "%",
+            "rule": "Relative market pricing, not earnings revisions",
+            "status": "STRESS",
+            "source": "Yahoo Finance XLY/XLP",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Macro",
+            "name": "Inflation-sensitive proxy: TIP/IEF",
+            "value": -1.3536,
+            "unit": "%",
+            "rule": "TIPS vs nominal Treasury relative return; not CPI or breakeven",
+            "status": "WATCH",
+            "source": "Yahoo Finance TIP/IEF",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Macro",
+            "name": "Oil price pressure: USO",
+            "value": -18.0867,
+            "unit": "%",
+            "rule": "Oil ETF return, not measured inflation",
+            "status": "WATCH",
+            "source": "Yahoo Finance USO",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Macro",
+            "name": "Dollar / financial conditions: UUP",
+            "value": 2.3416,
+            "unit": "%",
+            "rule": "Dollar ETF return, not policy expectations",
+            "status": "WATCH",
+            "source": "Yahoo Finance UUP",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Options / liquidity",
+            "name": "Tail-risk sentiment: VIX 5d change",
+            "value": -33.6584,
+            "unit": "%",
+            "rule": "Implied volatility, not dealer gamma or flows",
+            "status": "SUPPORT",
+            "source": "Yahoo Finance ^VIX",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Options / liquidity",
+            "name": "Short-dated fear: VIX9D/VIX",
+            "value": -1.6186,
+            "unit": "%",
+            "rule": "Relative implied volatility change; not options positioning",
+            "status": "SUPPORT",
+            "source": "Yahoo Finance ^VIX9D/^VIX",
+            "as_of": "2026-11-27",
+            "data_kind": "PROXY"
+          },
+          {
+            "group": "Systematic flows",
+            "name": "+3x ETF rebalance per $1B AUM",
+            "value": 161.4689,
+            "unit": "USD M",
+            "rule": "Underlying-equivalent scenario per hypothetical $1B starting AUM; excludes subscriptions, redemptions and actual hedges",
+            "status": "SUPPORT",
+            "source": "Model: L*(L-1)*AUM*index return",
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
+          },
+          {
+            "group": "Systematic flows",
+            "name": "+2x ETF rebalance per $1B AUM",
+            "value": 53.823,
+            "unit": "USD M",
+            "rule": "Underlying-equivalent scenario per hypothetical $1B starting AUM; excludes subscriptions, redemptions and actual hedges",
+            "status": "SUPPORT",
+            "source": "Model: L*(L-1)*AUM*index return",
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
+          },
+          {
+            "group": "Systematic flows",
+            "name": "-3x ETF rebalance per $1B AUM",
+            "value": 322.9378,
+            "unit": "USD M",
+            "rule": "Underlying-equivalent scenario per hypothetical $1B starting AUM; excludes subscriptions, redemptions and actual hedges",
+            "status": "SUPPORT",
+            "source": "Model: L*(L-1)*AUM*index return",
+            "as_of": "2026-11-27",
+            "data_kind": "MODEL"
           }
         ],
-        "coverage": 74
+        "coverage": 93,
+        "direct_coverage": 93,
+        "effective_coverage": 100
       }
     },
     "manual": [
