@@ -101,75 +101,7 @@ function decisionOverview(d, archive, study){
  let html='<section class="card desk"><p class="eyebrow">Daily close · market regime</p><h2>'+esc(title)+'</h2>';
  const reasons=[...new Set(assets.map(a=>a.market_regime?.reason).filter(Boolean))];
  html+='<p>'+esc(reasons.join(' '))+'</p>'+table([
- row('Close',assets.map(a=>Number.isFinite(a.close)?'function evidencePanel(d){
- const c=d.comprehensive_checklist;
- if(!c)return '<section class="card">Checklist awaits the next successful workflow.</section>';
- const allA=c.assets?.SPY?.rows||[],allB=c.assets?.QQQ?.rows||[];
- const active=rows=>{const replaced=new Set(rows.flatMap(x=>x.replaces||[]));return rows.filter(x=>!replaced.has(x.name)&&x.value!=null);};
- const a=active(allA),b=active(allB);
- const day=[d.assets?.SPY?.date,d.assets?.QQQ?.date].filter(Boolean).sort().join('/');
- let html='<section class="card"><h2>Evidence checklist</h2><p>Market-wide readings are shown once where identical. ETF-specific observations are compared side by side. Effective input coverage (including explicitly labelled substitutes): SPY '+esc(c.assets?.SPY?.effective_coverage??c.assets?.SPY?.coverage??'N/A')+'% · QQQ '+esc(c.assets?.QQQ?.effective_coverage??c.assets?.QQQ?.coverage??'N/A')+'%. Primary observations: SPY '+esc(c.assets?.SPY?.coverage??'N/A')+'% · QQQ '+esc(c.assets?.QQQ?.coverage??'N/A')+'%. Replaced or unresolved raw fields remain in downloadable data; no invented observations.</p>';
- const cell=x=>x?fmtVal(x)+'<span class="state '+statusClass(x.status)+'">'+esc(x.status)+' · '+esc(x.data_kind||'MARKET')+'</span><small>'+esc(x.as_of||'No date')+'</small>':'—';
- for(const g of groupOrder){
-   const ar=a.filter(x=>x.group===g),br=b.filter(x=>x.group===g);
-   const names=[...new Set([...ar,...br].map(x=>x.name))];
-   // Keep Yahoo 10Y only as fallback when direct 10Y is absent; other raw feeds downloadable.
-   const direct=ar.find(x=>x.name==='10Y Treasury'&&x.value!=null)&&br.find(x=>x.name==='10Y Treasury'&&x.value!=null);
-   const display=names.filter(n=>!(n.startsWith('^TNX')&&(direct||names.some(k=>k.startsWith('10Y Treasury')&&k.includes('market quote')))));
-   if(!display.length)continue;
-   html+='<details><summary>'+esc(groupNames[g])+'</summary><div class="scroll"><table class="evidence-table"><thead><tr><th>Indicator</th><th>SPY</th><th>QQQ</th><th>Interpretation / source</th></tr></thead><tbody>';
-   for(const n of display){
-     const x=ar.find(v=>v.name===n),y=br.find(v=>v.name===n),z=x||y;
-     const shared=x&&y&&x.value===y.value&&x.as_of===y.as_of&&x.status===y.status&&x.source===y.source&&['Macro','Credit','Volatility','Breadth'].includes(g);
-     html+='<tr><td>'+esc(n)+'</td>'+(shared?'<td colspan="2">'+cell(x)+'<small> · shared</small></td>':'<td>'+cell(x)+'</td><td>'+cell(y)+'</td>')+'<td><small>'+esc(z.rule)+'<br>'+esc(z.source)+'</small></td></tr>';
-   }
-   html+='</tbody></table></div></details>';
- }
- const gaps=rows=>{const replaced=new Set(rows.flatMap(x=>x.replaces||[]));return rows.filter(x=>x.value==null&&!replaced.has(x.name)).map(x=>x.name);};const unresolved=[...new Set([...gaps(allA),...gaps(allB)])];
- if(unresolved.length)html+='<details><summary>Remaining source gaps ('+unresolved.length+')</summary><p>'+unresolved.map(esc).join(' · ')+'</p><p>All direct and usable substitute feeds failed for these observations. No numerical value is implied.</p></details>';
- html+='</section><section class="card panel"><h2>Manual evidence journal</h2><p>Automatic market-price context appears above where available. Enter actual earnings, macro releases, or positioning evidence here; price proxies cannot establish these facts. Stored only in this browser; not included in automated scores and not synced to GitHub.</p><p id="journalStatus" role="status"></p>';
- for(const g of groupOrder){
-   const rows=(c.manual||[]).filter(x=>x.group===g);if(!rows.length)continue;
-   html+='<details><summary>'+esc(groupNames[g])+'</summary>';
-   for(const x of rows){const i=(c.manual||[]).indexOf(x);
-      html+='<div class="manual-row"><div><strong>'+esc(x.name)+'</strong><small>'+esc(x.rule)+'</small><small>'+esc(x.source)+'</small></div><select aria-label="'+esc(x.name)+' status" data-journal="'+i+'-status"><option>UNOBSERVED</option><option>SUPPORT</option><option>STRESS</option><option>WATCH</option></select><textarea aria-label="'+esc(x.name)+' evidence" data-journal="'+i+'-note" placeholder="Evidence, observation date, source"></textarea></div>';
-   }html+='</details>';
- }
- return html+'<button id="saveJournal">Save this session journal</button><p class="quiet">Session: '+esc(day)+' · '+esc(c.version)+'</p></section>';
-}
-function bindJournal(d){
- const root=document.getElementById('checklist'),btn=root.querySelector('#saveJournal');if(!btn)return;
- const key='recovery-journal:'+d.comprehensive_checklist.version+':'+[d.assets?.SPY?.date,d.assets?.QQQ?.date].filter(Boolean).sort().join('/');
- const fields=[...root.querySelectorAll('[data-journal]')],msg=root.querySelector('#journalStatus');
- try{const saved=JSON.parse(localStorage.getItem(key)||'{}');fields.forEach(e=>{if(saved[e.dataset.journal]!=null)e.value=saved[e.dataset.journal];});}catch(e){msg.textContent='Local journal unavailable.';}
- btn.onclick=()=>{const obj={};fields.forEach(e=>obj[e.dataset.journal]=e.value);const missing=fields.filter(e=>e.dataset.journal.endsWith('-status')&&e.value!=='UNOBSERVED'&&!obj[e.dataset.journal.replace('-status','-note')]?.trim());if(missing.length){msg.textContent='Add dated evidence for each assessed item.';return;}try{localStorage.setItem(key,JSON.stringify(obj));msg.textContent='Saved on this device.';}catch(e){msg.textContent='Could not save on this device.';}};
-}
-async function load(){
- try{
-  const r=await fetch('./data/latest.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
-  const d=await r.json();const [archive,study]=await Promise.all([optionalData('score_history'),optionalData('regime_research')]);const dates=Object.values(d.assets||{}).map(a=>a.date).filter(Boolean);
-  const age=dates.length?(Date.now()-Date.parse(dates.sort()[0]+'T00:00:00Z'))/86400000:null;
-  document.querySelector('#updated').textContent='Market session: '+([...new Set(dates)].join(' / ')||'unknown')+' · Published '+new Date(d.generated_at_utc).toLocaleString()+(age>4?' · Check freshness':'');
-  document.querySelector('#app').innerHTML=decisionOverview(d,archive,study);
-  document.querySelector('#checklist').innerHTML=evidencePanel(d);bindJournal(d);
-  document.querySelector('#sourceNotes').innerHTML='<ul>'+(d.limitations||[]).map(s=>'<li>'+esc(s)+'</li>').join('')+'</ul><p><a href="./data/latest.json">Download current raw data (JSON)</a></p>';
-  return true;
- }catch(e){document.querySelector('#updated').textContent='Data unavailable: '+e.message;document.querySelector('#app').textContent='Snapshot could not be loaded.';document.querySelector('#checklist').textContent='Evidence unavailable.';return false;}
-}
-async function refreshDashboard(){
- const button=document.getElementById('refreshButton'),status=document.getElementById('refreshStatus');
- button.disabled=true;button.textContent='↻ Refreshing…';status.textContent='Checking published data…';
- try{
-  const ok=await load();
-  const jobs=[];
-  if(!document.getElementById('history').classList.contains('hidden'))jobs.push(loadRegimes(),loadArchive(),loadBacktest(),loadRebound());
-  
-  await Promise.all(jobs);
-  status.textContent=ok?'Checked at '+new Date().toLocaleTimeString()+' (published snapshot)':'Reload failed';
- }finally{button.disabled=false;button.textContent='↻ Reload snapshot';}
-}
-load();
-</script></body></html>+stat(a.close,2):'—')),
+ row('Close',assets.map(a=>Number.isFinite(a.close)?'$'+stat(a.close,2):'—')),
  scoreRow('Fragility / 100','risk_score','risk_coverage','fragility'),
  scoreRow('Recovery / 100','recovery_score','recovery_coverage','recovery'),
  row('Rebound phase',assets.map(a=>esc(a.rebound_v2?.phase?.toLowerCase()||'Unknown'))),
